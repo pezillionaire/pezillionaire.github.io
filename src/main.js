@@ -1,13 +1,13 @@
 // import App from './App.svelte';
 import Clock from './Clock.svelte';
 
-function replaceContents ( node ) {
-	node.innerHTML = '';
-	return node;
+function replaceContents(node) {
+  node.innerHTML = '';
+  return node;
 }
 
 var clock = new Clock({
-	target: replaceContents( document.querySelector( '#clock' )),
+  target: replaceContents(document.querySelector('#clock')),
 });
 
 // var app = new App({

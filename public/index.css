@@ -37,222 +37,222 @@ html {
 }
 
 @font-face {
-	font-family: 'Chicago';
-	font-style: normal;
-	font-weight: normal;
+  font-family: 'Chicago';
+  font-style: normal;
+  font-weight: normal;
   src: local('Chicago'), url('assets/chicago.woff') format('woff');
 }
 
 html, body {
-	position: relative;
-	width: 100%;
-	height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-	line-height: 1.25;
-	min-height: 100vh;
-	color: #222;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Chicago", "Helvetica Neue", Arial, sans-serif;
-	background: url(images/bg.gif) 4px 4px;
-	display: flex;
-	flex-direction: column;
+  line-height: 1.25;
+  min-height: 100vh;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Chicago", "Helvetica Neue", Arial, sans-serif;
+  background: url(images/bg.gif) 4px 4px;
+  display: flex;
+  flex-direction: column;
 }
 header {
-	display: flex;
-	font-size: 1.25rem;
-	line-height: 1;
-	width: 100%;
-	min-height: 40px;
-	border-bottom: 2px solid black;
-	background-color: white;
+  display: flex;
+  font-size: 1.25rem;
+  line-height: 1;
+  width: 100%;
+  min-height: 40px;
+  border-bottom: 2px solid black;
+  background-color: white;
 }
 header::before {
-	position: absolute;
-	content: "";
-	height: 100%;
-	width: 20px;
-	background: url(images/menu-top.gif) top left no-repeat;
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 20px;
+  background: url(images/menu-top.gif) top left no-repeat;
 }
 
 header::after {
-	position: absolute;
-	right: 0;
-	content: "";
-	height: 100%;
-	width: 20px;
-	background: url(images/menu-top.gif) top right no-repeat;
-	transform: scaleX(-1);
+  position: absolute;
+  right: 0;
+  content: "";
+  height: 100%;
+  width: 20px;
+  background: url(images/menu-top.gif) top right no-repeat;
+  transform: scaleX(-1);
 }
 
 i.logo{
-	content: "";
-	height: 24px;
-	width: 24px;
-	background: url(images/question-icon.gif) top right no-repeat;
-	margin: 0 1rem 0 0;
+  content: "";
+  height: 24px;
+  width: 24px;
+  background: url(images/question-icon.gif) top right no-repeat;
+  margin: 0 1rem 0 0;
 }
 
 nav {
-	flex: 1 1 100%;
-	padding: 0.5rem 1.25rem;
-	display: flex;
-	align-items: center;
+  flex: 1 1 100%;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  align-items: center;
 }
 
 nav a {margin: 0 1rem 0 0;}
 
 #clock {
-	display: none;
-	padding: 0.5rem 1rem;
+  display: none;
+  padding: 0.5rem 1rem;
 }
 
 main {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .window {
-	z-index: 5;
-	padding: 2rem 0;
-	margin: 1rem;
-	max-width: 20rem;
-	background: white;
-	border-style: solid;
-	border-width: 38px 44px 4px 42px;
-	border-image: url(images/border.gif) 38 44 4 42 repeat repeat;
+  z-index: 5; 
+  padding: 2rem 0;
+  margin: 1rem;
+  max-width: 20rem;
+  background: white;
+  border-style: solid;
+  border-width: 38px 44px 4px 42px;
+  border-image: url(images/border.gif) 38 44 4 42 repeat repeat;
 }
 
 .desktop {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 h1 {
-	font-weight: normal;
-	font-size: 1.75rem;
+  font-weight: normal;
+  font-size: 1.75rem;
 }
 
 .icon {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .icon span{
-	font-size: 1rem;
-	background: white;
-	padding: 0 0.25rem;
+  font-size: 1rem;
+  background: white;
+  padding: 0 0.25rem;
 }
 .icon::before{
-	/* display: block; */
-	content: "";
-	height: 64px;
-	width: 64px;
-	background: none;
+  /* display: block; */
+  content: "";
+  height: 64px;
+  width: 64px;
+  background: none;
 }
 
 .mac::before {
-	background: url(images/mac.gif) top center no-repeat;
+  background: url(images/mac.gif) top center no-repeat;
 }
 
 .trash::before {
-	background: url(images/trash.gif) top center no-repeat;
+  background: url(images/trash.gif) top center no-repeat;
 }
 
 @media screen and (min-width: 32rem) {
-	#clock { display: block; }
-	main {
-		align-items: center;
-		justify-content: center;
-	}
-	.desktop {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-	}
-	.mac {
-		position: absolute;
-		top: 2rem;
-		right: 2rem;
-	}
-	.trash {
-		position: absolute;
-		bottom: 2rem;
-		right: 2rem;
-	}
+  #clock { display: block; }
+  main {
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .mac {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+  .trash {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+  }
 }
 
 
 /* .trash {
-	position: absolute;
-	bottom: 2rem;
-	right: 2rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .trash span{
-	font-size: 1rem;
-	background: white;
-	padding: 0 0.25rem;
+  font-size: 1rem;
+  background: white;
+  padding: 0 0.25rem;
 }
 .trash::before{
-	content: "";
-	height: 64px;
-	width: 64px;
-	background: none;
-	background: url(images/trash.gif) top center no-repeat;
+  content: "";
+  height: 64px;
+  width: 64px;
+  background: none;
+  background: url(images/trash.gif) top center no-repeat;
 } */
 
 a {
-	color: #222;
-	text-decoration: none;
+  color: #222;
+  text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 
 input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 input:disabled {
-	color: #ccc;
+  color: #ccc;
 }
 
 button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
+  color: #333;
+  background-color: #f4f4f4;
+  outline: none;
 }
 
 button:disabled {
-	color: #999;
+  color: #999;
 }
 
 button:not(:disabled):active {
-	background-color: #ddd;
+  background-color: #ddd;
 }
 
 button:focus {
-	border-color: #666;
+  border-color: #666;
 }
