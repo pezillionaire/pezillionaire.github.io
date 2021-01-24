@@ -41,7 +41,7 @@ html {
 	font-style: normal;
 	font-weight: normal;
   src: local('Chicago'), url('assets/chicago.woff') format('woff');
-	}
+}
 
 html, body {
 	position: relative;
@@ -71,22 +71,24 @@ header {
 	background-color: white;
 }
 header::before {
+	position: absolute;
 	content: "";
-	flex: 0 0 20px;
 	height: 100%;
 	width: 20px;
 	background: url(images/menu-top.gif) top left no-repeat;
 }
 
 header::after {
+	position: absolute;
+	right: 0;
 	content: "";
-	flex: 0 0 20px;
 	height: 100%;
 	width: 20px;
 	background: url(images/menu-top.gif) top right no-repeat;
 	transform: scaleX(-1);
 }
-i.icon{
+
+i.logo{
 	content: "";
 	height: 24px;
 	width: 24px;
@@ -96,7 +98,7 @@ i.icon{
 
 nav {
 	flex: 1 1 100%;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 1.25rem;
 	display: flex;
 	align-items: center;
 }
@@ -104,6 +106,7 @@ nav {
 nav a {margin: 0 1rem 0 0;}
 
 #clock {
+	display: none;
 	padding: 0.5rem 1rem;
 }
 
@@ -112,13 +115,11 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
-h1 {
+.window {
 	z-index: 5;
-	font-weight: normal;
-	font-size: 1.75rem;
 	padding: 2rem 0;
 	margin: 1rem;
 	max-width: 20rem;
@@ -128,30 +129,71 @@ h1 {
 	border-image: url(images/border.gif) 38 44 4 42 repeat repeat;
 }
 
-.mac {
-	position: absolute;
-	top: 2rem;
-	right: 2rem;
+.desktop {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%;
+}
+
+h1 {
+	font-weight: normal;
+	font-size: 1.75rem;
+}
+
+.icon {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.mac span{
+.icon span{
 	font-size: 1rem;
 	background: white;
 	padding: 0 0.25rem;
 }
-.mac::before{
+.icon::before{
 	/* display: block; */
 	content: "";
 	height: 64px;
 	width: 64px;
 	background: none;
+}
+
+.mac::before {
 	background: url(images/mac.gif) top center no-repeat;
 }
 
+.trash::before {
+	background: url(images/trash.gif) top center no-repeat;
+}
 
-.trash {
+@media screen and (min-width: 32rem) {
+	#clock { display: block; }
+	main {
+		align-items: center;
+		justify-content: center;
+	}
+	.desktop {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+	.mac {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+	.trash {
+		position: absolute;
+		bottom: 2rem;
+		right: 2rem;
+	}
+}
+
+
+/* .trash {
 	position: absolute;
 	bottom: 2rem;
 	right: 2rem;
@@ -165,13 +207,12 @@ h1 {
 	padding: 0 0.25rem;
 }
 .trash::before{
-	/* display: block; */
 	content: "";
 	height: 64px;
 	width: 64px;
 	background: none;
 	background: url(images/trash.gif) top center no-repeat;
-}
+} */
 
 a {
 	color: #222;
