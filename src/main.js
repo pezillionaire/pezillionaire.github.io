@@ -1,7 +1,17 @@
-import App from './App.svelte';
+// import App from './App.svelte';
+import Clock from './Clock.svelte';
 
-var app = new App({
-	target: document.body
+function replaceContents ( node ) {
+	node.innerHTML = '';
+	return node;
+}
+
+var clock = new Clock({
+	target: replaceContents( document.querySelector( '#clock' )),
 });
 
-export default app;
+// var app = new App({
+// 	target: replaceContents( document.querySelector( '#app' )),
+// });
+
+export default { clock };

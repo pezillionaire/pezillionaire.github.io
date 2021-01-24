@@ -40,7 +40,7 @@ html {
 	font-family: 'Chicago';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Chicago'), url('Chicago.woff') format('woff');
+  src: local('Chicago'), url('assets/chicago.woff') format('woff');
 	}
 
 html, body {
@@ -103,7 +103,7 @@ nav {
 
 nav a {margin: 0 1rem 0 0;}
 
-.clock {
+#clock {
 	padding: 0.5rem 1rem;
 }
 
