@@ -1,4 +1,4 @@
-// import App from './App.svelte';
+import Desktop from './Desktop.svelte';
 import Clock from './Clock.svelte';
 
 function replaceContents(node) {
@@ -10,8 +10,8 @@ var clock = new Clock({
   target: replaceContents(document.querySelector('#clock')),
 });
 
-// var app = new App({
-// 	target: replaceContents( document.querySelector( '#app' )),
-// });
+var desktop = new Desktop({
+  target: replaceContents(document.querySelector('#desktop')),
+});
 
-export default { clock };
+export default { clock, desktop };

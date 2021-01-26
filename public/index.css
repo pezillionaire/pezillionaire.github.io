@@ -43,42 +43,55 @@ html {
   src: local('Chicago'), url('assets/chicago.woff') format('woff');
 }
 
+@supports (--css: variables) {
+  :root {
+    --primary: #262626;
+    /* --alt: #bfb8b9; */
+    /* --primary: #222; */
+    --alt: #f8f8f8; 
+  }
+}
+
+
 html, body {
   position: relative;
   width: 100%;
   height: 100%;
+  cursor: url(images/cursor.gif), auto;
 }
 
 body {
+  background: var(--alt);
   line-height: 1.25;
   min-height: 100vh;
-  color: #222;
+  color: darkslategrey;
+  color: var(--primary);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Chicago", "Helvetica Neue", Arial, sans-serif;
-  background: url(images/bg.gif) 4px 4px;
   display: flex;
   flex-direction: column;
 }
-header {
+header[role="banner"] {
   display: flex;
   font-size: 1.25rem;
   line-height: 1;
   width: 100%;
   min-height: 40px;
-  border-bottom: 2px solid black;
-  background-color: white;
+  border-bottom: 2px solid var(--primary);;
+  background-color: var(--alt);
 }
-header::before {
+header[role="banner"]::before {
   position: absolute;
   content: "";
   height: 100%;
   width: 20px;
+  
   background: url(images/menu-top.gif) top left no-repeat;
 }
 
-header::after {
+header[role="banner"]::after {
   position: absolute;
   right: 0;
   content: "";
@@ -107,6 +120,7 @@ nav a {margin: 0 1rem 0 0;}
 
 #clock {
   display: none;
+  white-space: nowrap;
   padding: 0.5rem 1rem;
 }
 
@@ -116,17 +130,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-}
-
-.window {
-  z-index: 5; 
-  padding: 2rem 0;
-  margin: 1rem;
-  max-width: 20rem;
-  background: white;
-  border-style: solid;
-  border-width: 38px 44px 4px 42px;
-  border-image: url(images/border.gif) 38 44 4 42 repeat repeat;
 }
 
 .desktop {
@@ -227,15 +230,19 @@ a:hover {
 input, button, select, textarea {
   font-family: inherit;
   font-size: inherit;
-  -webkit-padding: 0.4em 0;
-  padding: 0.4em;
-  margin: 0 0 0.5em 0;
+  -webkit-padding: 0;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary);
   border-radius: 2px;
 }
 
-input:disabled {
+a, button {
+  cursor: url(images/pointer.gif), auto;
+}
+
+/* input:disabled {
   color: #ccc;
 }
 
@@ -255,4 +262,4 @@ button:not(:disabled):active {
 
 button:focus {
   border-color: #666;
-}
+} */

@@ -1,17 +1,18 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   let date = new Date();
-  $: hour = date.getHours();
-  $: getMin = date.getMinutes();
-  let dayOrNight = 'AM';
-  let min = 30;
 
-  onMount( () => {
+  const formatter = new Intl.DateTimeFormat("en", {
+    hour12: true,
+    hour: "numeric",
+    minute: "2-digit",
+  });
+
+  onMount(() => {
     const interval = setInterval(() => {
-    date = new Date();
-    dayOrNight = (hour >= 12) ? "PM" : "AM";
-    min = (getMin >= 10) ? getMin : `0${getMin}`;
+      date = new Date();
     }, 1000);
   });
 </script>
-<time datetime="{date}">{hour}:{min}</time>
+
+<time datetime={date}>{formatter.format(date)}</time>
