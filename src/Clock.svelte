@@ -8,6 +8,8 @@
     minute: "2-digit",
   });
 
+  const minutes = ('0'+date.getMinutes()).slice(-2);
+
   onMount(() => {
     const interval = setInterval(() => {
       date = new Date();
