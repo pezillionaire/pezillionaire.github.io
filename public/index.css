@@ -102,10 +102,11 @@ header[role="banner"]::after {
   transform: scaleX(-1);
 }
 
-i.logo{
+.logo {
   height: 32px;
   width: 32px;
   margin: 0 1rem 0 0;
+  border: none;
 }
 
 .logo svg {
@@ -114,7 +115,7 @@ i.logo{
 
 nav {
   flex: 1 1 100%;
-  padding: 0 1.25rem;
+  padding: 0 1rem;
   display: flex;
   align-items: flex-end;
 
@@ -133,7 +134,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   background-image: linear-gradient(
     45deg,
     var(--primary) 25%,
@@ -153,13 +154,19 @@ main {
   background-size: 4px 4px;
   background-position: 0 0, 2px 2px;
 }
-
 .desktop {
+  flex: 0 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-zone {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 100%;
+  padding: 1rem;
 }
 
 h1 {
@@ -179,17 +186,18 @@ h1 {
   width: 4rem;
   height: 4rem;
 }
-.svg-alt {
-  stroke: var(--alt);
-}
-.svg-prime {
-  stroke: var(--primary);
-}
+.icon .svg-alt { stroke: var(--alt); }
+.icon .svg-prime { stroke: var(--primary); }
+.icon.open .svg-alt,
+.icon.open .svg-prime { filter: brightness(0.75) }
+
 .icon span{
   font-size: 1rem;
   background: var(--alt);
   padding: 0 0.25rem;
 }
+
+.icon.open { filter: brightness(0.60) }
 
 @media screen and (min-width: 32rem) {
   #clock { display: block; }
@@ -197,7 +205,7 @@ h1 {
     align-items: center;
     justify-content: center;
   }
-  .desktop {
+  .icon-zone {
     position: absolute;
     top: 0;
     left: 0;
@@ -226,19 +234,29 @@ a:hover {
 }
 
 
-input, button, select, textarea {
+input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   -webkit-padding: 0;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   border: 1px solid var(--primary);
   border-radius: 2px;
 }
 
 a, button {
   cursor: url(images/pointer.gif) 12 0, auto;
+  color: var(--primary);
+}
+button {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  outline: none;
 }
 
 /* input:disabled {
