@@ -75,6 +75,13 @@
     box-shadow: 0.25rem 0 0 0.25rem var(--alt), -0.25rem 0 0 0.25rem var(--alt);
     font-size: 0;
   }
+
+  .window-close:hover,
+  .window-close:focus {
+  background: linear-gradient(45deg, transparent 0%,transparent 45%,var(--primary) 45%,var(--primary) 55%,transparent 55%,transparent 100%),
+    linear-gradient(135deg, var(--alt) 0%,var(--alt) 45%,var(--primary) 45%,var(--primary) 55%,var(--alt) 55%,var(--alt) 100%);
+  }
+
   .window-title {
     flex: 1 1 100%;
     display: flex;
@@ -105,6 +112,5 @@
   </header>
   <section class="window-main">
     <slot></slot>
-
   </section>
 </div>
