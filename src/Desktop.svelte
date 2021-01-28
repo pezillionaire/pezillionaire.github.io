@@ -11,12 +11,12 @@ import Window from "./Window.svelte";
 </script>
 <section class="desktop">
 {#if windowMac}
-  <Window title="Pez HD" on:close="{closeWindows}">
+  <Window title="Pez HD" on:close="{() => windowMac = false}">
     <h1>Pezillionaire Interactive Manufacturing</h1>
   </Window>
 {/if}
 {#if windowTrash}
-  <Window title="Garbage" on:close="{closeWindows}">
+  <Window title="Garbage" on:close="{() => windowTrash = false}">
     <p>Nothing in here yet…</p>
   </Window>
 {/if}
