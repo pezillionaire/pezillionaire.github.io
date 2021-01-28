@@ -103,25 +103,40 @@ header[role="banner"]::after {
 }
 
 .logo {
-  height: 32px;
-  width: 32px;
-  margin: 0 1rem 0 0;
+  height: 100%;
   border: none;
+  display: flex;
+  align-items: flex-end;
+  stroke: var(--primary)
 }
 
 .logo svg {
-  stroke: var(--primary);
+  height: 32px;
+  width: 32px;
 }
 
 nav {
   flex: 1 1 100%;
-  padding: 0 1rem;
+  padding: 0 0.375rem;
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
 
 }
 
-nav a { margin: 0 1rem 0.5rem 0;}
+nav a {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--alt);
+  stroke: var(--alt);
+  background: var(--primary);
+  text-decoration: none;
+}
 
 #clock {
   display: none;
