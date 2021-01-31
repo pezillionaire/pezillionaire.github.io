@@ -1,8 +1,11 @@
+<script>
 
-<a href="https://pezillionaire.com" class="logo">
+</script>
+
+<button type="button" class="logo">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
     <path class="svg-prime" d="M20 4h8m4 0h12M20 5h8m4 0h12M20 6h8m4 0h12M20 7h8m4 0h12M16 8h4m8 0h4m12 0h4M16 9h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-36 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4M8 16h4m4 0h4m16 0h4m4 0h4m4 0h4M8 17h4m4 0h4m16 0h4m4 0h4m4 0h4M8 18h4m4 0h4m16 0h4m4 0h4m4 0h4M8 19h4m4 0h4m16 0h4m4 0h4m4 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4M8 24h4m4 0h4m4 0h16m4 0h4m4 0h4M8 25h4m4 0h4m4 0h16m4 0h4m4 0h4M8 26h4m4 0h4m4 0h16m4 0h4m4 0h4M8 27h4m4 0h4m4 0h16m4 0h4m4 0h4M8 28h4m8 0h4m12 0h8m8 0h4M8 29h4m8 0h4m12 0h8m8 0h4M8 30h4m8 0h4m12 0h8m8 0h4M8 31h4m8 0h4m12 0h8m8 0h4M8 32h4m4 0h4m20 0h8m4 0h4M8 33h4m4 0h4m20 0h8m4 0h4M8 34h4m4 0h4m20 0h8m4 0h4M8 35h4m4 0h4m20 0h8m4 0h4m-44 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-36 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-36 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12M8 52h4m12 0h16m12 0h4M8 53h4m12 0h16m12 0h4M8 54h4m12 0h16m12 0h4M8 55h4m12 0h16m12 0h4M4 56h4m48 0h4M4 57h4m48 0h4M4 58h4m48 0h4M4 59h4m48 0h4M4 60h4m8 0h4m24 0h4m8 0h4M4 61h4m8 0h4m24 0h4m8 0h4M4 62h4m8 0h4m24 0h4m8 0h4M4 63h4m8 0h4m24 0h4m8 0h4"/>
   </svg>
-</a>
+</button>
 <a href="https://github.com/pezillionaire/resume">Resume</a>
 <a href="mailto:&#104;&#101;&#108;&#108;&#111;&commat;&#112;&#101;&#122;&#105;&#108;&#108;&#105;&#111;&#110;&#97;&#105;&#114;&#101;&period;&#99;&#111;&#109;?subject=Hi Pez!">Contact</a>

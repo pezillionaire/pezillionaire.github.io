@@ -123,7 +123,8 @@ nav {
 
 }
 
-nav a {
+nav a,
+nav button {
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
@@ -131,7 +132,9 @@ nav a {
 }
 
 nav a:hover,
-nav a:focus {
+nav a:focus,
+nav button:hover,
+nav button:focus {
   color: var(--alt);
   stroke: var(--alt);
   background: var(--primary);
@@ -169,14 +172,14 @@ main {
   background-size: 4px 4px;
   background-position: 0 0, 2px 2px;
 }
-.desktop {
-  flex: 0 1 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.window-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.icon-zone {
+.icon-layer {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -212,7 +215,17 @@ h1 {
   padding: 0 0.25rem;
 }
 
-.icon.open { filter: brightness(0.60) }
+.icon.open .svg-alt {
+  stroke: var(--primary);
+  filter: brightness(0.60);
+
+}
+.icon.open span {
+  background: var(--primary);
+  color: var(--alt);
+  filter: brightness(0.60);
+}
+.icon:focus { filter: brightness(0.70); }
 
 @media screen and (min-width: 32rem) {
   #clock { display: block; }
@@ -220,7 +233,7 @@ h1 {
     align-items: center;
     justify-content: center;
   }
-  .icon-zone {
+  .icon-layer {
     position: absolute;
     top: 0;
     left: 0;

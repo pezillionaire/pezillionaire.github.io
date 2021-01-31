@@ -6,6 +6,28 @@
 
   let modal;
 
+  let window = {
+    top: 32,
+    left: 32,
+    moving: false,
+  };
+
+  function start() {
+    window.moving = true;
+  }
+  function stop() {
+    window.moving = false;
+    if (window.left <= 0) { window.left = 0 }
+    if (window.top <= 0) { window.top = 0 }
+  }
+
+  function move(e) {
+    if (window.moving) {
+      window.left += e.movementX;
+      window.top += e.movementY;
+    }
+  }
+
 	const handle_keydown = e => {
 		if (e.key === 'Escape') {
 			close();
@@ -14,7 +36,7 @@
 
 		if (e.key === 'Tab') {
 			// trap focus
-			const nodes = modal.querySelectorAll('*');
+      const nodes = modal.querySelectorAll('*');
 			const tabbable = Array.from(nodes).filter(n => n.tabIndex >= 0);
 
 			let index = tabbable.indexOf(document.activeElement);
@@ -40,18 +62,20 @@
 
 <style>
   .window {
+    position: absolute;
+    user-select: none;
     z-index: 5;
-    margin: 1rem;
     max-width: 20rem;
     background: var(--alt);
     border-style: solid;
     border: 2px solid var(--primary);
     box-shadow: 2px 2px 0 0 var(--primary);
   }
+
   .window-header {
     display: flex;
     flex-direction: row;
-    padding: 0.375rem 0.25rem;
+    padding: 0.375rem;
     width: 100%;
     border-bottom: 2px solid var(--primary);
     background-color: var(--alt);
@@ -70,9 +94,9 @@
     height: 1.5rem;
     width: 1.5rem;
     line-height: 0;
-    margin: 0 0.5rem 0 0.25rem;
+    margin: 0 0.375rem 0 0rem;
     background: var(--alt);
-    box-shadow: 0.25rem 0 0 0.25rem var(--alt), -0.25rem 0 0 0.25rem var(--alt);
+    box-shadow: 0.125rem 0 0 0.25rem var(--alt), -0.125rem 0 0 0.25rem var(--alt);
     font-size: 0;
   }
 
@@ -100,12 +124,12 @@
     padding: 1rem;
   }
 </style>
-<div class="window">
-  <header class="window-header">
-    <button
-      type="button"
-      class="window-close"
-      on:click={close}>close</button>
+
+<svelte:window on:keydown={handle_keydown} on:mouseup={stop} on:mousemove={move}/>
+
+<div class="window"  style="left:{window.left}px; top:{window.top}px;" bind:this={modal}>
+  <header class="window-header" on:mousedown={start} >
+    <button type="button" class="window-close" on:click={close}>close modal</button>
     <div class="window-title">
       <h2>{title}</h2>
     </div>

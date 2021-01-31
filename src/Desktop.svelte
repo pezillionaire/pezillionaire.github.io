@@ -9,19 +9,20 @@ import Window from "./Window.svelte";
   }
 
 </script>
-<section class="desktop">
+
+<section class="window-layer">
 {#if windowMac}
-  <Window title="Pez HD" on:close="{() => windowMac = false}">
+  <Window title="Pez HD" on:close="{() => windowMac = false}" >
     <h1>Pezillionaire Interactive Manufacturing</h1>
   </Window>
 {/if}
 {#if windowTrash}
-  <Window title="Garbage" on:close="{() => windowTrash = false}">
+  <Window title="Garbage" on:close="{() => windowTrash = false}" >
     <p>Nothing in here yet…</p>
   </Window>
 {/if}
 </section>
-<section class="icon-zone">
+<section class="icon-layer">
   <button type="button" class="icon mac" class:open="{windowMac}" on:click="{() => windowMac = true}">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 48 62" shape-rendering="crispEdges">
       <path class="svg-prime" d="M2 0h44M2 1h44M0 2h2m44 0h2M0 3h2m44 0h2M0 4h2m44 0h2M0 5h2m44 0h2M0 6h2m6 0h32m6 0h2M0 7h2m6 0h32m6 0h2M0 8h2m4 0h2m32 0h2m4 0h2M0 9h2m4 0h2m32 0h2m4 0h2M0 10h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2M0 11h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2M0 12h2m4 0h2m32 0h2m4 0h2M0 13h2m4 0h2m32 0h2m4 0h2M0 14h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2M0 15h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2M0 16h2m4 0h2m32 0h2m4 0h2M0 17h2m4 0h2m32 0h2m4 0h2M0 18h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 19h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 20h2m4 0h2m32 0h2m4 0h2M0 21h2m4 0h2m32 0h2m4 0h2M0 22h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 23h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 24h2m4 0h2m32 0h2m4 0h2M0 25h2m4 0h2m32 0h2m4 0h2M0 26h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2M0 27h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2M0 28h2m4 0h2m32 0h2m4 0h2M0 29h2m4 0h2m32 0h2m4 0h2M0 30h2m4 0h2m32 0h2m4 0h2M0 31h2m4 0h2m32 0h2m4 0h2M0 32h2m6 0h32m6 0h2M0 33h2m6 0h32m6 0h2M0 34h2m44 0h2M0 35h2m44 0h2M0 36h2m44 0h2M0 37h2m44 0h2M0 38h2m44 0h2M0 39h2m44 0h2M0 40h2m44 0h2M0 41h2m44 0h2M0 42h2m22 0h16m6 0h2M0 43h2m22 0h16m6 0h2M0 44h2m44 0h2M0 45h2m44 0h2M0 46h2m44 0h2M0 47h2m44 0h2M0 48h2m44 0h2M0 49h2m44 0h2M0 50h2m44 0h2M0 51h2m44 0h2M2 52h46M2 53h46M2 54h2m40 0h2M2 55h2m40 0h2M2 56h2m40 0h2M2 57h2m40 0h2M2 58h2m40 0h2M2 59h2m40 0h2M2 60h44M2 61h44"/>
