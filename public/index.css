@@ -147,7 +147,7 @@ nav button:focus {
   padding: 0.5rem 1rem;
 }
 
-main {
+main[role="main"] {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -229,10 +229,6 @@ h1 {
 
 @media screen and (min-width: 32rem) {
   #clock { display: block; }
-  main {
-    align-items: center;
-    justify-content: center;
-  }
   .icon-layer {
     position: absolute;
     top: 0;
