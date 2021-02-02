@@ -227,6 +227,19 @@ h1 {
 }
 .icon:focus { filter: brightness(0.70); }
 
+.socials {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  width: 100%;
+
+}
+.socials .icon {
+  height: 4rem;
+  width: 4rem;
+  margin: 1rem;
+}
+
 @media screen and (min-width: 32rem) {
   #clock { display: block; }
   .icon-layer {
