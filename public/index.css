@@ -206,20 +206,23 @@ h1 {
 }
 .icon .svg-alt { stroke: var(--alt); }
 .icon .svg-prime { stroke: var(--primary); }
+.icon .svg-alt-fill { fill: var(--alt); }
+.icon .svg-prime-fill { fill: var(--primary); }
 .icon.open .svg-alt,
-.icon.open .svg-prime { filter: brightness(0.75) }
-
+.icon.open .svg-prime { filter: brightness(0.75); }
+.icon.open .svg-alt-fill { fill: var(--primary); filter: brightness(0.7); }
+.icon.open .svg-prime-fill { fill: var(--primary); filter: brightness(0.6); }
 .icon span{
   font-size: 1rem;
   background: var(--alt);
   padding: 0 0.25rem;
 }
 
-.icon.open .svg-alt {
+/* .icon.open .svg-alt {
   stroke: var(--primary);
-  filter: brightness(0.60);
+  filter: brightness(0.6);
 
-}
+} */
 .icon.open span {
   background: var(--primary);
   color: var(--alt);
