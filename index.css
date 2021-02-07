@@ -37,7 +37,7 @@ html {
 }
 
 @font-face {
-  font-family: 'Chicago-woff';
+  font-family: 'Chicago';
   font-style: normal;
   font-weight: normal;
   src: local('Chicago-woff'), url('assets/chicago.woff') format('woff');
@@ -45,11 +45,11 @@ html {
 
 
 @font-face {
-  font-family: 'Geneva-woff';
+  font-family: 'Geneva';
   font-style: normal;
   font-weight: normal;
-  src: local('Geneva-woff'), url('assets/geneva.woff') format('woff');
-  }
+  src: local('Geneva'), url('assets/geneva.woff') format('woff');
+}
 
 @supports (--css: variables) {
   :root {
@@ -58,7 +58,7 @@ html {
     --alt: #edf6f9; */
     /* --alt: #bfb8b9; */
     /* --primary: #222; */
-    --primary: #0466c8;
+    --primary: #0466C8;
     --alt: #E2E7ED;
 
   }
@@ -81,7 +81,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Chicago-woff", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Chicago", "Helvetica Neue", Arial, sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -208,7 +208,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Geneva-woff", Geneva, Verdana, sans-serif;
+  font-family: Geneva, Tahoma, Verdana, sans-serif
 }
 .icon svg {
   display: flex;
