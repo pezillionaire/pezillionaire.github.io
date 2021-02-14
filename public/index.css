@@ -1,16 +1,85 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, dialog, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+dialog,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -37,18 +106,17 @@ html {
 }
 
 @font-face {
-  font-family: 'Chicago';
+  font-family: "Chicago";
   font-style: normal;
   font-weight: normal;
-  src: local('Chicago-woff'), url('assets/chicago.woff') format('woff');
+  src: local("Chicago-woff"), url("assets/chicago.woff") format("woff");
 }
 
-
 @font-face {
-  font-family: 'Geneva';
+  font-family: "Geneva";
   font-style: normal;
   font-weight: normal;
-  src: local('Geneva'), url('assets/geneva.woff') format('woff');
+  src: local("Geneva"), url("assets/geneva.woff") format("woff");
 }
 
 @supports (--css: variables) {
@@ -58,14 +126,13 @@ html {
     --alt: #edf6f9; */
     /* --alt: #bfb8b9; */
     /* --primary: #222; */
-    --primary: #0466C8;
-    --alt: #E2E7ED;
-
+    --primary: #0466c8;
+    --alt: #e2e7ed;
   }
 }
 
-
-html, body {
+html,
+body {
   position: relative;
   width: 100%;
   height: 100%;
@@ -119,7 +186,7 @@ header[role="banner"]::after {
   border: none;
   display: flex;
   align-items: flex-end;
-  stroke: var(--primary)
+  stroke: var(--primary);
 }
 
 .logo svg {
@@ -132,7 +199,6 @@ nav {
   padding: 0 0.625rem;
   display: flex;
   align-items: stretch;
-
 }
 
 nav a,
@@ -140,13 +206,14 @@ nav button {
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
-
 }
 
 nav a:hover,
 nav a:focus,
+nav a.active,
 nav button:hover,
-nav button:focus {
+nav button:focus,
+nav button.active {
   color: var(--alt);
   stroke: var(--alt);
   background: var(--primary);
@@ -166,21 +233,21 @@ main[role="main"] {
   align-items: center;
   justify-content: flex-end;
   background-image: linear-gradient(
-    45deg,
-    var(--primary) 25%,
-    transparent 25%,
-    transparent 75%,
-    var(--primary) 75%,
-    var(--primary)
-  ),
-  linear-gradient(
-    45deg,
-    var(--primary) 25%,
-    transparent 25%,
-    transparent 75%,
-    var(--primary) 75%,
-    var(--primary)
-  );
+      45deg,
+      var(--primary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--primary) 75%,
+      var(--primary)
+    ),
+    linear-gradient(
+      45deg,
+      var(--primary) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--primary) 75%,
+      var(--primary)
+    );
   background-size: 4px 4px;
   background-position: 0 0, 2px 2px;
 }
@@ -208,7 +275,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Geneva, Tahoma, Verdana, sans-serif
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
 }
 .icon svg {
   display: flex;
@@ -217,15 +284,31 @@ h1 {
   width: 4rem;
   height: 4rem;
 }
-.icon .svg-alt { stroke: var(--alt); }
-.icon .svg-prime { stroke: var(--primary); }
-.icon .svg-alt-fill { fill: var(--alt); }
-.icon .svg-prime-fill { fill: var(--primary); }
+.icon .svg-alt {
+  stroke: var(--alt);
+}
+.icon .svg-prime {
+  stroke: var(--primary);
+}
+.icon .svg-alt-fill {
+  fill: var(--alt);
+}
+.icon .svg-prime-fill {
+  fill: var(--primary);
+}
 .icon.open .svg-alt,
-.icon.open .svg-prime { filter: brightness(0.75); }
-.icon.open .svg-alt-fill { fill: var(--primary); filter: brightness(0.7); }
-.icon.open .svg-prime-fill { fill: var(--primary); filter: brightness(0.6); }
-.icon span{
+.icon.open .svg-prime {
+  filter: brightness(0.75);
+}
+.icon.open .svg-alt-fill {
+  fill: var(--primary);
+  filter: brightness(0.7);
+}
+.icon.open .svg-prime-fill {
+  fill: var(--primary);
+  filter: brightness(0.6);
+}
+.icon span {
   font-size: 1rem;
   background: var(--alt);
   padding: 0 0.25rem;
@@ -239,16 +322,17 @@ h1 {
 .icon.open span {
   background: var(--primary);
   color: var(--alt);
-  filter: brightness(0.60);
+  filter: brightness(0.6);
 }
-.icon:focus { filter: brightness(0.70); }
+.icon:focus {
+  filter: brightness(0.7);
+}
 
 .socials {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto;
   width: 100%;
-
 }
 .socials .icon {
   height: 4rem;
@@ -257,7 +341,9 @@ h1 {
 }
 
 @media screen and (min-width: 32rem) {
-  #clock { display: block; }
+  #clock {
+    display: block;
+  }
   .icon-layer {
     position: absolute;
     top: 0;
@@ -286,8 +372,9 @@ a:hover {
   text-decoration: underline;
 }
 
-
-input, select, textarea {
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   -webkit-padding: 0;
@@ -297,7 +384,8 @@ input, select, textarea {
   border-radius: 2px;
 }
 
-a, button {
+a,
+button {
   cursor: url(images/pointer.gif) 12 0, auto;
   color: var(--primary);
 }

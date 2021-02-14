@@ -1,9 +1,33 @@
+<div
+  class="window"
+  style="left:{window.left}px; top:{window.top}px;"
+  bind:this={modal}
+>
+  <header class="window-header" on:mousedown={start}>
+    <button type="button" class="window-close" on:click={close}
+      >close modal</button
+    >
+    <div class="window-title">
+      <h2>{title}</h2>
+    </div>
+  </header>
+  <section class="window-main">
+    <slot />
+  </section>
+</div>
+
+<svelte:window
+  on:keydown={handle_keydown}
+  on:mouseup={stop}
+  on:mousemove={move}
+/>
+
 <script>
-	import { createEventDispatcher, onDestroy } from 'svelte';
+  import { createEventDispatcher, onDestroy } from 'svelte';
 
-	const dispatch = createEventDispatcher();
-	const close = () => dispatch('close');
-
+  const dispatch = createEventDispatcher();
+  const close = () => dispatch('close');
+  //test
   let modal;
 
   let window = {
@@ -17,8 +41,12 @@
   }
   function stop() {
     window.moving = false;
-    if (window.left <= 0) { window.left = 0 }
-    if (window.top <= 0) { window.top = 0 }
+    if (window.left <= 0) {
+      window.left = 0;
+    }
+    if (window.top <= 0) {
+      window.top = 0;
+    }
   }
 
   function move(e) {
@@ -28,36 +56,37 @@
     }
   }
 
-	const handle_keydown = e => {
-		if (e.key === 'Escape') {
-			close();
-			return;
-		}
+  const handle_keydown = (e) => {
+    if (e.key === 'Escape') {
+      close();
+      return;
+    }
 
-		if (e.key === 'Tab') {
-			// trap focus
+    if (e.key === 'Tab') {
+      // trap focus
       const nodes = modal.querySelectorAll('*');
-			const tabbable = Array.from(nodes).filter(n => n.tabIndex >= 0);
+      const tabbable = Array.from(nodes).filter((n) => n.tabIndex >= 0);
 
-			let index = tabbable.indexOf(document.activeElement);
-			if (index === -1 && e.shiftKey) index = 0;
+      let index = tabbable.indexOf(document.activeElement);
+      if (index === -1 && e.shiftKey) index = 0;
 
-			index += tabbable.length + (e.shiftKey ? -1 : 1);
-			index %= tabbable.length;
+      index += tabbable.length + (e.shiftKey ? -1 : 1);
+      index %= tabbable.length;
 
-			tabbable[index].focus();
-			e.preventDefault();
-		}
-	};
+      tabbable[index].focus();
+      e.preventDefault();
+    }
+  };
 
-	const previously_focused = typeof document !== 'undefined' && document.activeElement;
+  const previously_focused =
+    typeof document !== 'undefined' && document.activeElement;
 
-	if (previously_focused) {
-		onDestroy(() => {
-			previously_focused.focus();
-		});
+  if (previously_focused) {
+    onDestroy(() => {
+      previously_focused.focus();
+    });
   }
-  export let title ="title";
+  export let title = 'title';
 </script>
 
 <style>
@@ -96,14 +125,31 @@
     line-height: 0;
     margin: 0 0.375rem 0 0rem;
     background: var(--alt);
-    box-shadow: 0.125rem 0 0 0.25rem var(--alt), -0.125rem 0 0 0.25rem var(--alt);
+    box-shadow: 0.125rem 0 0 0.25rem var(--alt),
+      -0.125rem 0 0 0.25rem var(--alt);
     font-size: 0;
   }
 
   .window-close:hover,
   .window-close:focus {
-  background: linear-gradient(45deg, transparent 0%,transparent 45%,var(--primary) 45%,var(--primary) 55%,transparent 55%,transparent 100%),
-    linear-gradient(135deg, var(--alt) 0%,var(--alt) 45%,var(--primary) 45%,var(--primary) 55%,var(--alt) 55%,var(--alt) 100%);
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 45%,
+        var(--primary) 45%,
+        var(--primary) 55%,
+        transparent 55%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        var(--alt) 0%,
+        var(--alt) 45%,
+        var(--primary) 45%,
+        var(--primary) 55%,
+        var(--alt) 55%,
+        var(--alt) 100%
+      );
   }
 
   .window-title {
@@ -124,17 +170,3 @@
     padding: 1rem;
   }
 </style>
-
-<svelte:window on:keydown={handle_keydown} on:mouseup={stop} on:mousemove={move}/>
-
-<div class="window"  style="left:{window.left}px; top:{window.top}px;" bind:this={modal}>
-  <header class="window-header" on:mousedown={start} >
-    <button type="button" class="window-close" on:click={close}>close modal</button>
-    <div class="window-title">
-      <h2>{title}</h2>
-    </div>
-  </header>
-  <section class="window-main">
-    <slot></slot>
-  </section>
-</div>

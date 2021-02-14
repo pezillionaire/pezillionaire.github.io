@@ -1,14 +1,16 @@
+<time datetime={date}>{formatter.format(date)}</time>
+
 <script>
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
   let date = new Date();
 
-  const formatter = new Intl.DateTimeFormat("en", {
+  const formatter = new Intl.DateTimeFormat('en', {
     hour12: true,
-    hour: "numeric",
-    minute: "2-digit",
+    hour: 'numeric',
+    minute: '2-digit',
   });
 
-  const minutes = ('0'+date.getMinutes()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
 
   onMount(() => {
     const interval = setInterval(() => {
@@ -16,5 +18,3 @@
     }, 1000);
   });
 </script>
-
-<time datetime={date}>{formatter.format(date)}</time>
