@@ -1,17 +1,55 @@
+<script>
+  import Nav from "./NavMenu.svelte";
+  import Clock from "./Clock.svelte";
+  import Window from "./Window.svelte";
+  import Folder from "./Folder.svelte";
+
+  let windowMac = true;
+  // let windowFolder = true;
+  let windowTrash = false;
+
+  let root = [
+    {
+      type: "folder",
+      name: "Docs",
+      files: [
+        { type: "file", name: "Harmony" },
+        { type: "file", name: "Creekside" },
+        { type: "file", name: "Overcast" },
+        { type: "file", name: "Overcast" },
+      ],
+    },
+    {
+      type: "folder",
+      name: "Pics",
+      files: [
+        { type: "file", name: "Harmony" },
+        { type: "file", name: "Creekside" },
+        { type: "file", name: "Overcast" },
+        { type: "file", name: "Overcast" },
+      ],
+    },
+  ];
+
+  // function handleAction(event) {
+  //   console.log(event);
+  // }
+</script>
+
 <header role="banner">
-  <nav><Nav /></nav>
+  <nav><Nav on:action={(event) => console.log(event)} /></nav>
   <div id="clock"><Clock /></div>
 </header>
 <main role="main">
   <section class="window-layer">
     {#if windowMac}
-      <Window title="Pez Disk" on:close={() => (windowMac = false)}>
+      <Window title="Pez Disk" on:close={() => (windowMac = !windowMac)}>
         <h1>Pezillionaire Interactive Mfg. Concern</h1>
         <p />
       </Window>
     {/if}
     {#if windowTrash}
-      <Window title="Garbage" on:close={() => (windowTrash = false)}>
+      <Window title="Garbage" on:close={() => (windowTrash = !windowMac)}>
         <div class="socials">
           <a
             href="https://twitter.com/pezillionaire"
@@ -86,10 +124,6 @@
           d="M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z"
         />
       </svg>
-      <!-- <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-        <path class="svg-prime" d="M10 2.455h44m-44 1h44m-46 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m6 0h32m6 0h2m-48 1h2m6 0h32m6 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2m-48 1h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m4 0h2m32 0h2m4 0h2m-48 1h2m6 0h32m6 0h2m-48 1h2m6 0h32m6 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m22 0h16m6 0h2m-48 1h2m22 0h16m6 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-48 1h2m44 0h2m-46 1h46m-46 1h46m-46 1h2m40 0h2m-44 1h2m40 0h2m-44 1h2m40 0h2m-44 1h2m40 0h2m-44 1h2m40 0h2m-44 1h2m40 0h2m-44 1h44m-44 1h44"/>
-        <path class="svg-alt" d="M10 4.455h44m-44 1h44m-44 1h44m-44 1h44m-44 1h6m32 0h6m-44 1h6m32 0h6m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h8m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h8m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h16m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h16m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h24m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h24m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h24m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h24m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h2m2 0h20m2 0h4m-44 1h4m2 0h2m2 0h2m2 0h2m2 0h20m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h4m2 0h32m2 0h4m-44 1h6m32 0h6m-44 1h6m32 0h6m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h22m16 0h6m-44 1h22m16 0h6m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-44 1h44m-42 3h40m-40 1h40m-40 1h40m-40 1h40m-40 1h40m-40 1h40"/>
-      </svg> -->
       <span>Pez Disk</span>
     </button>
     <button
@@ -98,10 +132,6 @@
       class:open={windowTrash}
       on:click={() => (windowTrash = true)}
     >
-      <!-- <svg viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-        <path class="svg-prime" d="M26 .5h12m-12 1h12m-14 1h2m12 0h2m-16 1h2m12 0h2m-28 1h40m-40 1h40m-42 1h2m40 0h2m-44 1h2m40 0h2m-44 1h44m-44 1h44m-42 1h2m36 0h2m-40 1h2m36 0h2m-40 1h2m36 0h2m-40 1h2m36 0h2m-40 1h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2m-40 1h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2m-40 1h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2m-40 1h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2m-40 1h2m36 0h2m-40 1h2m36 0h2m-40 1h2m36 0h2m-40 1h2m36 0h2m-38 1h36m-36 1h36"/>
-        <path class="svg-alt" d="M26 2.5h12m-12 1h12m-26 3h40m-40 1h40m-38 3h36m-36 1h36m-36 1h36m-36 1h36m-36 1h4m2 0h6m2 0h6m2 0h6m2 0h6m-36 1h4m2 0h6m2 0h6m2 0h6m2 0h6m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h6m2 0h6m2 0h6m2 0h6m2 0h4m-36 1h4m2 0h6m2 0h6m2 0h6m2 0h6m-36 1h4m2 0h6m2 0h6m2 0h6m2 0h6m-36 1h36m-36 1h36m-36 1h36m-36 1h36"/>
-      </svg> -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path
           class="svg-alt-fill"
@@ -116,12 +146,3 @@
     </button>
   </section>
 </main>
-
-<script>
-  import Nav from './Nav.svelte';
-  import Clock from './Clock.svelte';
-  import Window from './Window.svelte';
-
-  let windowMac = true;
-  let windowTrash = false;
-</script>
