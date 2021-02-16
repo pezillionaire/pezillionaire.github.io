@@ -1,45 +1,63 @@
 <script>
+  import { menus, menusActive } from "../stores.js";
   import Item from "./MenuAction.svelte";
   import Link from "./MenuLink.svelte";
 
-  export let expanded = false;
-  export let root;
+  export let menuIndex;
+  $: menuIndex;
 
-  $: root;
+  const rootmenu = $menus[menuIndex];
+  let expanded = false;
 
-  function toggle() {
+  // - keep an eye on the menu activity
+  menus.subscribe((value) => {
+    expanded = value[menuIndex].active;
+  });
+
+  // - toggle menu opne/closed
+  const menuToggle = () => {
     expanded = !expanded;
-  }
+    $menus[menuIndex].active = expanded;
+    $menusActive = expanded;
+    $menus.forEach((m, i) => {
+      if (i !== menuIndex) {
+        m.active = false;
+      }
+    });
+    $menus = $menus;
+  };
+  // - when mouseing on, check to see if this is active/expanded
+  const checkActive = () => {
+    if ($menusActive & !expanded) {
+      menuToggle();
+    }
+  };
 </script>
 
-<div
-  class={`folder type-${root.type.toLowerCase()}`}
-  on:mouseenter={toggle}
-  on:mouseleave={toggle}
-  on:click={toggle}
->
+<div class="folder" on:click={menuToggle} on:mouseenter={checkActive} on>
   <button class:expanded>
-    {#if root.svg}
+    {#if rootmenu.svg}
       <span class="folder-svgicon">
-        {@html root.svg}
+        {@html rootmenu.svg}
       </span>
-      <span class="folder-svg-label">{root.type}</span>
     {/if}
-    {#if root.name}
-      <span class="folder-name">{root.name}</span>
+    {#if rootmenu.name}
+      <span class={`folder-name ${rootmenu.svg ? "hidden" : ""}`}
+        >{rootmenu.name}</span
+      >
     {/if}
   </button>
 
   {#if expanded}
     <ul>
-      {#each root.menuItems as item}
+      {#each rootmenu.items as item, index}
         <li :class={item.type}>
           {#if item.type === "folder"}
             <svelte:self {...item} />
           {:else if item.type === "link"}
             <Link {...item} />
           {:else}
-            <Item {...item} on:action />
+            <Item {item} {index} on:action />
           {/if}
         </li>
       {/each}
@@ -63,7 +81,7 @@
     width: 2rem;
   }
 
-  .folder-svg-label {
+  .folder-name.hidden {
     font-size: 0;
   }
 

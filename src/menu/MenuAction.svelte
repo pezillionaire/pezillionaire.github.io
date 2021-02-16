@@ -3,28 +3,32 @@
 
   const dispatch = createEventDispatcher();
 
-  export let active;
-  export let name;
-  export let type;
+  // export let active;
+  // export let name;
+  export let index;
+  export let item;
 
-  $: active;
-  $: type;
-  $: name;
+  // $: active;
+  // $: name;
+  $: index;
+  $: item;
 
-  function toggle() {
-    active = !active;
+  let isActive = item.active;
+
+  function toggle(item) {
+    isActive = !isActive;
+    item.active = !item.active;
     const value = {
-      name,
-      active,
-      type,
+      item,
+      index,
     };
     dispatch('action', value);
   }
 </script>
 
-<button type="button" on:click={toggle(name)}>
-  <span>{name}</span>
-  <span class="menuitem-icon">{active ? '✓' : ''}</span>
+<button type="button" on:click={toggle(item)}>
+  <span>{item.name}</span>
+  <span class="menuitem-icon">{isActive ? '✓' : ''}</span>
 </button>
 
 <style>
