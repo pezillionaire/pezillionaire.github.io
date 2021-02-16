@@ -2,7 +2,7 @@
   import Nav from "./NavMenu.svelte";
   import Clock from "./Clock.svelte";
   import Window from "./Window.svelte";
-  import Folder from "./Folder.svelte";
+  // import Folder from "./Folder.svelte";
 
   let windowMac = true;
   // let windowFolder = true;
@@ -37,7 +37,7 @@
 </script>
 
 <header role="banner">
-  <nav><Nav on:action={(event) => console.log(event)} /></nav>
+  <Nav on:action={(event) => console.log(event)} />
   <div id="clock"><Clock /></div>
 </header>
 <main role="main">

@@ -23,15 +23,14 @@
   {/each}
 </nav>
 {#if $menusActive}
-  <div class="bg" on:click|once={menusClose} />
+  <div class="click-capture" on:click|once={menusClose} />
 {/if}
 
 <style>
-  .bg {
+  .click-capture {
     z-index: 100;
-    content: "";
     position: fixed;
-    top: 2.5rem;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;

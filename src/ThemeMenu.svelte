@@ -2,14 +2,13 @@
   import { menus, menusActive } from './stores.js';
   import { onMount } from 'svelte';
 
-  // - index value of the menu from menu store
+  // - index value of the menu from store
+  // - passed via prop from Nav generator
   export let menuIndex;
   $: menuIndex;
 
   const menu = $menus[menuIndex];
   const items = $menus[menuIndex].items;
-
-  let activeTheme = 0;
   let expanded = false;
 
   // - keep an eye on the menu activity
@@ -17,9 +16,12 @@
     expanded = value[menuIndex].active;
   });
 
-  // - toggle menu opne/closed
-  const menuToggle = () => {
-    expanded = !expanded;
+  // - toggle menu open/closed
+  // - if value is set to boolean use that - otherwise filp the value
+  const menuToggle = (value) => {
+    value === false || value === true
+      ? (expanded = value)
+      : (expanded = !expanded);
     $menus[menuIndex].active = expanded;
     $menusActive = expanded;
     $menus.forEach((m, i) => {
@@ -31,29 +33,36 @@
   };
 
   // - when mouseing on, check to see if this is active/expanded
-  const checkActiveMenu = () => {
+  const menuCheckActive = () => {
     if ($menusActive & !expanded) {
       menuToggle();
     }
   };
 
   // - change active menu selection
-  const menuSelect = (index) => {
+  const itemSelect = (index) => {
+    items[index].active = true;
+    // ideally the selection action would be passed into the
     setTheme(index);
     setTimeout(() => {
-      menuToggle();
+      menuToggle(false);
     }, 200);
   };
 
+  //
   // -- Theme Selection wizardry
+  //
 
   const setTheme = (index) => {
-    const root = document.querySelector(':root');
-    items[activeTheme].active = false;
+    // clear out active menu item
+    items.forEach((i) => {
+      i.active = false;
+    });
+    // not really theming but I still wanna set the menu selection JIC (onload)
     items[index].active = true;
-    activeTheme = index;
     localStorage.clear();
     localStorage.setItem('theme', JSON.stringify(items[index]));
+    const root = document.querySelector(':root');
     root.style.setProperty('--primary', items[index].primary);
     root.style.setProperty('--alt', items[index].alt);
   };
@@ -61,35 +70,35 @@
   // -- check local for a set theme or set the first one
   const getTheme = () => {
     if (localStorage.getItem('theme') == '') {
-      return items[0];
+      // set to default
+      return 0;
     } else {
-      const theme = localStorage.getItem('theme');
-      return JSON.parse(theme);
+      const theme = JSON.parse(localStorage.getItem('theme'));
+      const themeByName = (i) => i.name === theme.name;
+      setTheme(items.findIndex(themeByName));
     }
   };
 
   // - set the theme on load
   onMount(async () => {
-    const theme = await getTheme();
-    const themeByName = (i) => i.name === theme.name;
-    setTheme(items.findIndex(themeByName));
+    getTheme();
   });
 </script>
 
 <!-- ------- HTML template ------- -->
 
-<span class="dropdown" id="theme">
+<menu>
   <button
     type="button"
     class:active={expanded}
     on:click={menuToggle}
-    on:mouseenter={checkActiveMenu}>{menu.name}</button
+    on:mouseenter={menuCheckActive}>{menu.name}</button
   >
   {#if expanded}
     <ul role="menu">
       {#each items as { name, active }, item}
         <li>
-          <button type="button" on:click|once={() => menuSelect(item)}>
+          <button type="button" on:click|once={() => itemSelect(item)}>
             <span>{name}</span>
             <span class="menuitem-icon">{active ? '✓' : ''}</span>
           </button>
@@ -97,14 +106,11 @@
       {/each}
     </ul>
   {/if}
-</span>
+</menu>
 
 <!-- ------- Style ------- -->
 <style>
-  .dropdown {
-    display: flex;
-  }
-  ul {
+  menu ul {
     z-index: 101;
     list-style: none;
     position: absolute;
@@ -117,14 +123,11 @@
     justify-content: flex-start;
     box-shadow: 1px 1px 0 0 var(--primary);
   }
-  ul li {
+  menu ul li {
     width: 100%;
   }
-  ul li.border {
-    border-bottom: 1px solid var(--primary);
-  }
-  ul button,
-  ul a {
+  menu ul button,
+  menu ul a {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -133,23 +136,12 @@
     white-space: pre;
     line-height: 1.25;
   }
-  ul button span,
-  ul a span {
+  /* menu ul button span,
+  menu ul a span {
     display: inline;
-  }
+  } */
   .menuitem-icon {
     min-width: 1rem;
     margin-left: 2rem;
-  }
-
-  .bg {
-    z-index: 100;
-    content: '';
-    position: fixed;
-    top: 2.5rem;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.1);
   }
 </style>

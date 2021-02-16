@@ -149,6 +149,7 @@ body {
 }
 header[role='banner'] {
   display: flex;
+  justify-content: space-between;
   font-size: 1.25rem;
   line-height: 1;
   width: 100%;
@@ -190,10 +191,11 @@ header[role='banner']::after {
 }
 
 nav {
-  flex: 1 1 100%;
+  flex: 0 1 auto;
   padding: 0 0.625rem;
   display: flex;
   align-items: stretch;
+  z-index: 101;
 }
 
 nav a,
@@ -201,6 +203,7 @@ nav button {
   display: flex;
   align-items: center;
   padding: 0 0.625rem;
+  height: 100%;
 }
 
 nav a:hover,
