@@ -3,10 +3,12 @@
   import Item from "./MenuAction.svelte";
   import Link from "./MenuLink.svelte";
 
+  // - index value of the menu from store
+  // - passed via prop from Nav generator
   export let menuIndex;
   $: menuIndex;
 
-  const rootmenu = $menus[menuIndex];
+  const menu = $menus[menuIndex];
   let expanded = false;
 
   // - keep an eye on the menu activity
@@ -14,9 +16,12 @@
     expanded = value[menuIndex].active;
   });
 
-  // - toggle menu opne/closed
-  const menuToggle = () => {
-    expanded = !expanded;
+  // - toggle menu open/closed
+  // - if value is set to boolean use that - otherwise filp the value
+  const menuToggle = (value) => {
+    value === false || value === true
+      ? (expanded = value)
+      : (expanded = !expanded);
     $menus[menuIndex].active = expanded;
     $menusActive = expanded;
     $menus.forEach((m, i) => {
@@ -26,31 +31,30 @@
     });
     $menus = $menus;
   };
+
   // - when mouseing on, check to see if this is active/expanded
-  const checkActive = () => {
+  const menuCheckActive = () => {
     if ($menusActive & !expanded) {
       menuToggle();
     }
   };
 </script>
 
-<div class="folder" on:click={menuToggle} on:mouseenter={checkActive} on>
+<menu on:click={menuToggle} on:mouseenter={menuCheckActive} on>
   <button class:expanded>
-    {#if rootmenu.svg}
-      <span class="folder-svgicon">
-        {@html rootmenu.svg}
+    {#if menu.svg}
+      <span class="menu-svgicon">
+        {@html menu.svg}
       </span>
     {/if}
-    {#if rootmenu.name}
-      <span class={`folder-name ${rootmenu.svg ? "hidden" : ""}`}
-        >{rootmenu.name}</span
-      >
+    {#if menu.name}
+      <span class={`menu-name ${menu.svg ? "hidden" : ""}`}>{menu.name}</span>
     {/if}
   </button>
 
   {#if expanded}
     <ul>
-      {#each rootmenu.items as item, index}
+      {#each menu.items as item, index}
         <li :class={item.type}>
           {#if item.type === "folder"}
             <svelte:self {...item} />
@@ -63,25 +67,24 @@
       {/each}
     </ul>
   {/if}
-</div>
+</menu>
 
 <style>
-  .folder {
-    display: flex;
+  menu {
     stroke: var(--primary);
   }
-  .folder-svgicon {
+  .menu-svgicon {
     height: 100%;
     border: none;
     display: flex;
     align-items: flex-end;
   }
-  .folder-svgicon :global(svg) {
+  .menu-svgicon :global(svg) {
     height: 2rem;
     width: 2rem;
   }
 
-  .folder-name.hidden {
+  .menu-name.hidden {
     font-size: 0;
   }
 

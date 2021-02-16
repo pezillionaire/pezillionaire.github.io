@@ -1007,16 +1007,16 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (39:4) {#if rootmenu.svg}
+    // (45:4) {#if menu.svg}
     function create_if_block_4(ctx) {
     	let span;
-    	let raw_value = /*rootmenu*/ ctx[1].svg + "";
+    	let raw_value = /*menu*/ ctx[1].svg + "";
 
     	const block = {
     		c: function create() {
     			span = element("span");
-    			attr_dev(span, "class", "folder-svgicon svelte-1joat4t");
-    			add_location(span, file$2, 39, 6, 953);
+    			attr_dev(span, "class", "menu-svgicon svelte-ndv8it");
+    			add_location(span, file$2, 45, 6, 1170);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1032,25 +1032,25 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(39:4) {#if rootmenu.svg}",
+    		source: "(45:4) {#if menu.svg}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (44:4) {#if rootmenu.name}
+    // (50:4) {#if menu.name}
     function create_if_block_3(ctx) {
     	let span;
-    	let t_value = /*rootmenu*/ ctx[1].name + "";
+    	let t_value = /*menu*/ ctx[1].name + "";
     	let t;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
-    			attr_dev(span, "class", "" + (null_to_empty(`folder-name ${/*rootmenu*/ ctx[1].svg ? "hidden" : ""}`) + " svelte-1joat4t"));
-    			add_location(span, file$2, 44, 6, 1066);
+    			attr_dev(span, "class", "" + (null_to_empty(`menu-name ${/*menu*/ ctx[1].svg ? "hidden" : ""}`) + " svelte-ndv8it"));
+    			add_location(span, file$2, 50, 6, 1273);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1066,18 +1066,18 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(44:4) {#if rootmenu.name}",
+    		source: "(50:4) {#if menu.name}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:2) {#if expanded}
+    // (55:2) {#if expanded}
     function create_if_block(ctx) {
     	let ul;
     	let current;
-    	let each_value = /*rootmenu*/ ctx[1].items;
+    	let each_value = /*menu*/ ctx[1].items;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -1097,8 +1097,8 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "svelte-1joat4t");
-    			add_location(ul, file$2, 51, 4, 1209);
+    			attr_dev(ul, "class", "svelte-ndv8it");
+    			add_location(ul, file$2, 55, 4, 1390);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -1110,8 +1110,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*rootmenu*/ 2) {
-    				each_value = /*rootmenu*/ ctx[1].items;
+    			if (dirty & /*menu*/ 2) {
+    				each_value = /*menu*/ ctx[1].items;
     				validate_each_argument(each_value);
     				let i;
 
@@ -1166,14 +1166,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(51:2) {#if expanded}",
+    		source: "(55:2) {#if expanded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:10) {:else}
+    // (63:10) {:else}
     function create_else_block(ctx) {
     	let item;
     	let current;
@@ -1215,14 +1215,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(59:10) {:else}",
+    		source: "(63:10) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (57:41) 
+    // (61:41) 
     function create_if_block_2(ctx) {
     	let link;
     	let current;
@@ -1244,7 +1244,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			const link_changes = (dirty & /*rootmenu*/ 2)
+    			const link_changes = (dirty & /*menu*/ 2)
     			? get_spread_update(link_spread_levels, [get_spread_object(/*item*/ ctx[8])])
     			: {};
 
@@ -1268,52 +1268,52 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(57:41) ",
+    		source: "(61:41) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:10) {#if item.type === "folder"}
+    // (59:10) {#if item.type === "folder"}
     function create_if_block_1(ctx) {
-    	let menu;
+    	let menu_1;
     	let current;
-    	const menu_spread_levels = [/*item*/ ctx[8]];
-    	let menu_props = {};
+    	const menu_1_spread_levels = [/*item*/ ctx[8]];
+    	let menu_1_props = {};
 
-    	for (let i = 0; i < menu_spread_levels.length; i += 1) {
-    		menu_props = assign(menu_props, menu_spread_levels[i]);
+    	for (let i = 0; i < menu_1_spread_levels.length; i += 1) {
+    		menu_1_props = assign(menu_1_props, menu_1_spread_levels[i]);
     	}
 
-    	menu = new Menu({ props: menu_props, $$inline: true });
+    	menu_1 = new Menu({ props: menu_1_props, $$inline: true });
 
     	const block = {
     		c: function create() {
-    			create_component(menu.$$.fragment);
+    			create_component(menu_1.$$.fragment);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(menu, target, anchor);
+    			mount_component(menu_1, target, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			const menu_changes = (dirty & /*rootmenu*/ 2)
-    			? get_spread_update(menu_spread_levels, [get_spread_object(/*item*/ ctx[8])])
+    			const menu_1_changes = (dirty & /*menu*/ 2)
+    			? get_spread_update(menu_1_spread_levels, [get_spread_object(/*item*/ ctx[8])])
     			: {};
 
-    			menu.$set(menu_changes);
+    			menu_1.$set(menu_1_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(menu.$$.fragment, local);
+    			transition_in(menu_1.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(menu.$$.fragment, local);
+    			transition_out(menu_1.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(menu, detaching);
+    			destroy_component(menu_1, detaching);
     		}
     	};
 
@@ -1321,14 +1321,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(55:10) {#if item.type === \\\"folder\\\"}",
+    		source: "(59:10) {#if item.type === \\\"folder\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:6) {#each rootmenu.items as item, index}
+    // (57:6) {#each menu.items as item, index}
     function create_each_block(ctx) {
     	let li;
     	let current_block_type_index;
@@ -1353,8 +1353,8 @@ var app = (function () {
     			if_block.c();
     			t = space();
     			attr_dev(li, ":class", /*item*/ ctx[8].type);
-    			attr_dev(li, "class", "svelte-1joat4t");
-    			add_location(li, file$2, 53, 8, 1266);
+    			attr_dev(li, "class", "svelte-ndv8it");
+    			add_location(li, file$2, 57, 8, 1443);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -1384,7 +1384,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(53:6) {#each rootmenu.items as item, index}",
+    		source: "(57:6) {#each menu.items as item, index}",
     		ctx
     	});
 
@@ -1392,58 +1392,58 @@ var app = (function () {
     }
 
     function create_fragment$2(ctx) {
-    	let div;
+    	let menu_1;
     	let button;
     	let t0;
     	let t1;
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*rootmenu*/ ctx[1].svg && create_if_block_4(ctx);
-    	let if_block1 = /*rootmenu*/ ctx[1].name && create_if_block_3(ctx);
+    	let if_block0 = /*menu*/ ctx[1].svg && create_if_block_4(ctx);
+    	let if_block1 = /*menu*/ ctx[1].name && create_if_block_3(ctx);
     	let if_block2 = /*expanded*/ ctx[0] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			menu_1 = element("menu");
     			button = element("button");
     			if (if_block0) if_block0.c();
     			t0 = space();
     			if (if_block1) if_block1.c();
     			t1 = space();
     			if (if_block2) if_block2.c();
-    			attr_dev(button, "class", "svelte-1joat4t");
+    			attr_dev(button, "class", "svelte-ndv8it");
     			toggle_class(button, "expanded", /*expanded*/ ctx[0]);
-    			add_location(button, file$2, 37, 2, 900);
-    			attr_dev(div, "class", "folder svelte-1joat4t");
-    			attr_dev(div, "on", "");
-    			add_location(div, file$2, 36, 0, 824);
+    			add_location(button, file$2, 43, 2, 1121);
+    			attr_dev(menu_1, "on", "");
+    			attr_dev(menu_1, "class", "svelte-ndv8it");
+    			add_location(menu_1, file$2, 42, 0, 1055);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, button);
+    			insert_dev(target, menu_1, anchor);
+    			append_dev(menu_1, button);
     			if (if_block0) if_block0.m(button, null);
     			append_dev(button, t0);
     			if (if_block1) if_block1.m(button, null);
-    			append_dev(div, t1);
-    			if (if_block2) if_block2.m(div, null);
+    			append_dev(menu_1, t1);
+    			if (if_block2) if_block2.m(menu_1, null);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(div, "click", /*menuToggle*/ ctx[2], false, false, false),
-    					listen_dev(div, "mouseenter", /*checkActive*/ ctx[3], false, false, false)
+    					listen_dev(menu_1, "click", /*menuToggle*/ ctx[2], false, false, false),
+    					listen_dev(menu_1, "mouseenter", /*menuCheckActive*/ ctx[3], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*rootmenu*/ ctx[1].svg) if_block0.p(ctx, dirty);
-    			if (/*rootmenu*/ ctx[1].name) if_block1.p(ctx, dirty);
+    			if (/*menu*/ ctx[1].svg) if_block0.p(ctx, dirty);
+    			if (/*menu*/ ctx[1].name) if_block1.p(ctx, dirty);
 
     			if (dirty & /*expanded*/ 1) {
     				toggle_class(button, "expanded", /*expanded*/ ctx[0]);
@@ -1460,7 +1460,7 @@ var app = (function () {
     					if_block2 = create_if_block(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
-    					if_block2.m(div, null);
+    					if_block2.m(menu_1, null);
     				}
     			} else if (if_block2) {
     				group_outros();
@@ -1482,7 +1482,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(menu_1);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
@@ -1512,7 +1512,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Menu", slots, []);
     	let { menuIndex } = $$props;
-    	const rootmenu = $menus[menuIndex];
+    	const menu = $menus[menuIndex];
     	let expanded = false;
 
     	// - keep an eye on the menu activity
@@ -1520,9 +1520,13 @@ var app = (function () {
     		$$invalidate(0, expanded = value[menuIndex].active);
     	});
 
-    	// - toggle menu opne/closed
-    	const menuToggle = () => {
-    		$$invalidate(0, expanded = !expanded);
+    	// - toggle menu open/closed
+    	// - if value is set to boolean use that - otherwise filp the value
+    	const menuToggle = value => {
+    		value === false || value === true
+    		? $$invalidate(0, expanded = value)
+    		: $$invalidate(0, expanded = !expanded);
+
     		set_store_value(menus, $menus[menuIndex].active = expanded, $menus);
     		set_store_value(menusActive, $menusActive = expanded, $menusActive);
 
@@ -1536,7 +1540,7 @@ var app = (function () {
     	};
 
     	// - when mouseing on, check to see if this is active/expanded
-    	const checkActive = () => {
+    	const menuCheckActive = () => {
     		if ($menusActive & !expanded) {
     			menuToggle();
     		}
@@ -1562,10 +1566,10 @@ var app = (function () {
     		Item: MenuAction,
     		Link: MenuLink,
     		menuIndex,
-    		rootmenu,
+    		menu,
     		expanded,
     		menuToggle,
-    		checkActive,
+    		menuCheckActive,
     		$menus,
     		$menusActive
     	});
@@ -1583,7 +1587,7 @@ var app = (function () {
     		if ($$self.$$.dirty & /*menuIndex*/ 16) ;
     	};
 
-    	return [expanded, rootmenu, menuToggle, checkActive, menuIndex, action_handler];
+    	return [expanded, menu, menuToggle, menuCheckActive, menuIndex, action_handler];
     }
 
     class Menu extends SvelteComponentDev {
@@ -1646,7 +1650,7 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "role", "menu");
-    			attr_dev(ul, "class", "svelte-143z104");
+    			attr_dev(ul, "class", "svelte-1nti9ad");
     			add_location(ul, file$3, 97, 4, 2493);
     		},
     		m: function mount(target, anchor) {
@@ -1728,12 +1732,12 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			add_location(span0, file$3, 101, 12, 2653);
-    			attr_dev(span1, "class", "menuitem-icon svelte-143z104");
+    			attr_dev(span1, "class", "menuitem-icon svelte-1nti9ad");
     			add_location(span1, file$3, 102, 12, 2685);
     			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "svelte-143z104");
+    			attr_dev(button, "class", "svelte-1nti9ad");
     			add_location(button, file$3, 100, 10, 2579);
-    			attr_dev(li, "class", "svelte-143z104");
+    			attr_dev(li, "class", "svelte-1nti9ad");
     			add_location(li, file$3, 99, 8, 2564);
     		},
     		m: function mount(target, anchor) {
@@ -1790,10 +1794,10 @@ var app = (function () {
     			t1 = space();
     			if (if_block) if_block.c();
     			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "svelte-143z104");
+    			attr_dev(button, "class", "svelte-1nti9ad");
     			toggle_class(button, "active", /*expanded*/ ctx[1]);
     			add_location(button, file$3, 90, 2, 2332);
-    			attr_dev(menu_1, "class", "svelte-143z104");
+    			attr_dev(menu_1, "class", "svelte-1nti9ad");
     			add_location(menu_1, file$3, 89, 0, 2323);
     		},
     		l: function claim(nodes) {

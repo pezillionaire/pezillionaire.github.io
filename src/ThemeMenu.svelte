@@ -136,10 +136,6 @@
     white-space: pre;
     line-height: 1.25;
   }
-  /* menu ul button span,
-  menu ul a span {
-    display: inline;
-  } */
   .menuitem-icon {
     min-width: 1rem;
     margin-left: 2rem;
