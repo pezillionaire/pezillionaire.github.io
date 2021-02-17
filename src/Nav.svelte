@@ -17,7 +17,7 @@
   };
 </script>
 
-<nav role="navigation"></nav>
+<nav role="navigation">
   {#each $menus as menu, index}
     <svelte:component this={comps[menu.component]} menuIndex={index}/>
   {/each}
