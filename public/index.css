@@ -256,7 +256,7 @@ main[role='main'] {
   overflow: hidden;
 }
 
-.icon-layer {
+.desktop-layer {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -342,7 +342,7 @@ h1 {
   #clock {
     display: block;
   }
-  .icon-layer {
+  .desktop-layer {
     position: absolute;
     top: 0;
     left: 0;

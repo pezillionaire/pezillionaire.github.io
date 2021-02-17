@@ -1,6 +1,6 @@
 <script>
-  import File from "./File.svelte";
-  import Link from "./Link.svelte";
+  import File from './File.svelte';
+  import Link from './Link.svelte';
 
   export let expanded = false;
   export let root;
@@ -34,12 +34,10 @@
     <ul>
       {#each root.files as file}
         <li :class={file.type}>
-          {#if file.type === "folder"}
+          {#if file.type === 'folder'}
             <svelte:self {...file} />
-          {:else if file.type === "link"}
-            <Link {...file} />
           {:else}
-            <File {...file} on:action />
+            <File {...file} />
           {/if}
         </li>
       {/each}

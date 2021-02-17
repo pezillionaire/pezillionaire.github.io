@@ -1,27 +1,3 @@
-<div
-  class="window"
-  style="left:{window.left}px; top:{window.top}px;"
-  bind:this={modal}
->
-  <header class="window-header" on:mousedown={start}>
-    <button type="button" class="window-close" on:click={close}
-      >close modal</button
-    >
-    <div class="window-title">
-      <h2>{title}</h2>
-    </div>
-  </header>
-  <section class="window-main">
-    <slot />
-  </section>
-</div>
-
-<svelte:window
-  on:keydown={handle_keydown}
-  on:mouseup={stop}
-  on:mousemove={move}
-/>
-
 <script>
   import { createEventDispatcher, onDestroy } from 'svelte';
 
@@ -77,8 +53,7 @@
     // }
   };
 
-  const previously_focused =
-    typeof document !== 'undefined' && document.activeElement;
+  const previously_focused = typeof document !== 'undefined' && document.activeElement;
 
   if (previously_focused) {
     onDestroy(() => {
@@ -87,6 +62,30 @@
   }
   export let title = 'title';
 </script>
+
+<div
+  class="window"
+  style="left:{window.left}px; top:{window.top}px;"
+  bind:this={modal}
+>
+  <header class="window-header" on:mousedown={start}>
+    <button type="button" class="window-close" on:click={close}
+      >close modal</button
+    >
+    <div class="window-title">
+      <h2>{title}</h2>
+    </div>
+  </header>
+  <section class="window-main">
+    <slot />
+  </section>
+</div>
+
+<svelte:window
+  on:keydown={handle_keydown}
+  on:mouseup={stop}
+  on:mousemove={move}
+/>
 
 <style>
   .window {

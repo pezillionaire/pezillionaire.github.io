@@ -1,4 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "svelte.plugin.svelte.format.config.svelteSortOrder": "scripts-options-markup-styles",
-}

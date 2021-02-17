@@ -1,10 +1,10 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
 
   function action(value) {
-    dispatch("action", value);
+    dispatch('action', value);
   }
 
   export let active;
@@ -18,7 +18,7 @@
 
 <button type="button" on:click={action(name)}>
   <span>{name}</span>
-  <span class="menuitem-icon">{active ? "✓" : ""}</span>
+  <span class="menuitem-icon">{active ? '✓' : ''}</span>
 </button>
 
 <style>

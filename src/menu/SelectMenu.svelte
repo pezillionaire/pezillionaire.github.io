@@ -1,5 +1,5 @@
 <script>
-  import { menus, menusActive } from './stores.js';
+  import { menus, menusActive } from '../stores.js';
   import { onMount } from 'svelte';
 
   // - index value of the menu from store
@@ -16,42 +16,10 @@
     expanded = value[menuIndex].active;
   });
 
-  // - toggle menu open/closed
-  // - if value is set to boolean use that - otherwise filp the value
-  const menuToggle = (value) => {
-    value === false || value === true
-      ? (expanded = value)
-      : (expanded = !expanded);
-    $menus[menuIndex].active = expanded;
-    $menusActive = expanded;
-    $menus.forEach((m, i) => {
-      if (i !== menuIndex) {
-        m.active = false;
-      }
-    });
-    $menus = $menus;
-  };
 
-  // - when mouseing on, check to see if this is active/expanded
-  const menuCheckActive = () => {
-    if ($menusActive & !expanded) {
-      menuToggle();
-    }
-  };
-
-  // - change active menu selection
-  const itemSelect = (index) => {
-    items[index].active = true;
-    // ideally the selection action would be passed into the
-    setTheme(index);
-    setTimeout(() => {
-      menuToggle(false);
-    }, 200);
-  };
-
-  //
+  // --------------------------------------------------
   // -- Theme Selection wizardry
-  //
+  // --------------------------------------------------
 
   const setTheme = (index) => {
     // clear out active menu item
@@ -79,6 +47,44 @@
     }
   };
 
+  // --------------------------------------------------
+  // -- Menu functionality
+  // --------------------------------------------------
+
+  // - toggle menu open/closed
+  // - if value is set to boolean use that - otherwise filp the value
+  const menuToggle = (value) => {
+    value === false || value === true
+      ? (expanded = value)
+      : (expanded = !expanded);
+    $menus[menuIndex].active = expanded;
+    $menusActive = expanded;
+    $menus.forEach((m, i) => {
+      if (i !== menuIndex) {
+        m.active = false;
+      }
+    });
+    $menus = $menus;
+  };
+
+  // - when mouseing on, check to see if this is active/expanded
+  const menuCheckActive = () => {
+    if ($menusActive & !expanded) {
+      menuToggle();
+    }
+  };
+
+  // - change active menu selection
+  const itemSelect = (index) => {
+    items[index].active = true;
+    // ideally the actions would be passed in
+    setTheme(index);
+    // TODO: replace w/ CSS transitions
+    setTimeout(() => {
+      menuToggle(false);
+    }, 200);
+  };
+
   // - set the theme on load
   onMount(async () => {
     getTheme();
@@ -88,17 +94,14 @@
 <!-- ------- HTML template ------- -->
 
 <menu>
-  <button
-    type="button"
-    class:active={expanded}
-    on:click={menuToggle}
-    on:mouseenter={menuCheckActive}>{menu.name}</button
-  >
+  <button type="button" class:active={expanded} on:click={menuToggle} on:mouseenter={menuCheckActive}>
+    {menu.name}
+  </button>
   {#if expanded}
     <ul role="menu">
-      {#each items as { name, active }, item}
+      {#each items as { name, active }, index}
         <li>
-          <button type="button" on:click|once={() => itemSelect(item)}>
+          <button type="button" on:click|once={() => itemSelect(index)}>
             <span>{name}</span>
             <span class="menuitem-icon">{active ? '✓' : ''}</span>
           </button>

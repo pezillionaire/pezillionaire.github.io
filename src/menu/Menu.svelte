@@ -1,7 +1,7 @@
 <script>
-  import { menus, menusActive } from "../stores.js";
-  import Item from "./MenuAction.svelte";
-  import Link from "./MenuLink.svelte";
+  import { menus, menusActive } from '../stores.js';
+  import Action from './ItemAction.svelte';
+  import Link from './ItemLink.svelte';
 
   // - index value of the menu from store
   // - passed via prop from Nav generator
@@ -12,6 +12,7 @@
   let expanded = false;
 
   // - keep an eye on the menu activity
+  // - menuIndex seems to break recursion (should rely on index maybe?)
   menus.subscribe((value) => {
     expanded = value[menuIndex].active;
   });
@@ -40,7 +41,7 @@
   };
 </script>
 
-<menu on:click={menuToggle} on:mouseenter={menuCheckActive} on>
+<menu on:click={menuToggle} on:mouseenter={menuCheckActive}>
   <button class:expanded>
     {#if menu.svg}
       <span class="menu-svgicon">
@@ -48,7 +49,7 @@
       </span>
     {/if}
     {#if menu.name}
-      <span class={`menu-name ${menu.svg ? "hidden" : ""}`}>{menu.name}</span>
+      <span class={`menu-name ${menu.svg ? 'hidden' : ''}`}>{menu.name}</span>
     {/if}
   </button>
 
@@ -56,12 +57,12 @@
     <ul>
       {#each menu.items as item, index}
         <li :class={item.type}>
-          {#if item.type === "folder"}
+          {#if item.type === 'folder'}
             <svelte:self {...item} />
-          {:else if item.type === "link"}
+          {:else if item.type === 'link'}
             <Link {...item} />
           {:else}
-            <Item {item} {index} on:action />
+            <Action {item} {index} on:action />
           {/if}
         </li>
       {/each}

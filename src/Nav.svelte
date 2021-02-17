@@ -1,10 +1,10 @@
 <script>
-  import { menus, menusActive } from "./stores.js";
-  import Menu from "./menu/index.svelte";
-  import ThemeMenu from "./ThemeMenu.svelte";
+  import { menus, menusActive } from './stores.js';
+  import Menu from './menu/Menu.svelte';
+  import SelectMenu from './menu/SelectMenu.svelte';
 
   const comps = {
-    ThemeMenu,
+    SelectMenu,
     Menu,
   };
 
@@ -17,9 +17,9 @@
   };
 </script>
 
-<nav class="navMenu">
+<nav role="navigation"></nav>
   {#each $menus as menu, index}
-    <svelte:component this={comps[menu.component]} menuIndex={index} />
+    <svelte:component this={comps[menu.component]} menuIndex={index}/>
   {/each}
 </nav>
 {#if $menusActive}

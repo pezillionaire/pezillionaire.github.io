@@ -21,11 +21,11 @@
   </head>
 
   <!-- Ideally, I want this site to be accessable w/out the need for JavaScript. Let's see how far I can take that!  -->
-  <body id="desktop">
+  <body id="app">
     <!-- the banner is its own little app -->
     <header role="banner">
-      <nav id="nav">
-        <a href="https://pezillionaire.com" class="logo">
+      <nav role="navigation" id="nav">
+        <a href="https://github.com/pezillionaire/resume" class="logo">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 64 64"
@@ -37,7 +37,6 @@
             />
           </svg>
         </a>
-        <a href="https://github.com/pezillionaire/resume">Resume</a>
         <a
           href="mailto:&#104;&#101;&#108;&#108;&#111;&commat;&#112;&#101;&#122;&#105;&#108;&#108;&#105;&#111;&#110;&#97;&#105;&#114;&#101;&period;&#99;&#111;&#109;?subject=Hi Pez!"
           >Contact</a
@@ -49,23 +48,24 @@
     <!-- desktop is another app that should hold site contents -->
     <main role="main">
       <section class="window-layer"></section>
-      <section class="icon-layer">
+      <section class="desktop-layer">
         <div class="icon mac">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -0.5 48 62"
-            shape-rendering="crispEdges"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <path class="svg-prime-fill" d="M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z" />
             <path
-              class="svg-prime"
-              d="M2 0h44M2 1h44M0 2h2m44 0h2M0 3h2m44 0h2M0 4h2m44 0h2M0 5h2m44 0h2M0 6h2m6 0h32m6 0h2M0 7h2m6 0h32m6 0h2M0 8h2m4 0h2m32 0h2m4 0h2M0 9h2m4 0h2m32 0h2m4 0h2M0 10h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2M0 11h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2M0 12h2m4 0h2m32 0h2m4 0h2M0 13h2m4 0h2m32 0h2m4 0h2M0 14h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2M0 15h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2M0 16h2m4 0h2m32 0h2m4 0h2M0 17h2m4 0h2m32 0h2m4 0h2M0 18h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 19h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 20h2m4 0h2m32 0h2m4 0h2M0 21h2m4 0h2m32 0h2m4 0h2M0 22h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 23h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 24h2m4 0h2m32 0h2m4 0h2M0 25h2m4 0h2m32 0h2m4 0h2M0 26h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2M0 27h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2M0 28h2m4 0h2m32 0h2m4 0h2M0 29h2m4 0h2m32 0h2m4 0h2M0 30h2m4 0h2m32 0h2m4 0h2M0 31h2m4 0h2m32 0h2m4 0h2M0 32h2m6 0h32m6 0h2M0 33h2m6 0h32m6 0h2M0 34h2m44 0h2M0 35h2m44 0h2M0 36h2m44 0h2M0 37h2m44 0h2M0 38h2m44 0h2M0 39h2m44 0h2M0 40h2m44 0h2M0 41h2m44 0h2M0 42h2m22 0h16m6 0h2M0 43h2m22 0h16m6 0h2M0 44h2m44 0h2M0 45h2m44 0h2M0 46h2m44 0h2M0 47h2m44 0h2M0 48h2m44 0h2M0 49h2m44 0h2M0 50h2m44 0h2M0 51h2m44 0h2M2 52h46M2 53h46M2 54h2m40 0h2M2 55h2m40 0h2M2 56h2m40 0h2M2 57h2m40 0h2M2 58h2m40 0h2M2 59h2m40 0h2M2 60h44M2 61h44"
+              class="svg-alt-fill"
+              d="M10 33V4H6v52h2v6h2V33zm10 27v-2h-8v4h8v-2zm36-1v-3h2V4h-4v40h-2V4H26v40h-2V4h-2v58h34v-3zm-36-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-5V4h-8v4h8V6z"
             />
             <path
-              class="svg-alt"
-              d="M2 2h44M2 3h44M2 4h44M2 5h44M2 6h6m32 0h6M2 7h6m32 0h6M2 8h4m2 0h32m2 0h4M2 9h4m2 0h32m2 0h4M2 10h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h8m2 0h4M2 11h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h8m2 0h4M2 12h4m2 0h32m2 0h4M2 13h4m2 0h32m2 0h4M2 14h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h16m2 0h4M2 15h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h16m2 0h4M2 16h4m2 0h32m2 0h4M2 17h4m2 0h32m2 0h4M2 18h4m2 0h2m2 0h2m2 0h24m2 0h4M2 19h4m2 0h2m2 0h2m2 0h24m2 0h4M2 20h4m2 0h32m2 0h4M2 21h4m2 0h32m2 0h4M2 22h4m2 0h2m2 0h2m2 0h24m2 0h4M2 23h4m2 0h2m2 0h2m2 0h24m2 0h4M2 24h4m2 0h32m2 0h4M2 25h4m2 0h32m2 0h4M2 26h4m2 0h2m2 0h2m2 0h2m2 0h20m2 0h4M2 27h4m2 0h2m2 0h2m2 0h2m2 0h20m2 0h4M2 28h4m2 0h32m2 0h4M2 29h4m2 0h32m2 0h4M2 30h4m2 0h32m2 0h4M2 31h4m2 0h32m2 0h4M2 32h6m32 0h6M2 33h6m32 0h6M2 34h44M2 35h44M2 36h44M2 37h44M2 38h44M2 39h44M2 40h44M2 41h44M2 42h22m16 0h6M2 43h22m16 0h6M2 44h44M2 45h44M2 46h44M2 47h44M2 48h44M2 49h44M2 50h44M2 51h44M4 54h40M4 55h40M4 56h40M4 57h40M4 58h40M4 59h40"
+              class="svg-prime-fill"
+              d="M38 57v-1h-2v-2h2v2h2v-2h2v2h-2v2h-2v-1zM26 45v-1h26v2H26v-1zm8-6v-1h-2v-2h-2v-4h4v2h2v2h6v-2h2v-2h4v4h-2v2h-2v2H34v-1zm-2-14v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1zm10 0v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1z"
+            />
+            <path
+              class="svg-alt-fill"
+              d="M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z"
             />
           </svg>
-          <span>Pez HD</span>
+          <span>Pez Disk</span>
         </div>
         <div class="icon trash">
           <svg

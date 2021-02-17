@@ -584,88 +584,101 @@ var app = (function () {
         return { set, update, subscribe };
     }
 
-    const menuList = [
+    const pezMenuItems = [
+      // {
+      //   name: 'About this Pez…',
+      //   type: 'action',
+      // },
+      {
+        name: 'Resume',
+        type: 'link',
+        url: 'https://github.com/pezillionaire/resume',
+      },
+      {
+        name: 'Contact',
+        type: 'link',
+        url: 'https://github.com/pezillionaire/resume',
+      },
+      {
+        name: 'This Does Nothing… Yet!',
+        type: 'action',
+      },
+      // {
+      //   name: 'Shut\'er Down',
+      //   type: 'action',
+      // },
+    ];
+
+    const ProjectsMenuItems = [
+      {
+        name: 'Gifl.ink',
+        type: 'link',
+        url: 'http://gifl.ink',
+      },
+      {
+        name: 'Peak Design System',
+        type: 'link',
+        url: 'https://peak.wealth.bar',
+      },
+    ];
+
+    const ThemesMenuItems = [
+      {
+        name: 'harmony',
+        type: 'select',
+        active: true,
+        primary: '#0466c8',
+        alt: '#e2e7ed',
+      },
+      {
+        name: 'alpinglow',
+        type: 'select',
+        active: false,
+        primary: '#480ca8',
+        alt: '#ffc8dd',
+      },
+      {
+        name: 'overcast',
+        type: 'select',
+        active: false,
+        primary: '#222',
+        alt: '#bfb8b9',
+      },
+      {
+        name: 'creekside',
+        type: 'select',
+        active: false,
+        primary: '#006d77',
+        alt: '#edf6f9',
+      },
+    ];
+
+    const menus = writable([
       {
         name: 'Pez',
         component: 'Menu',
         active: false,
-        svg: "<svg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><path d='M20 4.433h8m4 0h12m-24 1h8m4 0h12m-24 1h8m4 0h12m-24 1h8m4 0h12m-28 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-36 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-44 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-48 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-48 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-48 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-44 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-36 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-36 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-44 1h4m12 0h16m12 0h4m-48 1h4m12 0h16m12 0h4m-48 1h4m12 0h16m12 0h4m-48 1h4m12 0h16m12 0h4m-52 1h4m48 0h4m-56 1h4m48 0h4m-56 1h4m48 0h4m-56 1h4m48 0h4m-56 1h4m8 0h4m24 0h4m8 0h4m-56 1h4m8 0h4m24 0h4m8 0h4m-56 1h4m8 0h4m24 0h4m8 0h4m-56 1h4m8 0h4m24 0h4m8 0h4'/></svg>",
-        items: [
-          {
-            name: "About this Pez…",
-            type: "action",
-          },
-          {
-            name: "Resume",
-            type: "link",
-            url: "https://github.com/pezillionaire/resume",
-          },
-          {
-            name: "Contact",
-            type: "link",
-            url: "https://github.com/pezillionaire/resume",
-          },
-          {
-            name: "Shut'er Down",
-            type: "action",
-          },
-        ],
+        svg: '<svg viewBox=\'0 0 64 64\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M20 4.433h8m4 0h12m-24 1h8m4 0h12m-24 1h8m4 0h12m-24 1h8m4 0h12m-28 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-36 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-44 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-48 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-48 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-48 1h4m4 0h4m16 0h4m4 0h4m4 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m4 0h4m4 0h16m4 0h4m4 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m8 0h4m12 0h8m8 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-48 1h4m4 0h4m20 0h8m4 0h4m-44 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-36 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-36 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-44 1h4m12 0h16m12 0h4m-48 1h4m12 0h16m12 0h4m-48 1h4m12 0h16m12 0h4m-48 1h4m12 0h16m12 0h4m-52 1h4m48 0h4m-56 1h4m48 0h4m-56 1h4m48 0h4m-56 1h4m48 0h4m-56 1h4m8 0h4m24 0h4m8 0h4m-56 1h4m8 0h4m24 0h4m8 0h4m-56 1h4m8 0h4m24 0h4m8 0h4m-56 1h4m8 0h4m24 0h4m8 0h4\'/></svg>',
+        items: pezMenuItems,
       },
       {
-        name: 'Projects',
+        name: 'Files',
         component: 'Menu',
         active: false,
-        items: [
-          {
-            name: "Gifl.ink",
-            type: "link",
-            url: "http://gifl.ink",
-          },
-          {
-            name: "Peak Design System",
-            type: "link",
-            url: "https://peak.wealth.bar",
-          },
-        ],
+        items: ProjectsMenuItems,
       },
       {
         name: 'Theme',
-        component: 'ThemeMenu',
+        component: 'SelectMenu',
         active: false,
-        items: [
-          {
-            name: 'harmony',
-            active: true,
-            primary: '#0466c8',
-            alt: '#e2e7ed',
-          },
-          {
-            name: 'alpinglow',
-            active: false,
-            primary: '#480ca8',
-            alt: '#ffc8dd',
-          },
-          {
-            name: 'overcast',
-            active: false,
-            primary: '#222',
-            alt: '#bfb8b9',
-          },
-          {
-            name: 'creekside',
-            active: false,
-            primary: '#006d77',
-            alt: '#edf6f9',
-          },
-        ]
+        items: ThemesMenuItems,
       },
-    ];
+    ]);
 
-    const menus = writable(menuList);
     const menusActive = writable(false);
 
-    /* src/menu/MenuAction.svelte generated by Svelte v3.31.2 */
-    const file = "src/menu/MenuAction.svelte";
+    /* src/menu/ItemAction.svelte generated by Svelte v3.31.2 */
+    const file = "src/menu/ItemAction.svelte";
 
     function create_fragment(ctx) {
     	let button;
@@ -748,7 +761,7 @@ var app = (function () {
 
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots("MenuAction", slots, []);
+    	validate_slots("ItemAction", slots, []);
     	const dispatch = createEventDispatcher();
     	let { index } = $$props;
     	let { item } = $$props;
@@ -764,7 +777,7 @@ var app = (function () {
     	const writable_props = ["index", "item"];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<MenuAction> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<ItemAction> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
@@ -800,14 +813,14 @@ var app = (function () {
     	return [item, isActive, toggle, index];
     }
 
-    class MenuAction extends SvelteComponentDev {
+    class ItemAction extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance, create_fragment, safe_not_equal, { index: 3, item: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "MenuAction",
+    			tagName: "ItemAction",
     			options,
     			id: create_fragment.name
     		});
@@ -816,34 +829,34 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*index*/ ctx[3] === undefined && !("index" in props)) {
-    			console.warn("<MenuAction> was created without expected prop 'index'");
+    			console.warn("<ItemAction> was created without expected prop 'index'");
     		}
 
     		if (/*item*/ ctx[0] === undefined && !("item" in props)) {
-    			console.warn("<MenuAction> was created without expected prop 'item'");
+    			console.warn("<ItemAction> was created without expected prop 'item'");
     		}
     	}
 
     	get index() {
-    		throw new Error("<MenuAction>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemAction>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set index(value) {
-    		throw new Error("<MenuAction>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemAction>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	get item() {
-    		throw new Error("<MenuAction>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemAction>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set item(value) {
-    		throw new Error("<MenuAction>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemAction>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
-    /* src/menu/MenuLink.svelte generated by Svelte v3.31.2 */
+    /* src/menu/ItemLink.svelte generated by Svelte v3.31.2 */
 
-    const file$1 = "src/menu/MenuLink.svelte";
+    const file$1 = "src/menu/ItemLink.svelte";
 
     function create_fragment$1(ctx) {
     	let a;
@@ -905,14 +918,14 @@ var app = (function () {
 
     function instance$1($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots("MenuLink", slots, []);
+    	validate_slots("ItemLink", slots, []);
     	let { name } = $$props;
     	let { type } = $$props;
     	let { url } = $$props;
     	const writable_props = ["name", "type", "url"];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<MenuLink> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<ItemLink> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
@@ -944,14 +957,14 @@ var app = (function () {
     	return [name, url, type];
     }
 
-    class MenuLink extends SvelteComponentDev {
+    class ItemLink extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$1, create_fragment$1, safe_not_equal, { name: 0, type: 2, url: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "MenuLink",
+    			tagName: "ItemLink",
     			options,
     			id: create_fragment$1.name
     		});
@@ -960,45 +973,45 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*name*/ ctx[0] === undefined && !("name" in props)) {
-    			console.warn("<MenuLink> was created without expected prop 'name'");
+    			console.warn("<ItemLink> was created without expected prop 'name'");
     		}
 
     		if (/*type*/ ctx[2] === undefined && !("type" in props)) {
-    			console.warn("<MenuLink> was created without expected prop 'type'");
+    			console.warn("<ItemLink> was created without expected prop 'type'");
     		}
 
     		if (/*url*/ ctx[1] === undefined && !("url" in props)) {
-    			console.warn("<MenuLink> was created without expected prop 'url'");
+    			console.warn("<ItemLink> was created without expected prop 'url'");
     		}
     	}
 
     	get name() {
-    		throw new Error("<MenuLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set name(value) {
-    		throw new Error("<MenuLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	get type() {
-    		throw new Error("<MenuLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set type(value) {
-    		throw new Error("<MenuLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	get url() {
-    		throw new Error("<MenuLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemLink>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set url(value) {
-    		throw new Error("<MenuLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<ItemLink>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
-    /* src/menu/index.svelte generated by Svelte v3.31.2 */
-    const file$2 = "src/menu/index.svelte";
+    /* src/menu/Menu.svelte generated by Svelte v3.31.2 */
+    const file$2 = "src/menu/Menu.svelte";
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -1007,7 +1020,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (45:4) {#if menu.svg}
+    // (46:4) {#if menu.svg}
     function create_if_block_4(ctx) {
     	let span;
     	let raw_value = /*menu*/ ctx[1].svg + "";
@@ -1016,7 +1029,7 @@ var app = (function () {
     		c: function create() {
     			span = element("span");
     			attr_dev(span, "class", "menu-svgicon svelte-ndv8it");
-    			add_location(span, file$2, 45, 6, 1170);
+    			add_location(span, file$2, 46, 6, 1241);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1032,14 +1045,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(45:4) {#if menu.svg}",
+    		source: "(46:4) {#if menu.svg}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:4) {#if menu.name}
+    // (51:4) {#if menu.name}
     function create_if_block_3(ctx) {
     	let span;
     	let t_value = /*menu*/ ctx[1].name + "";
@@ -1050,7 +1063,7 @@ var app = (function () {
     			span = element("span");
     			t = text(t_value);
     			attr_dev(span, "class", "" + (null_to_empty(`menu-name ${/*menu*/ ctx[1].svg ? "hidden" : ""}`) + " svelte-ndv8it"));
-    			add_location(span, file$2, 50, 6, 1273);
+    			add_location(span, file$2, 51, 6, 1344);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1066,14 +1079,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(50:4) {#if menu.name}",
+    		source: "(51:4) {#if menu.name}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:2) {#if expanded}
+    // (56:2) {#if expanded}
     function create_if_block(ctx) {
     	let ul;
     	let current;
@@ -1098,7 +1111,7 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "class", "svelte-ndv8it");
-    			add_location(ul, file$2, 55, 4, 1390);
+    			add_location(ul, file$2, 56, 4, 1461);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -1166,19 +1179,19 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(55:2) {#if expanded}",
+    		source: "(56:2) {#if expanded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (63:10) {:else}
+    // (64:10) {:else}
     function create_else_block(ctx) {
-    	let item;
+    	let action;
     	let current;
 
-    	item = new MenuAction({
+    	action = new ItemAction({
     			props: {
     				item: /*item*/ ctx[8],
     				index: /*index*/ ctx[10]
@@ -1186,28 +1199,28 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item.$on("action", /*action_handler*/ ctx[5]);
+    	action.$on("action", /*action_handler*/ ctx[5]);
 
     	const block = {
     		c: function create() {
-    			create_component(item.$$.fragment);
+    			create_component(action.$$.fragment);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(item, target, anchor);
+    			mount_component(action, target, anchor);
     			current = true;
     		},
     		p: noop,
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(item.$$.fragment, local);
+    			transition_in(action.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(item.$$.fragment, local);
+    			transition_out(action.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(item, detaching);
+    			destroy_component(action, detaching);
     		}
     	};
 
@@ -1215,14 +1228,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(63:10) {:else}",
+    		source: "(64:10) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (61:41) 
+    // (62:41) 
     function create_if_block_2(ctx) {
     	let link;
     	let current;
@@ -1233,7 +1246,7 @@ var app = (function () {
     		link_props = assign(link_props, link_spread_levels[i]);
     	}
 
-    	link = new MenuLink({ props: link_props, $$inline: true });
+    	link = new ItemLink({ props: link_props, $$inline: true });
 
     	const block = {
     		c: function create() {
@@ -1268,14 +1281,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(61:41) ",
+    		source: "(62:41) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:10) {#if item.type === "folder"}
+    // (60:10) {#if item.type === 'folder'}
     function create_if_block_1(ctx) {
     	let menu_1;
     	let current;
@@ -1321,14 +1334,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(59:10) {#if item.type === \\\"folder\\\"}",
+    		source: "(60:10) {#if item.type === 'folder'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (57:6) {#each menu.items as item, index}
+    // (58:6) {#each menu.items as item, index}
     function create_each_block(ctx) {
     	let li;
     	let current_block_type_index;
@@ -1354,7 +1367,7 @@ var app = (function () {
     			t = space();
     			attr_dev(li, ":class", /*item*/ ctx[8].type);
     			attr_dev(li, "class", "svelte-ndv8it");
-    			add_location(li, file$2, 57, 8, 1443);
+    			add_location(li, file$2, 58, 8, 1514);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -1384,7 +1397,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(57:6) {#each menu.items as item, index}",
+    		source: "(58:6) {#each menu.items as item, index}",
     		ctx
     	});
 
@@ -1414,10 +1427,9 @@ var app = (function () {
     			if (if_block2) if_block2.c();
     			attr_dev(button, "class", "svelte-ndv8it");
     			toggle_class(button, "expanded", /*expanded*/ ctx[0]);
-    			add_location(button, file$2, 43, 2, 1121);
-    			attr_dev(menu_1, "on", "");
+    			add_location(button, file$2, 44, 2, 1192);
     			attr_dev(menu_1, "class", "svelte-ndv8it");
-    			add_location(menu_1, file$2, 42, 0, 1055);
+    			add_location(menu_1, file$2, 43, 0, 1129);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1516,6 +1528,7 @@ var app = (function () {
     	let expanded = false;
 
     	// - keep an eye on the menu activity
+    	// - menuIndex seems to break recursion (should rely on index maybe?)
     	menus.subscribe(value => {
     		$$invalidate(0, expanded = value[menuIndex].active);
     	});
@@ -1563,8 +1576,8 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		menus,
     		menusActive,
-    		Item: MenuAction,
-    		Link: MenuLink,
+    		Action: ItemAction,
+    		Link: ItemLink,
     		menuIndex,
     		menu,
     		expanded,
@@ -1619,8 +1632,8 @@ var app = (function () {
     	}
     }
 
-    /* src/ThemeMenu.svelte generated by Svelte v3.31.2 */
-    const file$3 = "src/ThemeMenu.svelte";
+    /* src/menu/SelectMenu.svelte generated by Svelte v3.31.2 */
+    const file$3 = "src/menu/SelectMenu.svelte";
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -1630,7 +1643,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (97:2) {#if expanded}
+    // (100:2) {#if expanded}
     function create_if_block$1(ctx) {
     	let ul;
     	let each_value = /*items*/ ctx[0];
@@ -1651,7 +1664,7 @@ var app = (function () {
 
     			attr_dev(ul, "role", "menu");
     			attr_dev(ul, "class", "svelte-1nti9ad");
-    			add_location(ul, file$3, 97, 4, 2493);
+    			add_location(ul, file$3, 100, 4, 2751);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -1695,14 +1708,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(97:2) {#if expanded}",
+    		source: "(100:2) {#if expanded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:6) {#each items as { name, active }
+    // (102:6) {#each items as { name, active }
     function create_each_block$1(ctx) {
     	let li;
     	let button;
@@ -1718,7 +1731,7 @@ var app = (function () {
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[7](/*item*/ ctx[15]);
+    		return /*click_handler*/ ctx[7](/*index*/ ctx[15]);
     	}
 
     	const block = {
@@ -1731,14 +1744,14 @@ var app = (function () {
     			span1 = element("span");
     			t2 = text(t2_value);
     			t3 = space();
-    			add_location(span0, file$3, 101, 12, 2653);
+    			add_location(span0, file$3, 104, 12, 2913);
     			attr_dev(span1, "class", "menuitem-icon svelte-1nti9ad");
-    			add_location(span1, file$3, 102, 12, 2685);
+    			add_location(span1, file$3, 105, 12, 2945);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "svelte-1nti9ad");
-    			add_location(button, file$3, 100, 10, 2579);
+    			add_location(button, file$3, 103, 10, 2838);
     			attr_dev(li, "class", "svelte-1nti9ad");
-    			add_location(li, file$3, 99, 8, 2564);
+    			add_location(li, file$3, 102, 8, 2823);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -1771,7 +1784,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(99:6) {#each items as { name, active }",
+    		source: "(102:6) {#each items as { name, active }",
     		ctx
     	});
 
@@ -1796,9 +1809,9 @@ var app = (function () {
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "svelte-1nti9ad");
     			toggle_class(button, "active", /*expanded*/ ctx[1]);
-    			add_location(button, file$3, 90, 2, 2332);
+    			add_location(button, file$3, 96, 2, 2601);
     			attr_dev(menu_1, "class", "svelte-1nti9ad");
-    			add_location(menu_1, file$3, 89, 0, 2323);
+    			add_location(menu_1, file$3, 95, 0, 2592);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1865,7 +1878,7 @@ var app = (function () {
     	validate_store(menusActive, "menusActive");
     	component_subscribe($$self, menusActive, $$value => $$invalidate(9, $menusActive = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots("ThemeMenu", slots, []);
+    	validate_slots("SelectMenu", slots, []);
     	let { menuIndex } = $$props;
     	const menu = $menus[menuIndex];
     	const items = $menus[menuIndex].items;
@@ -1876,6 +1889,40 @@ var app = (function () {
     		$$invalidate(1, expanded = value[menuIndex].active);
     	});
 
+    	// --------------------------------------------------
+    	// -- Theme Selection wizardry
+    	// --------------------------------------------------
+    	const setTheme = index => {
+    		// clear out active menu item
+    		items.forEach(i => {
+    			i.active = false;
+    		});
+
+    		// not really theming but I still wanna set the menu selection JIC (onload)
+    		$$invalidate(0, items[index].active = true, items);
+
+    		localStorage.clear();
+    		localStorage.setItem("theme", JSON.stringify(items[index]));
+    		const root = document.querySelector(":root");
+    		root.style.setProperty("--primary", items[index].primary);
+    		root.style.setProperty("--alt", items[index].alt);
+    	};
+
+    	// -- check local for a set theme or set the first one
+    	const getTheme = () => {
+    		if (localStorage.getItem("theme") == "") {
+    			// set to default
+    			return 0;
+    		} else {
+    			const theme = JSON.parse(localStorage.getItem("theme"));
+    			const themeByName = i => i.name === theme.name;
+    			setTheme(items.findIndex(themeByName));
+    		}
+    	};
+
+    	// --------------------------------------------------
+    	// -- Menu functionality
+    	// --------------------------------------------------
     	// - toggle menu open/closed
     	// - if value is set to boolean use that - otherwise filp the value
     	const menuToggle = value => {
@@ -1906,46 +1953,16 @@ var app = (function () {
     	const itemSelect = index => {
     		$$invalidate(0, items[index].active = true, items);
 
-    		// ideally the selection action would be passed into the
+    		// ideally the actions would be passed in
     		setTheme(index);
 
+    		// TODO: replace w/ CSS transitions
     		setTimeout(
     			() => {
     				menuToggle(false);
     			},
     			200
     		);
-    	};
-
-    	//
-    	// -- Theme Selection wizardry
-    	//
-    	const setTheme = index => {
-    		// clear out active menu item
-    		items.forEach(i => {
-    			i.active = false;
-    		});
-
-    		// not really theming but I still wanna set the menu selection JIC (onload)
-    		$$invalidate(0, items[index].active = true, items);
-
-    		localStorage.clear();
-    		localStorage.setItem("theme", JSON.stringify(items[index]));
-    		const root = document.querySelector(":root");
-    		root.style.setProperty("--primary", items[index].primary);
-    		root.style.setProperty("--alt", items[index].alt);
-    	};
-
-    	// -- check local for a set theme or set the first one
-    	const getTheme = () => {
-    		if (localStorage.getItem("theme") == "") {
-    			// set to default
-    			return 0;
-    		} else {
-    			const theme = JSON.parse(localStorage.getItem("theme"));
-    			const themeByName = i => i.name === theme.name;
-    			setTheme(items.findIndex(themeByName));
-    		}
     	};
 
     	// - set the theme on load
@@ -1956,10 +1973,10 @@ var app = (function () {
     	const writable_props = ["menuIndex"];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<ThemeMenu> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<SelectMenu> was created with unknown prop '${key}'`);
     	});
 
-    	const click_handler = item => itemSelect(item);
+    	const click_handler = index => itemSelect(index);
 
     	$$self.$$set = $$props => {
     		if ("menuIndex" in $$props) $$invalidate(6, menuIndex = $$props.menuIndex);
@@ -1973,11 +1990,11 @@ var app = (function () {
     		menu,
     		items,
     		expanded,
+    		setTheme,
+    		getTheme,
     		menuToggle,
     		menuCheckActive,
     		itemSelect,
-    		setTheme,
-    		getTheme,
     		$menus,
     		$menusActive
     	});
@@ -2007,14 +2024,14 @@ var app = (function () {
     	];
     }
 
-    class ThemeMenu extends SvelteComponentDev {
+    class SelectMenu extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$3, create_fragment$3, safe_not_equal, { menuIndex: 6 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "ThemeMenu",
+    			tagName: "SelectMenu",
     			options,
     			id: create_fragment$3.name
     		});
@@ -2023,21 +2040,21 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*menuIndex*/ ctx[6] === undefined && !("menuIndex" in props)) {
-    			console.warn("<ThemeMenu> was created without expected prop 'menuIndex'");
+    			console.warn("<SelectMenu> was created without expected prop 'menuIndex'");
     		}
     	}
 
     	get menuIndex() {
-    		throw new Error("<ThemeMenu>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<SelectMenu>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set menuIndex(value) {
-    		throw new Error("<ThemeMenu>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<SelectMenu>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
-    /* src/NavMenu.svelte generated by Svelte v3.31.2 */
-    const file$4 = "src/NavMenu.svelte";
+    /* src/Nav.svelte generated by Svelte v3.31.2 */
+    const file$4 = "src/Nav.svelte";
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -2136,7 +2153,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", "click-capture svelte-le7meu");
-    			add_location(div, file$4, 25, 2, 515);
+    			add_location(div, file$4, 25, 2, 523);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2195,8 +2212,8 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(nav, "class", "navMenu");
-    			add_location(nav, file$4, 19, 0, 351);
+    			attr_dev(nav, "role", "navigation");
+    			add_location(nav, file$4, 19, 0, 358);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2301,8 +2318,8 @@ var app = (function () {
     	validate_store(menus, "menus");
     	component_subscribe($$self, menus, $$value => $$invalidate(1, $menus = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots("NavMenu", slots, []);
-    	const comps = { ThemeMenu, Menu };
+    	validate_slots("Nav", slots, []);
+    	const comps = { SelectMenu, Menu };
 
     	const menusClose = () => {
     		set_store_value(menusActive, $menusActive = false, $menusActive);
@@ -2317,14 +2334,14 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<NavMenu> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Nav> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$capture_state = () => ({
     		menus,
     		menusActive,
     		Menu,
-    		ThemeMenu,
+    		SelectMenu,
     		comps,
     		menusClose,
     		$menusActive,
@@ -2334,14 +2351,14 @@ var app = (function () {
     	return [$menusActive, $menus, comps, menusClose];
     }
 
-    class NavMenu extends SvelteComponentDev {
+    class Nav extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$4, create_fragment$4, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "NavMenu",
+    			tagName: "Nav",
     			options,
     			id: create_fragment$4.name
     		});
@@ -2487,19 +2504,19 @@ var app = (function () {
     			if (default_slot) default_slot.c();
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "window-close svelte-ssk6g2");
-    			add_location(button, file$6, 6, 4, 154);
+    			add_location(button, file$6, 71, 4, 1529);
     			attr_dev(h2, "class", "svelte-ssk6g2");
-    			add_location(h2, file$6, 10, 6, 284);
+    			add_location(h2, file$6, 75, 6, 1659);
     			attr_dev(div0, "class", "window-title svelte-ssk6g2");
-    			add_location(div0, file$6, 9, 4, 251);
+    			add_location(div0, file$6, 74, 4, 1626);
     			attr_dev(header, "class", "window-header svelte-ssk6g2");
-    			add_location(header, file$6, 5, 2, 98);
+    			add_location(header, file$6, 70, 2, 1473);
     			attr_dev(section, "class", "window-main svelte-ssk6g2");
-    			add_location(section, file$6, 13, 2, 326);
+    			add_location(section, file$6, 78, 2, 1701);
     			attr_dev(div1, "class", "window svelte-ssk6g2");
     			set_style(div1, "left", /*window*/ ctx[2].left + "px");
     			set_style(div1, "top", /*window*/ ctx[2].top + "px");
-    			add_location(div1, file$6, 0, 0, 0);
+    			add_location(div1, file$6, 65, 0, 1375);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2717,12 +2734,13 @@ var app = (function () {
     	}
     }
 
-    /* src/Desktop.svelte generated by Svelte v3.31.2 */
+    /* src/App.svelte generated by Svelte v3.31.2 */
 
     const { console: console_1 } = globals;
-    const file$7 = "src/Desktop.svelte";
 
-    // (45:4) {#if windowMac}
+    const file$7 = "src/App.svelte";
+
+    // (17:4) {#if windowMac}
     function create_if_block_1$1(ctx) {
     	let window;
     	let current;
@@ -2749,7 +2767,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const window_changes = {};
 
-    			if (dirty & /*$$scope*/ 256) {
+    			if (dirty & /*$$scope*/ 128) {
     				window_changes.$$scope = { dirty, ctx };
     			}
 
@@ -2773,14 +2791,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(45:4) {#if windowMac}",
+    		source: "(17:4) {#if windowMac}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:6) <Window title="Pez Disk" on:close={() => (windowMac = !windowMac)}>
+    // (18:6) <Window title="Pez Disk" on:close={() => (windowMac = !windowMac)}>
     function create_default_slot_1(ctx) {
     	let h1;
     	let t1;
@@ -2792,8 +2810,8 @@ var app = (function () {
     			h1.textContent = "Pezillionaire Interactive Mfg. Concern";
     			t1 = space();
     			p = element("p");
-    			add_location(h1, file$7, 46, 8, 1136);
-    			add_location(p, file$7, 47, 8, 1192);
+    			add_location(h1, file$7, 18, 8, 502);
+    			add_location(p, file$7, 19, 8, 558);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -2811,14 +2829,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(46:6) <Window title=\\\"Pez Disk\\\" on:close={() => (windowMac = !windowMac)}>",
+    		source: "(18:6) <Window title=\\\"Pez Disk\\\" on:close={() => (windowMac = !windowMac)}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:4) {#if windowTrash}
+    // (23:4) {#if windowTrash}
     function create_if_block$3(ctx) {
     	let window;
     	let current;
@@ -2845,7 +2863,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const window_changes = {};
 
-    			if (dirty & /*$$scope*/ 256) {
+    			if (dirty & /*$$scope*/ 128) {
     				window_changes.$$scope = { dirty, ctx };
     			}
 
@@ -2869,14 +2887,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(51:4) {#if windowTrash}",
+    		source: "(23:4) {#if windowTrash}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:6) <Window title="Garbage" on:close={() => (windowTrash = !windowMac)}>
+    // (24:6) <Window title="Garbage" on:close={() => (windowTrash = !windowMac)}>
     function create_default_slot(ctx) {
     	let div;
     	let a0;
@@ -2928,48 +2946,48 @@ var app = (function () {
     			span2.textContent = "Games";
     			attr_dev(path0, "class", "svg-prime");
     			attr_dev(path0, "d", "M2 .4h28m-29 1h30m-31 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h7m1 0h10m4 0h4m1 0h5m-32 1h7m2 0h8m6 0h1m2 0h6m-32 1h7m3 0h6m12 0h4m-32 1h7m5 0h4m10 0h6m-32 1h7m8 0h1m9 0h7m-32 1h8m17 0h7m-32 1h9m16 0h7m-32 1h8m17 0h7m-32 1h9m15 0h8m-32 1h10m14 0h8m-32 1h9m14 0h9m-32 1h10m13 0h9m-32 1h11m11 0h10m-32 1h12m9 0h11m-32 1h11m9 0h12m-32 1h8m10 0h14m-32 1h10m6 0h16m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-31 1h30m-29 1h28");
-    			add_location(path0, file$7, 59, 14, 1568);
+    			add_location(path0, file$7, 31, 14, 934);
     			attr_dev(path1, "class", "svg-alt");
     			attr_dev(path1, "d", "M7 8.4h1m10 0h4m4 0h1m-20 1h2m8 0h6m1 0h2m-19 1h3m6 0h12m-21 1h5m4 0h10m-19 1h8m1 0h9m-17 1h17m-16 1h16m-17 1h17m-16 1h15m-14 1h14m-15 1h14m-13 1h13m-12 1h11m-10 1h9m-10 1h9m-12 1h10m-8 1h6");
-    			add_location(path1, file$7, 63, 14, 2097);
+    			add_location(path1, file$7, 35, 14, 1463);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 32 32");
-    			add_location(svg0, file$7, 58, 12, 1493);
-    			add_location(span0, file$7, 68, 12, 2393);
+    			add_location(svg0, file$7, 30, 12, 859);
+    			add_location(span0, file$7, 40, 12, 1759);
     			attr_dev(a0, "href", "https://twitter.com/pezillionaire");
     			attr_dev(a0, "class", "icon");
     			attr_dev(a0, "target", "blank");
-    			add_location(a0, file$7, 53, 10, 1361);
+    			add_location(a0, file$7, 25, 10, 727);
     			attr_dev(path2, "class", "svg-prime");
     			attr_dev(path2, "d", "M12 .444h8m-11 1h14m-16 1h18m-19 1h20m-21 1h22m-23 1h24m-25 1h4m1 0h16m1 0h4m-27 1h5m3 0h12m3 0h5m-28 1h5m18 0h5m-29 1h6m18 0h6m-30 1h6m18 0h6m-30 1h6m18 0h6m-31 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h7m18 0h7m-31 1h7m16 0h7m-30 1h8m14 0h8m-30 1h4m1 0h5m10 0h10m-29 1h3m2 0h6m6 0h11m-27 1h3m2 0h5m6 0h10m-26 1h4m12 0h10m-25 1h4m11 0h9m-23 1h8m6 0h8m-21 1h7m6 0h7m-18 1h5m6 0h5m-14 1h3m6 0h3m-10 1h1m6 0h1");
-    			add_location(path2, file$7, 76, 14, 2643);
+    			add_location(path2, file$7, 48, 14, 2009);
     			attr_dev(path3, "class", "svg-alt");
     			attr_dev(path3, "d", "M7 6.444h1m16 0h1m-18 1h3m12 0h3m-18 1h18m-18 1h18m-18 1h18m-18 1h18m-19 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-19 1h18m-17 1h16m-15 1h14m-18 1h1m5 0h10m-16 1h2m6 0h6m-13 1h2m5 0h6m-12 1h12m-11 1h11m-6 1h6m-6 1h6m-6 1h6m-6 1h6m-6 1h6");
-    			add_location(path3, file$7, 80, 14, 3207);
+    			add_location(path3, file$7, 52, 14, 2573);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 32 32");
-    			add_location(svg1, file$7, 75, 12, 2568);
-    			add_location(span1, file$7, 85, 12, 3568);
+    			add_location(svg1, file$7, 47, 12, 1934);
+    			add_location(span1, file$7, 57, 12, 2934);
     			attr_dev(a1, "href", "https://github.com/pezillionaire");
     			attr_dev(a1, "class", "icon");
     			attr_dev(a1, "target", "blank");
-    			add_location(a1, file$7, 70, 10, 2437);
+    			add_location(a1, file$7, 42, 10, 1803);
     			attr_dev(path4, "class", "svg-prime");
     			attr_dev(path4, "d", "M3 .533h29m-29 1h29m-30 1h30m-30 1h4m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m22 0h4m-31 1h5m21 0h4m-30 1h5m20 0h4m-29 1h5m19 0h4m-28 1h11m4 0h12m-27 1h11m3 0h12m-26 1h11m2 0h12m-25 1h11m1 0h12m-24 1h23m-15 1h8m-8 1h6m-6 1h6m-6 1h5");
-    			add_location(path4, file$7, 89, 14, 3770);
+    			add_location(path4, file$7, 61, 14, 3136);
     			attr_dev(path5, "class", "svg-alt");
     			attr_dev(path5, "d", "M6 3.533h23m-23 1h23m-23 1h23m-23 1h23m-23 1h23m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h23m-23 1h23m-23 1h22m-22 1h21m-21 1h20m-20 1h19m-13 1h4m-4 1h3m-3 1h2m-2 1h1");
-    			add_location(path5, file$7, 93, 14, 4391);
+    			add_location(path5, file$7, 65, 14, 3757);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 32 32");
-    			add_location(svg2, file$7, 88, 12, 3695);
-    			add_location(span2, file$7, 98, 12, 4808);
+    			add_location(svg2, file$7, 60, 12, 3061);
+    			add_location(span2, file$7, 70, 12, 4174);
     			attr_dev(a2, "href", "https://twitch.tv/pezillionaire");
     			attr_dev(a2, "class", "icon");
     			attr_dev(a2, "target", "blank");
-    			add_location(a2, file$7, 87, 10, 3612);
+    			add_location(a2, file$7, 59, 10, 2978);
     			attr_dev(div, "class", "socials");
-    			add_location(div, file$7, 52, 8, 1329);
+    			add_location(div, file$7, 24, 8, 695);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3003,7 +3021,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(52:6) <Window title=\\\"Garbage\\\" on:close={() => (windowTrash = !windowMac)}>",
+    		source: "(24:6) <Window title=\\\"Garbage\\\" on:close={() => (windowTrash = !windowMac)}>",
     		ctx
     	});
 
@@ -3040,7 +3058,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	nav = new NavMenu({ $$inline: true });
+    	nav = new Nav({ $$inline: true });
     	nav.$on("action", /*action_handler*/ ctx[2]);
     	clock = new Clock({ $$inline: true });
     	let if_block0 = /*windowMac*/ ctx[0] && create_if_block_1$1(ctx);
@@ -3079,49 +3097,49 @@ var app = (function () {
     			span1 = element("span");
     			span1.textContent = "Garbage";
     			attr_dev(div, "id", "clock");
-    			add_location(div, file$7, 40, 2, 940);
+    			add_location(div, file$7, 12, 2, 306);
     			attr_dev(header, "role", "banner");
-    			add_location(header, file$7, 38, 0, 863);
+    			add_location(header, file$7, 10, 0, 229);
     			attr_dev(section0, "class", "window-layer");
-    			add_location(section0, file$7, 43, 2, 1003);
+    			add_location(section0, file$7, 15, 2, 369);
     			attr_dev(path0, "class", "svg-prime-fill");
     			attr_dev(path0, "d", "M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z");
-    			add_location(path0, file$7, 112, 8, 5134);
+    			add_location(path0, file$7, 85, 8, 4526);
     			attr_dev(path1, "class", "svg-alt-fill");
     			attr_dev(path1, "d", "M10 33V4H6v52h2v6h2V33zm10 27v-2h-8v4h8v-2zm36-1v-3h2V4h-4v40h-2V4H26v40h-2V4h-2v58h34v-3zm-36-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-5V4h-8v4h8V6z");
-    			add_location(path1, file$7, 113, 8, 5213);
+    			add_location(path1, file$7, 86, 8, 4605);
     			attr_dev(path2, "class", "svg-prime-fill");
     			attr_dev(path2, "d", "M38 57v-1h-2v-2h2v2h2v-2h2v2h-2v2h-2v-1zM26 45v-1h26v2H26v-1zm8-6v-1h-2v-2h-2v-4h4v2h2v2h6v-2h2v-2h4v4h-2v2h-2v2H34v-1zm-2-14v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1zm10 0v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1z");
-    			add_location(path2, file$7, 117, 8, 5608);
+    			add_location(path2, file$7, 90, 8, 5000);
     			attr_dev(path3, "class", "svg-alt-fill");
     			attr_dev(path3, "d", "M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z");
-    			add_location(path3, file$7, 121, 8, 5879);
+    			add_location(path3, file$7, 94, 8, 5271);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 64 64");
-    			add_location(svg0, file$7, 111, 6, 5065);
-    			add_location(span0, file$7, 126, 6, 6036);
+    			add_location(svg0, file$7, 84, 6, 4457);
+    			add_location(span0, file$7, 99, 6, 5428);
     			attr_dev(button0, "type", "button");
     			attr_dev(button0, "class", "icon mac");
     			toggle_class(button0, "open", /*windowMac*/ ctx[0]);
-    			add_location(button0, file$7, 105, 4, 4931);
+    			add_location(button0, file$7, 78, 4, 4323);
     			attr_dev(path4, "class", "svg-alt-fill");
     			attr_dev(path4, "d", "M14 64v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2z");
-    			add_location(path4, file$7, 135, 8, 6285);
+    			add_location(path4, file$7, 108, 8, 5677);
     			attr_dev(path5, "class", "svg-prime-fill");
     			attr_dev(path5, "d", "M32 64H14v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2H32zm-.002-2h18V10h-36v52h18zM19 58h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zM32 8h20V6H12v2h20zm0-4h6V2H26v2h6z");
-    			add_location(path5, file$7, 139, 8, 6419);
+    			add_location(path5, file$7, 112, 8, 5811);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 64 64");
-    			add_location(svg1, file$7, 134, 6, 6216);
-    			add_location(span1, file$7, 144, 6, 6790);
+    			add_location(svg1, file$7, 107, 6, 5608);
+    			add_location(span1, file$7, 117, 6, 6182);
     			attr_dev(button1, "type", "button");
     			attr_dev(button1, "class", "icon trash");
     			toggle_class(button1, "open", /*windowTrash*/ ctx[1]);
-    			add_location(button1, file$7, 128, 4, 6076);
-    			attr_dev(section1, "class", "icon-layer");
-    			add_location(section1, file$7, 104, 2, 4898);
+    			add_location(button1, file$7, 101, 4, 5468);
+    			attr_dev(section1, "class", "desktop-layer");
+    			add_location(section1, file$7, 77, 2, 4287);
     			attr_dev(main, "role", "main");
-    			add_location(main, file$7, 42, 0, 982);
+    			add_location(main, file$7, 14, 0, 348);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3262,39 +3280,13 @@ var app = (function () {
 
     function instance$7($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots("Desktop", slots, []);
+    	validate_slots("App", slots, []);
     	let windowMac = true;
-
-    	// let windowFolder = true;
     	let windowTrash = false;
-
-    	let root = [
-    		{
-    			type: "folder",
-    			name: "Docs",
-    			files: [
-    				{ type: "file", name: "Harmony" },
-    				{ type: "file", name: "Creekside" },
-    				{ type: "file", name: "Overcast" },
-    				{ type: "file", name: "Overcast" }
-    			]
-    		},
-    		{
-    			type: "folder",
-    			name: "Pics",
-    			files: [
-    				{ type: "file", name: "Harmony" },
-    				{ type: "file", name: "Creekside" },
-    				{ type: "file", name: "Overcast" },
-    				{ type: "file", name: "Overcast" }
-    			]
-    		}
-    	];
-
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Desktop> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
     	const action_handler = event => console.log(event);
@@ -3304,18 +3296,16 @@ var app = (function () {
     	const click_handler_1 = () => $$invalidate(1, windowTrash = true);
 
     	$$self.$capture_state = () => ({
-    		Nav: NavMenu,
+    		Nav,
     		Clock,
     		Window,
     		windowMac,
-    		windowTrash,
-    		root
+    		windowTrash
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("windowMac" in $$props) $$invalidate(0, windowMac = $$props.windowMac);
     		if ("windowTrash" in $$props) $$invalidate(1, windowTrash = $$props.windowTrash);
-    		if ("root" in $$props) root = $$props.root;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -3333,14 +3323,14 @@ var app = (function () {
     	];
     }
 
-    class Desktop extends SvelteComponentDev {
+    class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$7, create_fragment$7, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "Desktop",
+    			tagName: "App",
     			options,
     			id: create_fragment$7.name
     		});
@@ -3352,15 +3342,15 @@ var app = (function () {
       return node;
     }
 
-    var desktop = new Desktop({
-      target: replaceContents(document.querySelector('#desktop')),
+    var app = new App({
+      target: replaceContents(document.querySelector('#app')),
     });
 
 
 
-    var main = { desktop };
+    var app$1 = { app };
 
-    return main;
+    return app$1;
 
 }());
 //# sourceMappingURL=scripts.js.map
