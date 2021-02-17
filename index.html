@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Hey! Welcome under the hood!
+  <!-- Hey! Welcome under the hood!
   I'm actively developing this site/app thing using the svelte framework and
   github pages to show off some of my projects, or ideas, or maybe just as a fun
   space to hang out and build things, if you like what you see give me a shout!
   - Pez -->
-<head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <meta name="description" content="Pezillionaire Interactive Mfg. Concern is dedicated to crafting the finest quality UI sourced from fresh local pixels, and organic funtional code."/>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Pezillionaire Interactive Mfg. Concern is dedicated to crafting the finest quality UI sourced from fresh local pixels, and organic funtional code."
+    />
 
-  <title>Pez Interactive Mfg. Concern</title>
-  <link rel='icon' type='image/png' href='/favicon.png'>
-  <link rel='stylesheet' href='index.css'>
-  <link rel='stylesheet' href='/assets/styles.css'>
-  <script defer src='/assets/scripts.js'></script>
-</head>
+    <title>Pez Interactive Mfg. Concern</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script defer src="./assets/scripts.js"></script>
+  </head>
 
-<!-- Ideally, I want this site to be accessable w/out the need for JavaScript. Let's see how far I can take that!  -->
-<body id="desktop">
-<!-- the banner is its own little app -->
-  <header role="banner">
-    <nav id="nav">
-      <a href="https://pezillionaire.com" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
-          <path class="svg-prime" d="M20 4h8m4 0h12M20 5h8m4 0h12M20 6h8m4 0h12M20 7h8m4 0h12M16 8h4m8 0h4m12 0h4M16 9h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-36 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4M8 16h4m4 0h4m16 0h4m4 0h4m4 0h4M8 17h4m4 0h4m16 0h4m4 0h4m4 0h4M8 18h4m4 0h4m16 0h4m4 0h4m4 0h4M8 19h4m4 0h4m16 0h4m4 0h4m4 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4M8 24h4m4 0h4m4 0h16m4 0h4m4 0h4M8 25h4m4 0h4m4 0h16m4 0h4m4 0h4M8 26h4m4 0h4m4 0h16m4 0h4m4 0h4M8 27h4m4 0h4m4 0h16m4 0h4m4 0h4M8 28h4m8 0h4m12 0h8m8 0h4M8 29h4m8 0h4m12 0h8m8 0h4M8 30h4m8 0h4m12 0h8m8 0h4M8 31h4m8 0h4m12 0h8m8 0h4M8 32h4m4 0h4m20 0h8m4 0h4M8 33h4m4 0h4m20 0h8m4 0h4M8 34h4m4 0h4m20 0h8m4 0h4M8 35h4m4 0h4m20 0h8m4 0h4m-44 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-36 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-36 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12M8 52h4m12 0h16m12 0h4M8 53h4m12 0h16m12 0h4M8 54h4m12 0h16m12 0h4M8 55h4m12 0h16m12 0h4M4 56h4m48 0h4M4 57h4m48 0h4M4 58h4m48 0h4M4 59h4m48 0h4M4 60h4m8 0h4m24 0h4m8 0h4M4 61h4m8 0h4m24 0h4m8 0h4M4 62h4m8 0h4m24 0h4m8 0h4M4 63h4m8 0h4m24 0h4m8 0h4"/>
-        </svg>
-      </a>
-      <a href="https://github.com/pezillionaire/resume">Resume</a>
-      <a href="mailto:&#104;&#101;&#108;&#108;&#111;&commat;&#112;&#101;&#122;&#105;&#108;&#108;&#105;&#111;&#110;&#97;&#105;&#114;&#101;&period;&#99;&#111;&#109;?subject=Hi Pez!">Contact</a>
-    </nav>
-    <div id="clock">4:20</div>
-  </header>
+  <!-- Ideally, I want this site to be accessable w/out the need for JavaScript. Let's see how far I can take that!  -->
+  <body id="app">
+    <!-- the banner is its own little app -->
+    <header role="banner">
+      <nav role="navigation" id="nav">
+        <a href="https://github.com/pezillionaire/resume" class="logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 64 64"
+            shape-rendering="crispEdges"
+          >
+            <path
+              class="svg-prime"
+              d="M20 4h8m4 0h12M20 5h8m4 0h12M20 6h8m4 0h12M20 7h8m4 0h12M16 8h4m8 0h4m12 0h4M16 9h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-32 1h4m8 0h4m12 0h4m-36 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4m-40 1h4m4 0h4m16 0h4m4 0h4M8 16h4m4 0h4m16 0h4m4 0h4m4 0h4M8 17h4m4 0h4m16 0h4m4 0h4m4 0h4M8 18h4m4 0h4m16 0h4m4 0h4m4 0h4M8 19h4m4 0h4m16 0h4m4 0h4m4 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4m-44 1h4m4 0h4m4 0h4m8 0h4m8 0h4M8 24h4m4 0h4m4 0h16m4 0h4m4 0h4M8 25h4m4 0h4m4 0h16m4 0h4m4 0h4M8 26h4m4 0h4m4 0h16m4 0h4m4 0h4M8 27h4m4 0h4m4 0h16m4 0h4m4 0h4M8 28h4m8 0h4m12 0h8m8 0h4M8 29h4m8 0h4m12 0h8m8 0h4M8 30h4m8 0h4m12 0h8m8 0h4M8 31h4m8 0h4m12 0h8m8 0h4M8 32h4m4 0h4m20 0h8m4 0h4M8 33h4m4 0h4m20 0h8m4 0h4M8 34h4m4 0h4m20 0h8m4 0h4M8 35h4m4 0h4m20 0h8m4 0h4m-44 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-40 1h4m4 0h8m8 0h8m4 0h4m-36 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-32 1h4m4 0h4m8 0h4m4 0h4m-36 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12m-40 1h12m16 0h12M8 52h4m12 0h16m12 0h4M8 53h4m12 0h16m12 0h4M8 54h4m12 0h16m12 0h4M8 55h4m12 0h16m12 0h4M4 56h4m48 0h4M4 57h4m48 0h4M4 58h4m48 0h4M4 59h4m48 0h4M4 60h4m8 0h4m24 0h4m8 0h4M4 61h4m8 0h4m24 0h4m8 0h4M4 62h4m8 0h4m24 0h4m8 0h4M4 63h4m8 0h4m24 0h4m8 0h4"
+            />
+          </svg>
+        </a>
+        <a
+          href="mailto:&#104;&#101;&#108;&#108;&#111;&commat;&#112;&#101;&#122;&#105;&#108;&#108;&#105;&#111;&#110;&#97;&#105;&#114;&#101;&period;&#99;&#111;&#109;?subject=Hi Pez!"
+          >Contact</a
+        >
+      </nav>
+      <div id="clock">4:20</div>
+    </header>
 
-<!-- desktop is another app that should hold site contents -->
-  <main role="main">
-    <section class="window-layer">
-      <!-- <div class="window" >
-        <header class="window-header" >
-          <button type="button">close modal</button>
-          <div class="window-title">
-            <h2>Pez HD</h2>
-          </div>
-        </header>
-        <section class="window-main">
-          <h1>Pezillionaire Interactive Manufacturing</h1>
-        </section>
-      </div> -->
-    </section>
-    <section class="icon-layer">
-      <div class="icon mac">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 48 62" shape-rendering="crispEdges">
-          <path class="svg-prime" d="M2 0h44M2 1h44M0 2h2m44 0h2M0 3h2m44 0h2M0 4h2m44 0h2M0 5h2m44 0h2M0 6h2m6 0h32m6 0h2M0 7h2m6 0h32m6 0h2M0 8h2m4 0h2m32 0h2m4 0h2M0 9h2m4 0h2m32 0h2m4 0h2M0 10h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2M0 11h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m8 0h2m4 0h2M0 12h2m4 0h2m32 0h2m4 0h2M0 13h2m4 0h2m32 0h2m4 0h2M0 14h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2M0 15h2m4 0h2m2 0h2m2 0h2m2 0h2m2 0h2m16 0h2m4 0h2M0 16h2m4 0h2m32 0h2m4 0h2M0 17h2m4 0h2m32 0h2m4 0h2M0 18h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 19h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 20h2m4 0h2m32 0h2m4 0h2M0 21h2m4 0h2m32 0h2m4 0h2M0 22h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 23h2m4 0h2m2 0h2m2 0h2m24 0h2m4 0h2M0 24h2m4 0h2m32 0h2m4 0h2M0 25h2m4 0h2m32 0h2m4 0h2M0 26h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2M0 27h2m4 0h2m2 0h2m2 0h2m2 0h2m20 0h2m4 0h2M0 28h2m4 0h2m32 0h2m4 0h2M0 29h2m4 0h2m32 0h2m4 0h2M0 30h2m4 0h2m32 0h2m4 0h2M0 31h2m4 0h2m32 0h2m4 0h2M0 32h2m6 0h32m6 0h2M0 33h2m6 0h32m6 0h2M0 34h2m44 0h2M0 35h2m44 0h2M0 36h2m44 0h2M0 37h2m44 0h2M0 38h2m44 0h2M0 39h2m44 0h2M0 40h2m44 0h2M0 41h2m44 0h2M0 42h2m22 0h16m6 0h2M0 43h2m22 0h16m6 0h2M0 44h2m44 0h2M0 45h2m44 0h2M0 46h2m44 0h2M0 47h2m44 0h2M0 48h2m44 0h2M0 49h2m44 0h2M0 50h2m44 0h2M0 51h2m44 0h2M2 52h46M2 53h46M2 54h2m40 0h2M2 55h2m40 0h2M2 56h2m40 0h2M2 57h2m40 0h2M2 58h2m40 0h2M2 59h2m40 0h2M2 60h44M2 61h44"/>
-          <path class="svg-alt" d="M2 2h44M2 3h44M2 4h44M2 5h44M2 6h6m32 0h6M2 7h6m32 0h6M2 8h4m2 0h32m2 0h4M2 9h4m2 0h32m2 0h4M2 10h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h8m2 0h4M2 11h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h2m2 0h8m2 0h4M2 12h4m2 0h32m2 0h4M2 13h4m2 0h32m2 0h4M2 14h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h16m2 0h4M2 15h4m2 0h2m2 0h2m2 0h2m2 0h2m2 0h16m2 0h4M2 16h4m2 0h32m2 0h4M2 17h4m2 0h32m2 0h4M2 18h4m2 0h2m2 0h2m2 0h24m2 0h4M2 19h4m2 0h2m2 0h2m2 0h24m2 0h4M2 20h4m2 0h32m2 0h4M2 21h4m2 0h32m2 0h4M2 22h4m2 0h2m2 0h2m2 0h24m2 0h4M2 23h4m2 0h2m2 0h2m2 0h24m2 0h4M2 24h4m2 0h32m2 0h4M2 25h4m2 0h32m2 0h4M2 26h4m2 0h2m2 0h2m2 0h2m2 0h20m2 0h4M2 27h4m2 0h2m2 0h2m2 0h2m2 0h20m2 0h4M2 28h4m2 0h32m2 0h4M2 29h4m2 0h32m2 0h4M2 30h4m2 0h32m2 0h4M2 31h4m2 0h32m2 0h4M2 32h6m32 0h6M2 33h6m32 0h6M2 34h44M2 35h44M2 36h44M2 37h44M2 38h44M2 39h44M2 40h44M2 41h44M2 42h22m16 0h6M2 43h22m16 0h6M2 44h44M2 45h44M2 46h44M2 47h44M2 48h44M2 49h44M2 50h44M2 51h44M4 54h40M4 55h40M4 56h40M4 57h40M4 58h40M4 59h40"/>
-        </svg>
-        <span>Pez HD</span>
-      </div>
-      <div class="icon trash">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 44 64" shape-rendering="crispEdges">
-          <path class="svg-prime" d="M16 0h12M16 1h12M14 2h2m12 0h2M14 3h2m12 0h2M2 4h40M2 5h40M0 6h2m40 0h2M0 7h2m40 0h2M0 8h44M0 9h44M2 10h2m36 0h2M2 11h2m36 0h2M2 12h2m36 0h2M2 13h2m36 0h2M2 14h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 15h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 16h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 17h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 18h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 19h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 20h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 21h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 22h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 23h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 24h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 25h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 26h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 27h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 28h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 29h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 30h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 31h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 32h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 33h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 34h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 35h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 36h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 37h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 38h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 39h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 40h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 41h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 42h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 43h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 44h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 45h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 46h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 47h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 48h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 49h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 50h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 51h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 52h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 53h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 54h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 55h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 56h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 57h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 58h2m36 0h2M2 59h2m36 0h2M2 60h2m36 0h2M2 61h2m36 0h2M4 62h36M4 63h36"/>
-          <path class="svg-alt" d="M16 2h12M16 3h12M2 6h40M2 7h40M4 10h36M4 11h36M4 12h36M4 13h36M4 14h4m2 0h6m2 0h6m2 0h6m2 0h6M4 15h4m2 0h6m2 0h6m2 0h6m2 0h6M4 16h6m2 0h6m2 0h6m2 0h6m2 0h4M4 17h6m2 0h6m2 0h6m2 0h6m2 0h4M4 18h6m2 0h6m2 0h6m2 0h6m2 0h4M4 19h6m2 0h6m2 0h6m2 0h6m2 0h4M4 20h6m2 0h6m2 0h6m2 0h6m2 0h4M4 21h6m2 0h6m2 0h6m2 0h6m2 0h4M4 22h6m2 0h6m2 0h6m2 0h6m2 0h4M4 23h6m2 0h6m2 0h6m2 0h6m2 0h4M4 24h6m2 0h6m2 0h6m2 0h6m2 0h4M4 25h6m2 0h6m2 0h6m2 0h6m2 0h4M4 26h6m2 0h6m2 0h6m2 0h6m2 0h4M4 27h6m2 0h6m2 0h6m2 0h6m2 0h4M4 28h6m2 0h6m2 0h6m2 0h6m2 0h4M4 29h6m2 0h6m2 0h6m2 0h6m2 0h4M4 30h6m2 0h6m2 0h6m2 0h6m2 0h4M4 31h6m2 0h6m2 0h6m2 0h6m2 0h4M4 32h6m2 0h6m2 0h6m2 0h6m2 0h4M4 33h6m2 0h6m2 0h6m2 0h6m2 0h4M4 34h6m2 0h6m2 0h6m2 0h6m2 0h4M4 35h6m2 0h6m2 0h6m2 0h6m2 0h4M4 36h6m2 0h6m2 0h6m2 0h6m2 0h4M4 37h6m2 0h6m2 0h6m2 0h6m2 0h4M4 38h6m2 0h6m2 0h6m2 0h6m2 0h4M4 39h6m2 0h6m2 0h6m2 0h6m2 0h4M4 40h6m2 0h6m2 0h6m2 0h6m2 0h4M4 41h6m2 0h6m2 0h6m2 0h6m2 0h4M4 42h6m2 0h6m2 0h6m2 0h6m2 0h4M4 43h6m2 0h6m2 0h6m2 0h6m2 0h4M4 44h6m2 0h6m2 0h6m2 0h6m2 0h4M4 45h6m2 0h6m2 0h6m2 0h6m2 0h4M4 46h6m2 0h6m2 0h6m2 0h6m2 0h4M4 47h6m2 0h6m2 0h6m2 0h6m2 0h4M4 48h6m2 0h6m2 0h6m2 0h6m2 0h4M4 49h6m2 0h6m2 0h6m2 0h6m2 0h4M4 50h6m2 0h6m2 0h6m2 0h6m2 0h4M4 51h6m2 0h6m2 0h6m2 0h6m2 0h4M4 52h6m2 0h6m2 0h6m2 0h6m2 0h4M4 53h6m2 0h6m2 0h6m2 0h6m2 0h4M4 54h6m2 0h6m2 0h6m2 0h6m2 0h4M4 55h6m2 0h6m2 0h6m2 0h6m2 0h4M4 56h4m2 0h6m2 0h6m2 0h6m2 0h6M4 57h4m2 0h6m2 0h6m2 0h6m2 0h6M4 58h36M4 59h36M4 60h36M4 61h36"/>
-        </svg>
-        <span>Trash</span>
-      </div>
-    </section>
-  </main>
-</body>
+    <!-- desktop is another app that should hold site contents -->
+    <main role="main">
+      <section class="window-layer"></section>
+      <section class="desktop-layer">
+        <div class="icon mac">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <path class="svg-prime-fill" d="M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z" />
+            <path
+              class="svg-alt-fill"
+              d="M10 33V4H6v52h2v6h2V33zm10 27v-2h-8v4h8v-2zm36-1v-3h2V4h-4v40h-2V4H26v40h-2V4h-2v58h34v-3zm-36-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-5V4h-8v4h8V6z"
+            />
+            <path
+              class="svg-prime-fill"
+              d="M38 57v-1h-2v-2h2v2h2v-2h2v2h-2v2h-2v-1zM26 45v-1h26v2H26v-1zm8-6v-1h-2v-2h-2v-4h4v2h2v2h6v-2h2v-2h4v4h-2v2h-2v2H34v-1zm-2-14v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1zm10 0v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1z"
+            />
+            <path
+              class="svg-alt-fill"
+              d="M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z"
+            />
+          </svg>
+          <span>Pez Disk</span>
+        </div>
+        <div class="icon trash">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -0.5 44 64"
+            shape-rendering="crispEdges"
+          >
+            <path
+              class="svg-prime"
+              d="M16 0h12M16 1h12M14 2h2m12 0h2M14 3h2m12 0h2M2 4h40M2 5h40M0 6h2m40 0h2M0 7h2m40 0h2M0 8h44M0 9h44M2 10h2m36 0h2M2 11h2m36 0h2M2 12h2m36 0h2M2 13h2m36 0h2M2 14h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 15h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 16h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 17h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 18h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 19h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 20h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 21h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 22h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 23h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 24h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 25h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 26h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 27h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 28h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 29h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 30h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 31h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 32h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 33h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 34h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 35h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 36h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 37h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 38h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 39h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 40h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 41h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 42h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 43h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 44h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 45h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 46h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 47h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 48h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 49h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 50h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 51h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 52h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 53h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 54h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 55h2m6 0h2m6 0h2m6 0h2m6 0h2m4 0h2M2 56h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 57h2m4 0h2m6 0h2m6 0h2m6 0h2m6 0h2M2 58h2m36 0h2M2 59h2m36 0h2M2 60h2m36 0h2M2 61h2m36 0h2M4 62h36M4 63h36"
+            />
+            <path
+              class="svg-alt"
+              d="M16 2h12M16 3h12M2 6h40M2 7h40M4 10h36M4 11h36M4 12h36M4 13h36M4 14h4m2 0h6m2 0h6m2 0h6m2 0h6M4 15h4m2 0h6m2 0h6m2 0h6m2 0h6M4 16h6m2 0h6m2 0h6m2 0h6m2 0h4M4 17h6m2 0h6m2 0h6m2 0h6m2 0h4M4 18h6m2 0h6m2 0h6m2 0h6m2 0h4M4 19h6m2 0h6m2 0h6m2 0h6m2 0h4M4 20h6m2 0h6m2 0h6m2 0h6m2 0h4M4 21h6m2 0h6m2 0h6m2 0h6m2 0h4M4 22h6m2 0h6m2 0h6m2 0h6m2 0h4M4 23h6m2 0h6m2 0h6m2 0h6m2 0h4M4 24h6m2 0h6m2 0h6m2 0h6m2 0h4M4 25h6m2 0h6m2 0h6m2 0h6m2 0h4M4 26h6m2 0h6m2 0h6m2 0h6m2 0h4M4 27h6m2 0h6m2 0h6m2 0h6m2 0h4M4 28h6m2 0h6m2 0h6m2 0h6m2 0h4M4 29h6m2 0h6m2 0h6m2 0h6m2 0h4M4 30h6m2 0h6m2 0h6m2 0h6m2 0h4M4 31h6m2 0h6m2 0h6m2 0h6m2 0h4M4 32h6m2 0h6m2 0h6m2 0h6m2 0h4M4 33h6m2 0h6m2 0h6m2 0h6m2 0h4M4 34h6m2 0h6m2 0h6m2 0h6m2 0h4M4 35h6m2 0h6m2 0h6m2 0h6m2 0h4M4 36h6m2 0h6m2 0h6m2 0h6m2 0h4M4 37h6m2 0h6m2 0h6m2 0h6m2 0h4M4 38h6m2 0h6m2 0h6m2 0h6m2 0h4M4 39h6m2 0h6m2 0h6m2 0h6m2 0h4M4 40h6m2 0h6m2 0h6m2 0h6m2 0h4M4 41h6m2 0h6m2 0h6m2 0h6m2 0h4M4 42h6m2 0h6m2 0h6m2 0h6m2 0h4M4 43h6m2 0h6m2 0h6m2 0h6m2 0h4M4 44h6m2 0h6m2 0h6m2 0h6m2 0h4M4 45h6m2 0h6m2 0h6m2 0h6m2 0h4M4 46h6m2 0h6m2 0h6m2 0h6m2 0h4M4 47h6m2 0h6m2 0h6m2 0h6m2 0h4M4 48h6m2 0h6m2 0h6m2 0h6m2 0h4M4 49h6m2 0h6m2 0h6m2 0h6m2 0h4M4 50h6m2 0h6m2 0h6m2 0h6m2 0h4M4 51h6m2 0h6m2 0h6m2 0h6m2 0h4M4 52h6m2 0h6m2 0h6m2 0h6m2 0h4M4 53h6m2 0h6m2 0h6m2 0h6m2 0h4M4 54h6m2 0h6m2 0h6m2 0h6m2 0h4M4 55h6m2 0h6m2 0h6m2 0h6m2 0h4M4 56h4m2 0h6m2 0h6m2 0h6m2 0h6M4 57h4m2 0h6m2 0h6m2 0h6m2 0h6M4 58h36M4 59h36M4 60h36M4 61h36"
+            />
+          </svg>
+          <span>Trash</span>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
