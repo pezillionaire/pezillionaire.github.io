@@ -1028,8 +1028,8 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			span = element("span");
-    			attr_dev(span, "class", "menu-svgicon svelte-ndv8it");
-    			add_location(span, file$2, 46, 6, 1241);
+    			attr_dev(span, "class", "menu-svgicon svelte-16l818a");
+    			add_location(span, file$2, 46, 6, 1250);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1062,8 +1062,8 @@ var app = (function () {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
-    			attr_dev(span, "class", "" + (null_to_empty(`menu-name ${/*menu*/ ctx[1].svg ? "hidden" : ""}`) + " svelte-ndv8it"));
-    			add_location(span, file$2, 51, 6, 1344);
+    			attr_dev(span, "class", "" + (null_to_empty(`menu-name ${/*menu*/ ctx[1].svg ? "hidden" : ""}`) + " svelte-16l818a"));
+    			add_location(span, file$2, 51, 6, 1353);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1110,8 +1110,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "svelte-ndv8it");
-    			add_location(ul, file$2, 56, 4, 1461);
+    			add_location(ul, file$2, 56, 4, 1470);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -1366,8 +1365,7 @@ var app = (function () {
     			if_block.c();
     			t = space();
     			attr_dev(li, ":class", /*item*/ ctx[8].type);
-    			attr_dev(li, "class", "svelte-ndv8it");
-    			add_location(li, file$2, 58, 8, 1514);
+    			add_location(li, file$2, 58, 8, 1523);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -1425,10 +1423,8 @@ var app = (function () {
     			if (if_block1) if_block1.c();
     			t1 = space();
     			if (if_block2) if_block2.c();
-    			attr_dev(button, "class", "svelte-ndv8it");
-    			toggle_class(button, "expanded", /*expanded*/ ctx[0]);
-    			add_location(button, file$2, 44, 2, 1192);
-    			attr_dev(menu_1, "class", "svelte-ndv8it");
+    			toggle_class(button, "active", /*expanded*/ ctx[0]);
+    			add_location(button, file$2, 44, 2, 1138);
     			add_location(menu_1, file$2, 43, 0, 1129);
     		},
     		l: function claim(nodes) {
@@ -1446,8 +1442,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(menu_1, "click", /*menuToggle*/ ctx[2], false, false, false),
-    					listen_dev(menu_1, "mouseenter", /*menuCheckActive*/ ctx[3], false, false, false)
+    					listen_dev(button, "click", /*menuToggle*/ ctx[2], false, false, false),
+    					listen_dev(button, "mouseenter", /*menuCheckActive*/ ctx[3], false, false, false)
     				];
 
     				mounted = true;
@@ -1458,7 +1454,7 @@ var app = (function () {
     			if (/*menu*/ ctx[1].name) if_block1.p(ctx, dirty);
 
     			if (dirty & /*expanded*/ 1) {
-    				toggle_class(button, "expanded", /*expanded*/ ctx[0]);
+    				toggle_class(button, "active", /*expanded*/ ctx[0]);
     			}
 
     			if (/*expanded*/ ctx[0]) {
@@ -1663,7 +1659,6 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "role", "menu");
-    			attr_dev(ul, "class", "svelte-1nti9ad");
     			add_location(ul, file$3, 100, 4, 2751);
     		},
     		m: function mount(target, anchor) {
@@ -1745,12 +1740,10 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			add_location(span0, file$3, 104, 12, 2913);
-    			attr_dev(span1, "class", "menuitem-icon svelte-1nti9ad");
+    			attr_dev(span1, "class", "menuitem-icon");
     			add_location(span1, file$3, 105, 12, 2945);
     			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "svelte-1nti9ad");
     			add_location(button, file$3, 103, 10, 2838);
-    			attr_dev(li, "class", "svelte-1nti9ad");
     			add_location(li, file$3, 102, 8, 2823);
     		},
     		m: function mount(target, anchor) {
@@ -1807,10 +1800,8 @@ var app = (function () {
     			t1 = space();
     			if (if_block) if_block.c();
     			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "svelte-1nti9ad");
     			toggle_class(button, "active", /*expanded*/ ctx[1]);
     			add_location(button, file$3, 96, 2, 2601);
-    			attr_dev(menu_1, "class", "svelte-1nti9ad");
     			add_location(menu_1, file$3, 95, 0, 2592);
     		},
     		l: function claim(nodes) {

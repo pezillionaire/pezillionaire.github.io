@@ -110,37 +110,3 @@
     </ul>
   {/if}
 </menu>
-
-<!-- ------- Style ------- -->
-<style>
-  menu ul {
-    z-index: 101;
-    list-style: none;
-    position: absolute;
-    top: 2.375rem;
-    background-color: var(--alt);
-    border: 2px solid var(--primary);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    box-shadow: 1px 1px 0 0 var(--primary);
-  }
-  menu ul li {
-    width: 100%;
-  }
-  menu ul button,
-  menu ul a {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.25rem 0.5rem;
-    text-transform: capitalize;
-    white-space: pre;
-    line-height: 1.25;
-  }
-  .menuitem-icon {
-    min-width: 1rem;
-    margin-left: 2rem;
-  }
-</style>

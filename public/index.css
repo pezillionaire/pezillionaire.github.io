@@ -109,14 +109,14 @@ html {
   font-family: 'Chicago';
   font-style: normal;
   font-weight: normal;
-  src: local('Chicago-woff'), url('assets/chicago.woff') format('woff');
+  src: local('Chicago-woff'), url('./assets/chicago.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Geneva';
   font-style: normal;
   font-weight: normal;
-  src: local('Geneva'), url('assets/geneva.woff') format('woff');
+  src: local('Geneva'), url('./assets/geneva.woff') format('woff');
 }
 
 @supports (--css: variables) {
@@ -131,7 +131,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  cursor: url(images/cursor.gif), auto;
+  cursor: url(./images/cursor.gif), auto;
 }
 
 body {
@@ -162,7 +162,7 @@ header[role='banner']::before {
   content: '';
   height: 100%;
   width: 10px;
-  background: url(images/menu-top.gif) top left no-repeat;
+  background: url(./images/menu-top.gif) top left no-repeat;
   background-size: contain;
 }
 
@@ -172,7 +172,7 @@ header[role='banner']::after {
   content: '';
   height: 100%;
   width: 10px;
-  background: url(images/menu-top.gif) top right no-repeat;
+  background: url(./images/menu-top.gif) top right no-repeat;
   background-size: contain;
   transform: scaleX(-1);
 }
@@ -204,6 +204,7 @@ nav button {
   align-items: center;
   padding: 0 0.625rem;
   height: 100%;
+  stroke: var(--primary);
 }
 
 nav a:hover,
@@ -216,6 +217,37 @@ nav button.active {
   stroke: var(--alt);
   background: var(--primary);
   text-decoration: none;
+}
+
+menu ul {
+  z-index: 101;
+  list-style: none;
+  position: absolute;
+  top: 2.375rem;
+  background-color: var(--alt);
+  border: 2px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-shadow: 1px 1px 0 0 var(--primary);
+}
+menu ul li {
+  width: 100%;
+}
+menu ul button,
+menu ul a {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  text-transform: capitalize;
+  white-space: pre;
+  line-height: 1.25;
+}
+.menuitem-icon {
+  min-width: 1rem;
+  margin-left: 2rem;
 }
 
 #clock {

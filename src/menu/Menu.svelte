@@ -41,8 +41,8 @@
   };
 </script>
 
-<menu on:click={menuToggle} on:mouseenter={menuCheckActive}>
-  <button class:expanded>
+<menu>
+  <button class:active={expanded} on:click={menuToggle} on:mouseenter={menuCheckActive}>
     {#if menu.svg}
       <span class="menu-svgicon">
         {@html menu.svg}
@@ -71,9 +71,6 @@
 </menu>
 
 <style>
-  menu {
-    stroke: var(--primary);
-  }
   .menu-svgicon {
     height: 100%;
     border: none;
@@ -87,27 +84,5 @@
 
   .menu-name.hidden {
     font-size: 0;
-  }
-
-  .expanded {
-    background-color: var(--primary);
-    color: var(--alt);
-    stroke: var(--alt);
-  }
-  ul {
-    z-index: 101;
-    list-style: none;
-    position: absolute;
-    top: 2.375rem;
-    background-color: var(--alt);
-    border: 2px solid var(--primary);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    box-shadow: 1px 1px 0 0 var(--primary);
-  }
-  ul li {
-    width: 100%;
   }
 </style>
