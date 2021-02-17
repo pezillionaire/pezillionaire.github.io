@@ -44,7 +44,7 @@
   // };
 
   // - change active menu selection
-    const itemSelect = (index) => {
+  const itemSelect = (index) => {
     items[index].active = true;
     // ideally the actions would be passed in
     setTheme(index);
