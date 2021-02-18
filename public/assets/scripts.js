@@ -662,7 +662,7 @@ var app = (function () {
         items: pezMenuItems,
       },
       {
-        name: 'Files',
+        name: 'Stuff',
         component: 'Menu',
         active: false,
         items: ProjectsMenuItems,
@@ -2360,26 +2360,39 @@ var app = (function () {
     const file$5 = "src/Clock.svelte";
 
     function create_fragment$5(ctx) {
+    	let div;
     	let time;
-    	let t_value = /*formatter*/ ctx[1].format(/*date*/ ctx[0]) + "";
-    	let t;
+    	let t0;
+    	let t1;
+    	let t2;
+    	let t3;
 
     	const block = {
     		c: function create() {
+    			div = element("div");
     			time = element("time");
-    			t = text(t_value);
+    			t0 = text(/*hours*/ ctx[3]);
+    			t1 = text(/*tick*/ ctx[1]);
+    			t2 = text(/*minutes*/ ctx[2]);
+    			t3 = text(/*meridiem*/ ctx[4]);
     			attr_dev(time, "datetime", /*date*/ ctx[0]);
-    			add_location(time, file$5, 0, 0, 0);
+    			add_location(time, file$5, 1, 2, 19);
+    			attr_dev(div, "id", "clock");
+    			add_location(div, file$5, 0, 0, 0);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, time, anchor);
-    			append_dev(time, t);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, time);
+    			append_dev(time, t0);
+    			append_dev(time, t1);
+    			append_dev(time, t2);
+    			append_dev(time, t3);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*date*/ 1 && t_value !== (t_value = /*formatter*/ ctx[1].format(/*date*/ ctx[0]) + "")) set_data_dev(t, t_value);
+    			if (dirty & /*tick*/ 2) set_data_dev(t1, /*tick*/ ctx[1]);
 
     			if (dirty & /*date*/ 1) {
     				attr_dev(time, "datetime", /*date*/ ctx[0]);
@@ -2388,7 +2401,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(time);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -2407,20 +2420,20 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Clock", slots, []);
     	let date = new Date();
+    	let minutes = ("0" + date.getMinutes()).slice(-2);
 
-    	const formatter = new Intl.DateTimeFormat("en",
-    	{
-    			hour12: true,
-    			hour: "numeric",
-    			minute: "2-digit"
-    		});
+    	let hours = date.getHours() < 12
+    	? date.getHours()
+    	: date.getHours() - 12;
 
-    	const minutes = ("0" + date.getMinutes()).slice(-2);
+    	let meridiem = date.getHours() < 12 ? " AM" : " PM";
+    	let tick = ":";
 
     	onMount(() => {
     		setInterval(
     			() => {
     				$$invalidate(0, date = new Date());
+    				$$invalidate(1, tick = tick == ":" ? " " : ":");
     			},
     			1000
     		);
@@ -2432,17 +2445,28 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Clock> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ onMount, date, formatter, minutes });
+    	$$self.$capture_state = () => ({
+    		onMount,
+    		date,
+    		minutes,
+    		hours,
+    		meridiem,
+    		tick
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ("date" in $$props) $$invalidate(0, date = $$props.date);
+    		if ("minutes" in $$props) $$invalidate(2, minutes = $$props.minutes);
+    		if ("hours" in $$props) $$invalidate(3, hours = $$props.hours);
+    		if ("meridiem" in $$props) $$invalidate(4, meridiem = $$props.meridiem);
+    		if ("tick" in $$props) $$invalidate(1, tick = $$props.tick);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [date, formatter];
+    	return [date, tick, minutes, hours, meridiem];
     }
 
     class Clock extends SvelteComponentDev {
@@ -2494,17 +2518,16 @@ var app = (function () {
     			section = element("section");
     			if (default_slot) default_slot.c();
     			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "window-close svelte-ssk6g2");
+    			attr_dev(button, "class", "window-close");
     			add_location(button, file$6, 71, 4, 1529);
-    			attr_dev(h2, "class", "svelte-ssk6g2");
     			add_location(h2, file$6, 75, 6, 1659);
-    			attr_dev(div0, "class", "window-title svelte-ssk6g2");
+    			attr_dev(div0, "class", "window-title");
     			add_location(div0, file$6, 74, 4, 1626);
-    			attr_dev(header, "class", "window-header svelte-ssk6g2");
+    			attr_dev(header, "class", "window-header");
     			add_location(header, file$6, 70, 2, 1473);
-    			attr_dev(section, "class", "window-main svelte-ssk6g2");
+    			attr_dev(section, "class", "window-main");
     			add_location(section, file$6, 78, 2, 1701);
-    			attr_dev(div1, "class", "window svelte-ssk6g2");
+    			attr_dev(div1, "class", "window");
     			set_style(div1, "left", /*window*/ ctx[2].left + "px");
     			set_style(div1, "top", /*window*/ ctx[2].top + "px");
     			add_location(div1, file$6, 65, 0, 1375);
@@ -2594,7 +2617,7 @@ var app = (function () {
     	const dispatch = createEventDispatcher();
     	const close = () => dispatch("close");
     	let modal;
-    	let window = { top: 32, left: 32, moving: false };
+    	let window = { top: 16, left: 16, moving: false };
 
     	function start() {
     		$$invalidate(2, window.moving = true, window);
@@ -2738,7 +2761,7 @@ var app = (function () {
 
     	window = new Window({
     			props: {
-    				title: "Pez Disk",
+    				title: "Cartridge",
     				$$slots: { default: [create_default_slot_1] },
     				$$scope: { ctx }
     			},
@@ -2789,30 +2812,93 @@ var app = (function () {
     	return block;
     }
 
-    // (18:6) <Window title="Pez Disk" on:close={() => (windowMac = !windowMac)}>
+    // (18:6) <Window title="Cartridge" on:close={() => (windowMac = !windowMac)}>
     function create_default_slot_1(ctx) {
     	let h1;
     	let t1;
-    	let p;
+    	let p0;
+    	let t3;
+    	let p1;
+    	let t5;
+    	let p2;
+    	let t6;
+    	let a;
+    	let t8;
+    	let t9;
+    	let p3;
+    	let t11;
+    	let h4;
+    	let t13;
+    	let p4;
 
     	const block = {
     		c: function create() {
     			h1 = element("h1");
-    			h1.textContent = "Pezillionaire Interactive Mfg. Concern";
+    			h1.textContent = "Pezillionaire Interactive Manufacturing Concern";
     			t1 = space();
-    			p = element("p");
-    			add_location(h1, file$7, 18, 8, 510);
-    			add_location(p, file$7, 19, 8, 566);
+    			p0 = element("p");
+    			p0.textContent = "Welcome,";
+    			t3 = space();
+    			p1 = element("p");
+    			p1.textContent = "This is a website on internet. It is my space to explore coding concepts, play with interaction ideas, and create user experiences.";
+    			t5 = space();
+    			p2 = element("p");
+    			t6 = text("It will be updated randomly. The source can be found ");
+    			a = element("a");
+    			a.textContent = "here";
+    			t8 = text(". Sometimes this site will be up to date – sometimes it will not — this is ok.");
+    			t9 = space();
+    			p3 = element("p");
+    			p3.textContent = "This is project an ongoing concern… if you have concerns send me a message.";
+    			t11 = space();
+    			h4 = element("h4");
+    			h4.textContent = "— Andrew [Pez] Pengelly";
+    			t13 = space();
+    			p4 = element("p");
+    			p4.textContent = "P.S. Garbage links are in the garbage.";
+    			add_location(h1, file$7, 18, 8, 489);
+    			add_location(p0, file$7, 19, 8, 554);
+    			add_location(p1, file$7, 20, 8, 578);
+    			attr_dev(a, "href", "https://github.com/pezillionaire/pezillionaire.github.io");
+    			attr_dev(a, "target", "_blank");
+    			add_location(a, file$7, 21, 64, 781);
+    			add_location(p2, file$7, 21, 8, 725);
+    			add_location(p3, file$7, 22, 8, 963);
+    			add_location(h4, file$7, 23, 8, 1054);
+    			add_location(p4, file$7, 24, 8, 1095);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
+    			insert_dev(target, p0, anchor);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, p1, anchor);
+    			insert_dev(target, t5, anchor);
+    			insert_dev(target, p2, anchor);
+    			append_dev(p2, t6);
+    			append_dev(p2, a);
+    			append_dev(p2, t8);
+    			insert_dev(target, t9, anchor);
+    			insert_dev(target, p3, anchor);
+    			insert_dev(target, t11, anchor);
+    			insert_dev(target, h4, anchor);
+    			insert_dev(target, t13, anchor);
+    			insert_dev(target, p4, anchor);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h1);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(p0);
+    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(p1);
+    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(p2);
+    			if (detaching) detach_dev(t9);
+    			if (detaching) detach_dev(p3);
+    			if (detaching) detach_dev(t11);
+    			if (detaching) detach_dev(h4);
+    			if (detaching) detach_dev(t13);
+    			if (detaching) detach_dev(p4);
     		}
     	};
 
@@ -2820,14 +2906,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(18:6) <Window title=\\\"Pez Disk\\\" on:close={() => (windowMac = !windowMac)}>",
+    		source: "(18:6) <Window title=\\\"Cartridge\\\" on:close={() => (windowMac = !windowMac)}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (23:4) {#if windowTrash}
+    // (28:4) {#if windowTrash}
     function create_if_block$3(ctx) {
     	let window;
     	let current;
@@ -2878,14 +2964,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(23:4) {#if windowTrash}",
+    		source: "(28:4) {#if windowTrash}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (24:6) <Window title="Garbage" on:close={() => (windowTrash = !windowMac)}>
+    // (29:6) <Window title="Garbage" on:close={() => (windowTrash = !windowMac)}>
     function create_default_slot(ctx) {
     	let div;
     	let a0;
@@ -2937,48 +3023,48 @@ var app = (function () {
     			span2.textContent = "Games";
     			attr_dev(path0, "class", "svg-prime");
     			attr_dev(path0, "d", "M2 .4h28m-29 1h30m-31 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h7m1 0h10m4 0h4m1 0h5m-32 1h7m2 0h8m6 0h1m2 0h6m-32 1h7m3 0h6m12 0h4m-32 1h7m5 0h4m10 0h6m-32 1h7m8 0h1m9 0h7m-32 1h8m17 0h7m-32 1h9m16 0h7m-32 1h8m17 0h7m-32 1h9m15 0h8m-32 1h10m14 0h8m-32 1h9m14 0h9m-32 1h10m13 0h9m-32 1h11m11 0h10m-32 1h12m9 0h11m-32 1h11m9 0h12m-32 1h8m10 0h14m-32 1h10m6 0h16m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-31 1h30m-29 1h28");
-    			add_location(path0, file$7, 31, 14, 942);
+    			add_location(path0, file$7, 36, 14, 1511);
     			attr_dev(path1, "class", "svg-alt");
     			attr_dev(path1, "d", "M7 8.4h1m10 0h4m4 0h1m-20 1h2m8 0h6m1 0h2m-19 1h3m6 0h12m-21 1h5m4 0h10m-19 1h8m1 0h9m-17 1h17m-16 1h16m-17 1h17m-16 1h15m-14 1h14m-15 1h14m-13 1h13m-12 1h11m-10 1h9m-10 1h9m-12 1h10m-8 1h6");
-    			add_location(path1, file$7, 35, 14, 1471);
+    			add_location(path1, file$7, 40, 14, 2040);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 32 32");
-    			add_location(svg0, file$7, 30, 12, 867);
-    			add_location(span0, file$7, 40, 12, 1767);
+    			add_location(svg0, file$7, 35, 12, 1436);
+    			add_location(span0, file$7, 45, 12, 2336);
     			attr_dev(a0, "href", "https://twitter.com/pezillionaire");
     			attr_dev(a0, "class", "icon");
     			attr_dev(a0, "target", "blank");
-    			add_location(a0, file$7, 25, 10, 735);
+    			add_location(a0, file$7, 30, 10, 1304);
     			attr_dev(path2, "class", "svg-prime");
     			attr_dev(path2, "d", "M12 .444h8m-11 1h14m-16 1h18m-19 1h20m-21 1h22m-23 1h24m-25 1h4m1 0h16m1 0h4m-27 1h5m3 0h12m3 0h5m-28 1h5m18 0h5m-29 1h6m18 0h6m-30 1h6m18 0h6m-30 1h6m18 0h6m-31 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h7m18 0h7m-31 1h7m16 0h7m-30 1h8m14 0h8m-30 1h4m1 0h5m10 0h10m-29 1h3m2 0h6m6 0h11m-27 1h3m2 0h5m6 0h10m-26 1h4m12 0h10m-25 1h4m11 0h9m-23 1h8m6 0h8m-21 1h7m6 0h7m-18 1h5m6 0h5m-14 1h3m6 0h3m-10 1h1m6 0h1");
-    			add_location(path2, file$7, 48, 14, 2017);
+    			add_location(path2, file$7, 53, 14, 2587);
     			attr_dev(path3, "class", "svg-alt");
     			attr_dev(path3, "d", "M7 6.444h1m16 0h1m-18 1h3m12 0h3m-18 1h18m-18 1h18m-18 1h18m-18 1h18m-19 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-19 1h18m-17 1h16m-15 1h14m-18 1h1m5 0h10m-16 1h2m6 0h6m-13 1h2m5 0h6m-12 1h12m-11 1h11m-6 1h6m-6 1h6m-6 1h6m-6 1h6m-6 1h6");
-    			add_location(path3, file$7, 52, 14, 2581);
+    			add_location(path3, file$7, 57, 14, 3151);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 32 32");
-    			add_location(svg1, file$7, 47, 12, 1942);
-    			add_location(span1, file$7, 57, 12, 2942);
+    			add_location(svg1, file$7, 52, 12, 2512);
+    			add_location(span1, file$7, 62, 12, 3512);
     			attr_dev(a1, "href", "https://github.com/pezillionaire");
     			attr_dev(a1, "class", "icon");
-    			attr_dev(a1, "target", "blank");
-    			add_location(a1, file$7, 42, 10, 1811);
+    			attr_dev(a1, "target", "_blank");
+    			add_location(a1, file$7, 47, 10, 2380);
     			attr_dev(path4, "class", "svg-prime");
     			attr_dev(path4, "d", "M3 .533h29m-29 1h29m-30 1h30m-30 1h4m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m22 0h4m-31 1h5m21 0h4m-30 1h5m20 0h4m-29 1h5m19 0h4m-28 1h11m4 0h12m-27 1h11m3 0h12m-26 1h11m2 0h12m-25 1h11m1 0h12m-24 1h23m-15 1h8m-8 1h6m-6 1h6m-6 1h5");
-    			add_location(path4, file$7, 61, 14, 3144);
+    			add_location(path4, file$7, 66, 14, 3714);
     			attr_dev(path5, "class", "svg-alt");
     			attr_dev(path5, "d", "M6 3.533h23m-23 1h23m-23 1h23m-23 1h23m-23 1h23m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h23m-23 1h23m-23 1h22m-22 1h21m-21 1h20m-20 1h19m-13 1h4m-4 1h3m-3 1h2m-2 1h1");
-    			add_location(path5, file$7, 65, 14, 3765);
+    			add_location(path5, file$7, 70, 14, 4335);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 32 32");
-    			add_location(svg2, file$7, 60, 12, 3069);
-    			add_location(span2, file$7, 70, 12, 4182);
+    			add_location(svg2, file$7, 65, 12, 3639);
+    			add_location(span2, file$7, 75, 12, 4752);
     			attr_dev(a2, "href", "https://twitch.tv/pezillionaire");
     			attr_dev(a2, "class", "icon");
     			attr_dev(a2, "target", "blank");
-    			add_location(a2, file$7, 59, 10, 2986);
+    			add_location(a2, file$7, 64, 10, 3556);
     			attr_dev(div, "class", "socials");
-    			add_location(div, file$7, 24, 8, 703);
+    			add_location(div, file$7, 29, 8, 1272);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3012,7 +3098,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(24:6) <Window title=\\\"Garbage\\\" on:close={() => (windowTrash = !windowMac)}>",
+    		source: "(29:6) <Window title=\\\"Garbage\\\" on:close={() => (windowTrash = !windowMac)}>",
     		ctx
     	});
 
@@ -3023,7 +3109,6 @@ var app = (function () {
     	let header;
     	let nav;
     	let t0;
-    	let div;
     	let clock;
     	let t1;
     	let main;
@@ -3060,7 +3145,6 @@ var app = (function () {
     			header = element("header");
     			create_component(nav.$$.fragment);
     			t0 = space();
-    			div = element("div");
     			create_component(clock.$$.fragment);
     			t1 = space();
     			main = element("main");
@@ -3078,7 +3162,7 @@ var app = (function () {
     			path3 = svg_element("path");
     			t4 = space();
     			span0 = element("span");
-    			span0.textContent = "Pez Disk";
+    			span0.textContent = "Cartridge";
     			t6 = space();
     			button1 = element("button");
     			svg1 = svg_element("svg");
@@ -3087,50 +3171,48 @@ var app = (function () {
     			t7 = space();
     			span1 = element("span");
     			span1.textContent = "Garbage";
-    			attr_dev(div, "id", "clock");
-    			add_location(div, file$7, 12, 2, 314);
     			attr_dev(header, "role", "banner");
     			add_location(header, file$7, 10, 0, 237);
     			attr_dev(section0, "class", "window-layer");
-    			add_location(section0, file$7, 15, 2, 377);
+    			add_location(section0, file$7, 15, 2, 355);
     			attr_dev(path0, "class", "svg-prime-fill");
     			attr_dev(path0, "d", "M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z");
-    			add_location(path0, file$7, 85, 8, 4534);
+    			add_location(path0, file$7, 90, 8, 5104);
     			attr_dev(path1, "class", "svg-alt-fill");
     			attr_dev(path1, "d", "M10 33V4H6v52h2v6h2V33zm10 27v-2h-8v4h8v-2zm36-1v-3h2V4h-4v40h-2V4H26v40h-2V4h-2v58h34v-3zm-36-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-5V4h-8v4h8V6z");
-    			add_location(path1, file$7, 86, 8, 4613);
+    			add_location(path1, file$7, 91, 8, 5183);
     			attr_dev(path2, "class", "svg-prime-fill");
     			attr_dev(path2, "d", "M38 57v-1h-2v-2h2v2h2v-2h2v2h-2v2h-2v-1zM26 45v-1h26v2H26v-1zm8-6v-1h-2v-2h-2v-4h4v2h2v2h6v-2h2v-2h4v4h-2v2h-2v2H34v-1zm-2-14v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1zm10 0v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1z");
-    			add_location(path2, file$7, 90, 8, 5008);
+    			add_location(path2, file$7, 95, 8, 5578);
     			attr_dev(path3, "class", "svg-alt-fill");
     			attr_dev(path3, "d", "M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z");
-    			add_location(path3, file$7, 94, 8, 5279);
+    			add_location(path3, file$7, 99, 8, 5849);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 64 64");
-    			add_location(svg0, file$7, 84, 6, 4465);
-    			add_location(span0, file$7, 99, 6, 5436);
+    			add_location(svg0, file$7, 89, 6, 5035);
+    			add_location(span0, file$7, 104, 6, 6006);
     			attr_dev(button0, "type", "button");
     			attr_dev(button0, "class", "icon mac");
     			toggle_class(button0, "open", /*windowMac*/ ctx[0]);
-    			add_location(button0, file$7, 78, 4, 4331);
+    			add_location(button0, file$7, 83, 4, 4901);
     			attr_dev(path4, "class", "svg-alt-fill");
     			attr_dev(path4, "d", "M14 64v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2z");
-    			add_location(path4, file$7, 108, 8, 5685);
+    			add_location(path4, file$7, 113, 8, 6256);
     			attr_dev(path5, "class", "svg-prime-fill");
     			attr_dev(path5, "d", "M32 64H14v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2H32zm-.002-2h18V10h-36v52h18zM19 58h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zM32 8h20V6H12v2h20zm0-4h6V2H26v2h6z");
-    			add_location(path5, file$7, 112, 8, 5819);
+    			add_location(path5, file$7, 117, 8, 6390);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 64 64");
-    			add_location(svg1, file$7, 107, 6, 5616);
-    			add_location(span1, file$7, 117, 6, 6190);
+    			add_location(svg1, file$7, 112, 6, 6187);
+    			add_location(span1, file$7, 122, 6, 6761);
     			attr_dev(button1, "type", "button");
     			attr_dev(button1, "class", "icon trash");
     			toggle_class(button1, "open", /*windowTrash*/ ctx[1]);
-    			add_location(button1, file$7, 101, 4, 5476);
+    			add_location(button1, file$7, 106, 4, 6047);
     			attr_dev(section1, "class", "desktop-layer");
-    			add_location(section1, file$7, 77, 2, 4295);
+    			add_location(section1, file$7, 82, 2, 4865);
     			attr_dev(main, "role", "main");
-    			add_location(main, file$7, 14, 0, 356);
+    			add_location(main, file$7, 14, 0, 334);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3139,8 +3221,7 @@ var app = (function () {
     			insert_dev(target, header, anchor);
     			mount_component(nav, header, null);
     			append_dev(header, t0);
-    			append_dev(header, div);
-    			mount_component(clock, div, null);
+    			mount_component(clock, header, null);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, main, anchor);
     			append_dev(main, section0);
@@ -3336,8 +3417,6 @@ var app = (function () {
     var app = new App({
       target: replaceContents(document.querySelector('#app')),
     });
-
-
 
     var app$1 = { app };
 

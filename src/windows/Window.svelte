@@ -6,8 +6,8 @@
   let modal;
 
   let window = {
-    top: 32,
-    left: 32,
+    top: 16,
+    left: 16,
     moving: false,
   };
 
@@ -88,83 +88,4 @@
 />
 
 <style>
-  .window {
-    position: absolute;
-    user-select: none;
-    z-index: 5;
-    max-width: 20rem;
-    background: var(--alt);
-    border-style: solid;
-    border: 2px solid var(--primary);
-    box-shadow: 2px 2px 0 0 var(--primary);
-  }
-
-  .window-header {
-    display: flex;
-    flex-direction: row;
-    padding: 0.375rem;
-    width: 100%;
-    border-bottom: 2px solid var(--primary);
-    background-color: var(--alt);
-    background-image: linear-gradient(
-      var(--primary) 0.125rem,
-      transparent 0.125rem
-    );
-    background-size: 100% 0.375rem;
-    background-position: 0 1.25rem;
-    background-clip: content-box;
-  }
-  .window-close {
-    flex: 0 0 auto;
-    border-radius: 0;
-    border: 2px solid var(--primary);
-    height: 1.5rem;
-    width: 1.5rem;
-    line-height: 0;
-    margin: 0 0.375rem 0 0rem;
-    background: var(--alt);
-    box-shadow: 0.125rem 0 0 0.25rem var(--alt),
-      -0.125rem 0 0 0.25rem var(--alt);
-    font-size: 0;
-  }
-
-  .window-close:hover,
-  .window-close:focus {
-    background: linear-gradient(
-        45deg,
-        transparent 0%,
-        transparent 45%,
-        var(--primary) 45%,
-        var(--primary) 55%,
-        transparent 55%,
-        transparent 100%
-      ),
-      linear-gradient(
-        135deg,
-        var(--alt) 0%,
-        var(--alt) 45%,
-        var(--primary) 45%,
-        var(--primary) 55%,
-        var(--alt) 55%,
-        var(--alt) 100%
-      );
-  }
-
-  .window-title {
-    flex: 1 1 100%;
-    display: flex;
-    padding-right: 2rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  .window-title h2 {
-    flex: 0 1 auto;
-    background: var(--alt);
-    padding: 0 0.75rem;
-    font-size: 1.25rem;
-  }
-  .window-main {
-    padding: 1rem;
-  }
 </style>

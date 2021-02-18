@@ -78,7 +78,7 @@ export const menus = writable([
     items: pezMenuItems,
   },
   {
-    name: 'Files',
+    name: 'Stuff',
     component: 'Menu',
     active: false,
     items: ProjectsMenuItems,

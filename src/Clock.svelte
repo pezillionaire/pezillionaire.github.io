@@ -1,20 +1,19 @@
-<time datetime={date}>{formatter.format(date)}</time>
+<div id="clock">
+  <time datetime={date}>{hours}{tick}{minutes}{meridiem}</time>
+</div>
 
 <script>
   import { onMount } from 'svelte';
   let date = new Date();
-
-  const formatter = new Intl.DateTimeFormat('en', {
-    hour12: true,
-    hour: 'numeric',
-    minute: '2-digit',
-  });
-
-  const minutes = ('0' + date.getMinutes()).slice(-2);
+  let minutes = ('0' + date.getMinutes()).slice(-2);
+  let hours = (date.getHours() < 12)? date.getHours() : (date.getHours() - 12);
+  let meridiem = (date.getHours() < 12)? " AM" : " PM";
+  let tick = ":";
 
   onMount(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       date = new Date();
+      tick = (tick == ":")? " " : ":";
     }, 1000);
   });
 </script>

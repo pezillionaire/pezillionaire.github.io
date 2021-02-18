@@ -9,6 +9,4 @@ var app = new App({
   target: replaceContents(document.querySelector('#app')),
 });
 
-
-
 export default { app };

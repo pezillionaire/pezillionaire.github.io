@@ -10,14 +10,19 @@
 
 <header role="banner">
   <Nav on:action={(event) => console.log(event)} />
-  <div id="clock"><Clock /></div>
+  <Clock />
 </header>
 <main role="main">
   <section class="window-layer">
     {#if windowMac}
-      <Window title="Pez Disk" on:close={() => (windowMac = !windowMac)}>
-        <h1>Pezillionaire Interactive Mfg. Concern</h1>
-        <p />
+      <Window title="Cartridge" on:close={() => (windowMac = !windowMac)}>
+        <h1>Pezillionaire Interactive Manufacturing Concern</h1>
+        <p>Welcome,</p>
+        <p>This is a website on internet. It is my space to explore coding concepts, play with interaction ideas, and create user experiences.</p>
+        <p>It will be updated randomly. The source can be found <a href="https://github.com/pezillionaire/pezillionaire.github.io" target="_blank">here</a>. Sometimes this site will be up to date – sometimes it will not — this is ok.</p>
+        <p>This is project an ongoing concern… if you have concerns send me a message.</p>
+        <h4>— Andrew [Pez] Pengelly</h4>
+        <p>P.S. Garbage links are in the garbage.</p>
       </Window>
     {/if}
     {#if windowTrash}
@@ -43,7 +48,7 @@
           <a
             href="https://github.com/pezillionaire"
             class="icon"
-            target="blank"
+            target="_blank"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
               <path
@@ -97,7 +102,7 @@
           d="M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z"
         />
       </svg>
-      <span>Pez Disk</span>
+      <span>Cartridge</span>
     </button>
     <button
       type="button"
