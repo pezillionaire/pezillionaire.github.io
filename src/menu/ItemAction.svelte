@@ -28,7 +28,7 @@
 
 <button type="button" on:click={toggle(item)}>
   <span>{item.name}</span>
-  <span class="menuitem-icon">{isActive ? '✓' : ''}</span>
+  <span class="menuitem icon">{isActive ? '✓' : ''}</span>
 </button>
 
 <style>
@@ -43,9 +43,5 @@
   }
   button span {
     display: inline;
-  }
-  .menuitem-icon {
-    min-width: 1rem;
-    margin-left: 2rem;
   }
 </style>

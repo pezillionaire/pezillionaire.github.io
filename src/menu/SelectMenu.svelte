@@ -103,7 +103,13 @@
         <li>
           <button type="button" on:click|once={() => itemSelect(index)}>
             <span>{name}</span>
-            <span class="menuitem-icon">{active ? '✓' : ''}</span>
+            <span class="menuitem icon">
+              {#if active}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges" class="svg-fill">
+                <path d="M4 13v-1H2v-2H0V6h2v2h2v2h2V8h2V6h2V4h2V2h2V0h2v4h-2v2h-2v2h-2v2H8v2H6v2H4z"/>
+              </svg>
+              {/if}
+            </span>
           </button>
         </li>
       {/each}
