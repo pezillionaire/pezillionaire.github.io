@@ -69,20 +69,3 @@
     </ul>
   {/if}
 </menu>
-
-<style>
-  .menu-svgicon {
-    height: 100%;
-    border: none;
-    display: flex;
-    align-items: flex-end;
-  }
-  .menu-svgicon :global(svg) {
-    height: 2rem;
-    width: 2rem;
-  }
-
-  .menu-name.hidden {
-    font-size: 0;
-  }
-</style>

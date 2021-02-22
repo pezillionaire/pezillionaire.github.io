@@ -30,18 +30,3 @@
   <span>{item.name}</span>
   <span class="menuitem icon">{isActive ? '✓' : ''}</span>
 </button>
-
-<style>
-  button {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.25rem 0.5rem;
-    text-transform: capitalize;
-    white-space: pre;
-    line-height: 1.25;
-  }
-  button span {
-    display: inline;
-  }
-</style>

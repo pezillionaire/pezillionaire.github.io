@@ -84,9 +84,6 @@ var app = (function () {
             slot.p(slot_context, slot_changes);
         }
     }
-    function null_to_empty(value) {
-        return value == null ? '' : value;
-    }
     function set_store_value(store, ret, value = ret) {
         store.set(value);
         return ret;
@@ -700,12 +697,10 @@ var app = (function () {
     			t1 = space();
     			span1 = element("span");
     			t2 = text(t2_value);
-    			attr_dev(span0, "class", "svelte-doxoaw");
     			add_location(span0, file, 29, 2, 507);
-    			attr_dev(span1, "class", "menuitem icon svelte-doxoaw");
+    			attr_dev(span1, "class", "menuitem icon");
     			add_location(span1, file, 30, 2, 534);
     			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "svelte-doxoaw");
     			add_location(button, file, 28, 0, 458);
     		},
     		l: function claim(nodes) {
@@ -1037,7 +1032,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			span = element("span");
-    			attr_dev(span, "class", "menu-svgicon svelte-16l818a");
+    			attr_dev(span, "class", "menu-svgicon");
     			add_location(span, file$2, 46, 6, 1250);
     		},
     		m: function mount(target, anchor) {
@@ -1071,7 +1066,7 @@ var app = (function () {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
-    			attr_dev(span, "class", "" + (null_to_empty(`menu-name ${/*menu*/ ctx[1].svg ? "hidden" : ""}`) + " svelte-16l818a"));
+    			attr_dev(span, "class", `menu-name ${/*menu*/ ctx[1].svg ? "hidden" : ""}`);
     			add_location(span, file$2, 51, 6, 1353);
     		},
     		m: function mount(target, anchor) {
@@ -2199,7 +2194,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "click-capture svelte-le7meu");
+    			attr_dev(div, "class", "click-capture");
     			add_location(div, file$4, 25, 2, 523);
     		},
     		m: function mount(target, anchor) {
@@ -2832,7 +2827,7 @@ var app = (function () {
 
     	window = new Window({
     			props: {
-    				title: "Cartridge",
+    				title: "Pez HD",
     				$$slots: { default: [create_default_slot_1] },
     				$$scope: { ctx }
     			},
@@ -2883,7 +2878,7 @@ var app = (function () {
     	return block;
     }
 
-    // (18:6) <Window title="Cartridge" on:close={() => (windowMac = !windowMac)}>
+    // (18:6) <Window title="Pez HD" on:close={() => (windowMac = !windowMac)}>
     function create_default_slot_1(ctx) {
     	let h1;
     	let t1;
@@ -2927,16 +2922,16 @@ var app = (function () {
     			t13 = space();
     			p4 = element("p");
     			p4.textContent = "P.S. Garbage links are in the garbage.";
-    			add_location(h1, file$7, 18, 8, 489);
-    			add_location(p0, file$7, 19, 8, 554);
-    			add_location(p1, file$7, 20, 8, 578);
+    			add_location(h1, file$7, 18, 8, 486);
+    			add_location(p0, file$7, 19, 8, 551);
+    			add_location(p1, file$7, 20, 8, 575);
     			attr_dev(a, "href", "https://github.com/pezillionaire/pezillionaire.github.io");
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file$7, 21, 64, 781);
-    			add_location(p2, file$7, 21, 8, 725);
-    			add_location(p3, file$7, 22, 8, 963);
-    			add_location(h4, file$7, 23, 8, 1054);
-    			add_location(p4, file$7, 24, 8, 1095);
+    			add_location(a, file$7, 21, 64, 778);
+    			add_location(p2, file$7, 21, 8, 722);
+    			add_location(p3, file$7, 22, 8, 960);
+    			add_location(h4, file$7, 23, 8, 1051);
+    			add_location(p4, file$7, 24, 8, 1092);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -2977,7 +2972,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(18:6) <Window title=\\\"Cartridge\\\" on:close={() => (windowMac = !windowMac)}>",
+    		source: "(18:6) <Window title=\\\"Pez HD\\\" on:close={() => (windowMac = !windowMac)}>",
     		ctx
     	});
 
@@ -3075,7 +3070,7 @@ var app = (function () {
     			path1 = svg_element("path");
     			t0 = space();
     			span0 = element("span");
-    			span0.textContent = "Rants";
+    			span0.textContent = "Void";
     			t2 = space();
     			a1 = element("a");
     			svg1 = svg_element("svg");
@@ -3094,48 +3089,48 @@ var app = (function () {
     			span2.textContent = "Games";
     			attr_dev(path0, "class", "svg-prime");
     			attr_dev(path0, "d", "M2 .4h28m-29 1h30m-31 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h7m1 0h10m4 0h4m1 0h5m-32 1h7m2 0h8m6 0h1m2 0h6m-32 1h7m3 0h6m12 0h4m-32 1h7m5 0h4m10 0h6m-32 1h7m8 0h1m9 0h7m-32 1h8m17 0h7m-32 1h9m16 0h7m-32 1h8m17 0h7m-32 1h9m15 0h8m-32 1h10m14 0h8m-32 1h9m14 0h9m-32 1h10m13 0h9m-32 1h11m11 0h10m-32 1h12m9 0h11m-32 1h11m9 0h12m-32 1h8m10 0h14m-32 1h10m6 0h16m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-32 1h32m-31 1h30m-29 1h28");
-    			add_location(path0, file$7, 36, 14, 1511);
+    			add_location(path0, file$7, 33, 14, 1472);
     			attr_dev(path1, "class", "svg-alt");
     			attr_dev(path1, "d", "M7 8.4h1m10 0h4m4 0h1m-20 1h2m8 0h6m1 0h2m-19 1h3m6 0h12m-21 1h5m4 0h10m-19 1h8m1 0h9m-17 1h17m-16 1h16m-17 1h17m-16 1h15m-14 1h14m-15 1h14m-13 1h13m-12 1h11m-10 1h9m-10 1h9m-12 1h10m-8 1h6");
-    			add_location(path1, file$7, 40, 14, 2040);
+    			add_location(path1, file$7, 34, 14, 1955);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 32 32");
-    			add_location(svg0, file$7, 35, 12, 1436);
-    			add_location(span0, file$7, 45, 12, 2336);
+    			add_location(svg0, file$7, 32, 12, 1397);
+    			add_location(span0, file$7, 36, 12, 2205);
     			attr_dev(a0, "href", "https://twitter.com/pezillionaire");
     			attr_dev(a0, "class", "icon");
     			attr_dev(a0, "target", "blank");
-    			add_location(a0, file$7, 30, 10, 1304);
+    			add_location(a0, file$7, 30, 10, 1301);
     			attr_dev(path2, "class", "svg-prime");
     			attr_dev(path2, "d", "M12 .444h8m-11 1h14m-16 1h18m-19 1h20m-21 1h22m-23 1h24m-25 1h4m1 0h16m1 0h4m-27 1h5m3 0h12m3 0h5m-28 1h5m18 0h5m-29 1h6m18 0h6m-30 1h6m18 0h6m-30 1h6m18 0h6m-31 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h6m20 0h6m-32 1h7m18 0h7m-31 1h7m16 0h7m-30 1h8m14 0h8m-30 1h4m1 0h5m10 0h10m-29 1h3m2 0h6m6 0h11m-27 1h3m2 0h5m6 0h10m-26 1h4m12 0h10m-25 1h4m11 0h9m-23 1h8m6 0h8m-21 1h7m6 0h7m-18 1h5m6 0h5m-14 1h3m6 0h3m-10 1h1m6 0h1");
-    			add_location(path2, file$7, 53, 14, 2587);
+    			add_location(path2, file$7, 40, 14, 2409);
     			attr_dev(path3, "class", "svg-alt");
     			attr_dev(path3, "d", "M7 6.444h1m16 0h1m-18 1h3m12 0h3m-18 1h18m-18 1h18m-18 1h18m-18 1h18m-19 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-20 1h20m-19 1h18m-17 1h16m-15 1h14m-18 1h1m5 0h10m-16 1h2m6 0h6m-13 1h2m5 0h6m-12 1h12m-11 1h11m-6 1h6m-6 1h6m-6 1h6m-6 1h6m-6 1h6");
-    			add_location(path3, file$7, 57, 14, 3151);
+    			add_location(path3, file$7, 41, 14, 2927);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 32 32");
-    			add_location(svg1, file$7, 52, 12, 2512);
-    			add_location(span1, file$7, 62, 12, 3512);
+    			add_location(svg1, file$7, 39, 12, 2334);
+    			add_location(span1, file$7, 43, 12, 3242);
     			attr_dev(a1, "href", "https://github.com/pezillionaire");
     			attr_dev(a1, "class", "icon");
     			attr_dev(a1, "target", "_blank");
-    			add_location(a1, file$7, 47, 10, 2380);
+    			add_location(a1, file$7, 38, 10, 2248);
     			attr_dev(path4, "class", "svg-prime");
     			attr_dev(path4, "d", "M3 .533h29m-29 1h29m-30 1h30m-30 1h4m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m7 0h3m5 0h3m5 0h3m-31 1h5m23 0h3m-31 1h5m23 0h3m-31 1h5m22 0h4m-31 1h5m21 0h4m-30 1h5m20 0h4m-29 1h5m19 0h4m-28 1h11m4 0h12m-27 1h11m3 0h12m-26 1h11m2 0h12m-25 1h11m1 0h12m-24 1h23m-15 1h8m-8 1h6m-6 1h6m-6 1h5");
-    			add_location(path4, file$7, 66, 14, 3714);
+    			add_location(path4, file$7, 47, 14, 3444);
     			attr_dev(path5, "class", "svg-alt");
     			attr_dev(path5, "d", "M6 3.533h23m-23 1h23m-23 1h23m-23 1h23m-23 1h23m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h7m3 0h5m3 0h5m-23 1h23m-23 1h23m-23 1h22m-22 1h21m-21 1h20m-20 1h19m-13 1h4m-4 1h3m-3 1h2m-2 1h1");
-    			add_location(path5, file$7, 70, 14, 4335);
+    			add_location(path5, file$7, 48, 14, 4019);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 32 32");
-    			add_location(svg2, file$7, 65, 12, 3639);
-    			add_location(span2, file$7, 75, 12, 4752);
+    			add_location(svg2, file$7, 46, 12, 3369);
+    			add_location(span2, file$7, 50, 12, 4390);
     			attr_dev(a2, "href", "https://twitch.tv/pezillionaire");
     			attr_dev(a2, "class", "icon");
     			attr_dev(a2, "target", "blank");
-    			add_location(a2, file$7, 64, 10, 3556);
+    			add_location(a2, file$7, 45, 10, 3286);
     			attr_dev(div, "class", "socials");
-    			add_location(div, file$7, 29, 8, 1272);
+    			add_location(div, file$7, 29, 8, 1269);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3233,7 +3228,7 @@ var app = (function () {
     			path3 = svg_element("path");
     			t4 = space();
     			span0 = element("span");
-    			span0.textContent = "Cartridge";
+    			span0.textContent = "Pez HD";
     			t6 = space();
     			button1 = element("button");
     			svg1 = svg_element("svg");
@@ -3248,40 +3243,40 @@ var app = (function () {
     			add_location(section0, file$7, 15, 2, 355);
     			attr_dev(path0, "class", "svg-prime-fill");
     			attr_dev(path0, "d", "M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z");
-    			add_location(path0, file$7, 90, 8, 5104);
+    			add_location(path0, file$7, 60, 8, 4714);
     			attr_dev(path1, "class", "svg-alt-fill");
     			attr_dev(path1, "d", "M10 33V4H6v52h2v6h2V33zm10 27v-2h-8v4h8v-2zm36-1v-3h2V4h-4v40h-2V4H26v40h-2V4h-2v58h34v-3zm-36-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-5V4h-8v4h8V6z");
-    			add_location(path1, file$7, 91, 8, 5183);
+    			add_location(path1, file$7, 61, 8, 4793);
     			attr_dev(path2, "class", "svg-prime-fill");
     			attr_dev(path2, "d", "M38 57v-1h-2v-2h2v2h2v-2h2v2h-2v2h-2v-1zM26 45v-1h26v2H26v-1zm8-6v-1h-2v-2h-2v-4h4v2h2v2h6v-2h2v-2h4v4h-2v2h-2v2H34v-1zm-2-14v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1zm10 0v-1h-2V10h2V8h4v2h2v14h-2v2h-4v-1z");
-    			add_location(path2, file$7, 95, 8, 5578);
+    			add_location(path2, file$7, 62, 8, 5160);
     			attr_dev(path3, "class", "svg-alt-fill");
     			attr_dev(path3, "d", "M34 16v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1zm10 5v-2h-2v4h2v-2zm0-5v-1h-2v2h2v-1z");
-    			add_location(path3, file$7, 99, 8, 5849);
+    			add_location(path3, file$7, 63, 8, 5403);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 64 64");
-    			add_location(svg0, file$7, 89, 6, 5035);
-    			add_location(span0, file$7, 104, 6, 6006);
+    			add_location(svg0, file$7, 59, 6, 4645);
+    			add_location(span0, file$7, 65, 6, 5532);
     			attr_dev(button0, "type", "button");
     			attr_dev(button0, "class", "icon mac");
     			toggle_class(button0, "open", /*windowMac*/ ctx[0]);
-    			add_location(button0, file$7, 83, 4, 4901);
+    			add_location(button0, file$7, 58, 4, 4539);
     			attr_dev(path4, "class", "svg-alt-fill");
     			attr_dev(path4, "d", "M14 64v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2z");
-    			add_location(path4, file$7, 113, 8, 6256);
+    			add_location(path4, file$7, 69, 8, 5751);
     			attr_dev(path5, "class", "svg-prime-fill");
     			attr_dev(path5, "d", "M32 64H14v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2H32zm-.002-2h18V10h-36v52h18zM19 58h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zM32 8h20V6H12v2h20zm0-4h6V2H26v2h6z");
-    			add_location(path5, file$7, 117, 8, 6390);
+    			add_location(path5, file$7, 70, 8, 5857);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 64 64");
-    			add_location(svg1, file$7, 112, 6, 6187);
-    			add_location(span1, file$7, 122, 6, 6761);
+    			add_location(svg1, file$7, 68, 6, 5682);
+    			add_location(span1, file$7, 72, 6, 6200);
     			attr_dev(button1, "type", "button");
     			attr_dev(button1, "class", "icon trash");
     			toggle_class(button1, "open", /*windowTrash*/ ctx[1]);
-    			add_location(button1, file$7, 106, 4, 6047);
+    			add_location(button1, file$7, 67, 4, 5570);
     			attr_dev(section1, "class", "desktop-layer");
-    			add_location(section1, file$7, 82, 2, 4865);
+    			add_location(section1, file$7, 57, 2, 4503);
     			attr_dev(main, "role", "main");
     			add_location(main, file$7, 14, 0, 334);
     		},

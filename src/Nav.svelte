@@ -25,15 +25,3 @@
 {#if $menusActive}
   <div class="click-capture" on:click|once={menusClose} />
 {/if}
-
-<style>
-  .click-capture {
-    z-index: 100;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-  }
-</style>

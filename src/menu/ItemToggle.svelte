@@ -53,14 +53,9 @@
       menuToggle(false);
     }, 200);
   };
-
-
 </script>
 
 <button type="button" on:click|once={() => itemSelect(item)}>
   <span>{name}</span>
   <span class="menuitem-icon">{active ? '✓' : ''}</span>
 </button>
-
-<style>
-</style>
