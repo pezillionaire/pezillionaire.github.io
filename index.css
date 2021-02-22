@@ -85,7 +85,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 1rem;
 }
 
-
 h1 {
   font-weight: normal;
   font-size: 1.75rem;
@@ -94,6 +93,11 @@ h1 {
 p { margin: 0 0 1rem; }
 
 p a { text-decoration: underline; }
+
+::selection {
+  color: var(--alt);
+  background-color: var(--primary);
+}
 
 header[role='banner'] {
   display: flex;
@@ -127,18 +131,31 @@ header[role='banner']::after {
   transform: scaleX(-1);
 }
 
-.logo {
+/* .logo {
   height: 100%;
   border: none;
   display: flex;
   align-items: flex-end;
-  stroke: var(--primary);
 }
 
 .logo svg {
   height: 32px;
   width: 32px;
-  stroke: var(--primary);
+} */
+
+.menu-svgicon {
+  height: 100%;
+  border: none;
+  display: flex;
+  align-items: flex-end;
+}
+.menu-svgicon svg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.menu-name.hidden {
+  font-size: 0;
 }
 
 nav {
@@ -214,6 +231,16 @@ menu ul a {
   content: "4:20";
 }
 
+.click-capture {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+
 main[role='main'] {
   height: 100%;
   display: flex;
@@ -275,8 +302,9 @@ main[role='main']::after {
 
 .window {
   position: absolute;
+  top: 1rem;
+  left: 1rem;
   margin: 0 1rem 1rem 0;
-  user-select: none;
   z-index: 5;
   min-width: 16rem;
   max-width: 28rem;
@@ -431,12 +459,6 @@ main[role='main']::after {
   background: var(--alt);
   padding: 0 0.25rem;
 }
-
-/* .icon.open .svg-alt {
-  stroke: var(--primary);
-  filter: brightness(0.6);
-
-} */
 .icon.open span {
   background: var(--primary);
   color: var(--alt);
