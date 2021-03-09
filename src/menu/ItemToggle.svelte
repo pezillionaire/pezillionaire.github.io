@@ -1,5 +1,5 @@
 <script>
-  import { menus } from './stores.js';
+  import { menus } from './store.js';
 
 
   // <Item {..item} {index} >

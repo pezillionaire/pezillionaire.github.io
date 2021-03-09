@@ -1,10 +1,17 @@
 <script>
   import { createEventDispatcher, onDestroy } from 'svelte';
 
+  // - index value of the window from store
+  // - passed via prop from App
+  export let winIndex;
+  $: winIndex;
+
   const dispatch = createEventDispatcher();
   const close = () => dispatch('close');
-  let modal;
 
+  const app = document.getElementById('app');
+
+  let modal;
   let window = {
     top: 16,
     left: 16,
@@ -13,9 +20,13 @@
 
   function start() {
     window.moving = true;
+    // remove text selection when dragging windows
+    app.style.userSelect = 'none';
   }
   function stop() {
     window.moving = false;
+    // reset default text select on release
+    app.removeAttribute('style');
     if (window.left <= 0) {
       window.left = 0;
     }
@@ -28,6 +39,7 @@
     if (window.moving) {
       window.left += e.movementX;
       window.top += e.movementY;
+
     }
   }
 
@@ -70,7 +82,7 @@
 >
   <header class="window-header" on:mousedown={start}>
     <button type="button" class="window-close" on:click={close}
-      >close modal</button
+      >close window</button
     >
     <div class="window-title">
       <h2>{title}</h2>

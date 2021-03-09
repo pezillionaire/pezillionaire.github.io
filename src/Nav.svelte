@@ -1,5 +1,5 @@
 <script>
-  import { menus, menusActive } from './stores.js';
+  import { menus, menusActive } from './store.js';
   import Menu from './menu/Menu.svelte';
   import SelectMenu from './menu/SelectMenu.svelte';
 

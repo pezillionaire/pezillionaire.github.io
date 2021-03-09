@@ -1,11 +1,32 @@
 <script>
+  import { windows } from './store.js';
   import Nav from './Nav.svelte';
   import Clock from './Clock.svelte';
-  // import Desktop from './Desktop.svelte';
-  import Window from './windows/Window.svelte';
+  import Window from './Window.svelte';
+  import PezHD from './windows/pezHD.svelte';
+  import Garbage from './windows/Gabage.svelte'
 
-  let windowMac = true;
-  let windowTrash = false;
+
+  const winContent = [
+    PezHD,
+    Garbage
+  ];
+
+  // windows.subscribe((value) => {
+  //   expanded = value[menuIndex].visible;
+  // });
+
+  // const setWindow = (index) => {
+  //   data.unshift(data.splice(index, 1)[0]);
+  // }
+
+  const closeWindow = (index) => {
+    $windows[index].visible = false;
+  }
+  const openWindowByName = (name) => {
+    $windows.find(win => win.name === name)
+  }
+
 </script>
 
 <header role="banner">
@@ -14,7 +35,14 @@
 </header>
 <main role="main">
   <section class="window-layer">
-    {#if windowMac}
+    {#each $windows as window, index}
+      {#if window.visible}
+        <Window title={window.title} winIndex={index} on:close={() => (closeWindow(index))}>
+          <svelte:component this={winContent[index]}/>
+        </Window>
+      {/if}
+    {/each}
+    <!-- {#if windowMac}
       <Window title="Pez HD" on:close={() => (windowMac = !windowMac)}>
         <h1>Pezillionaire Interactive Manufacturing Concern</h1>
         <p>Welcome,</p>
@@ -26,7 +54,7 @@
       </Window>
     {/if}
     {#if windowTrash}
-      <Window title="Garbage" on:close={() => (windowTrash = !windowMac)}>
+      <Window title="Garbage" on:close={() => (windowTrash = !windowTrash)}>
         <div class="socials">
           <a href="https://twitter.com/pezillionaire" class="icon" target="blank"
           >
@@ -52,11 +80,11 @@
           </a>
         </div>
       </Window>
-    {/if}
+    {/if} -->
   </section>
   <!-- <Desktop /> -->
   <section class="desktop-layer">
-    <button type="button" class="icon mac" class:open={windowMac} on:click={() => (windowMac = true)} >
+    <button type="button" class="icon mac" class:open={openWindowByName('PezHD')} on:click={() => ($windows[0].visible = true)} >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path class="svg-prime-fill" d="M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z" />
         <path class="svg-alt-fill" d="M10 33V4H6v52h2v6h2V33zm10 27v-2h-8v4h8v-2zm36-1v-3h2V4h-4v40h-2V4H26v40h-2V4h-2v58h34v-3zm-36-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-4v-1h-8v2h8v-1zm0-5V4h-8v4h8V6z" />
@@ -65,7 +93,7 @@
       </svg>
       <span>Pez HD</span>
     </button>
-    <button type="button" class="icon trash" class:open={windowTrash} on:click={() => (windowTrash = true)} >
+    <button type="button" class="icon trash" class:open={openWindowByName('Garbage')} on:click={() => ($windows[1].visible = true)} >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <path class="svg-alt-fill" d="M14 64v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2z" />
         <path class="svg-prime-fill" d="M32 64H14v-2h-2V10h-2V6h2V4h12V2h2V0h12v2h2v2h12v2h2v4h-2v52h-2v2H32zm-.002-2h18V10h-36v52h18zM19 58h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zm8 0h-1v-2h2V16h-2v-2h2v2h2v40h-2v2h-1zM32 8h20V6H12v2h20zm0-4h6V2H26v2h6z" />

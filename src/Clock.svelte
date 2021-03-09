@@ -6,7 +6,7 @@
   import { onMount } from 'svelte';
   let date = new Date();
   $: minutes = ('0' + date.getMinutes()).slice(-2);
-  $: hours = (date.getHours() < 12)? date.getHours() : (date.getHours() - 12);
+  $: hours = (date.getHours() <= 12)? date.getHours() : (date.getHours() - 12);
   $: meridiem = (date.getHours() < 12)? " AM" : " PM";
   let tick = ":";
 

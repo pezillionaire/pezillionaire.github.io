@@ -1,20 +1,31 @@
 import { writable } from 'svelte/store';
 
+export const windows = writable([
+  {
+    title: 'PezHD',
+    top: 0,
+    left: 0,
+    visible: true,
+  },
+  {
+    title: 'Garbage',
+    top: 0,
+    left: 0,
+    visible: false,
+  },
+]);
+
 const pezMenuItems = [
   // {
   //   name: 'About this Pez…',
   //   type: 'action',
   // },
-  {
-    name: 'Resume',
-    type: 'link',
-    url: 'https://github.com/pezillionaire/resume',
-  },
-  {
-    name: 'Contact',
-    type: 'link',
-    url: 'https://github.com/pezillionaire/resume',
-  },
+
+  // {
+  //   name: 'Contact',
+  //   type: 'link',
+  //   url: 'https://github.com/pezillionaire/resume',
+  // },
   {
     name: 'This Does Nothing… Yet!',
     type: 'action',
@@ -26,6 +37,11 @@ const pezMenuItems = [
 ];
 
 const ProjectsMenuItems = [
+  {
+    name: 'Resume',
+    type: 'link',
+    url: 'https://github.com/pezillionaire/resume',
+  },
   {
     name: 'Gifl.ink',
     type: 'link',
