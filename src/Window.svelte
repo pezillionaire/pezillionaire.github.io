@@ -1,22 +1,24 @@
 <script>
-  import { createEventDispatcher, onDestroy } from 'svelte';
-
+  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+  // import { windows } from './store.js';
+  import PezHD from './windows/pezHD.svelte';
+  import Garbage from './windows/Gabage.svelte'
   // - index value of the window from store
   // - passed via prop from App
-  export let winIndex;
-  $: winIndex;
+  export let window = {};
+  export let index = 0;
+
+  $: window;
+  $: index
+
+  const components = {};
+  components['Pez HD'] = PezHD;
+  components['Garbage'] = Garbage;
 
   const dispatch = createEventDispatcher();
   const close = () => dispatch('close');
 
   const app = document.getElementById('app');
-
-  let modal;
-  let window = {
-    top: 16,
-    left: 16,
-    moving: false,
-  };
 
   function start() {
     window.moving = true;
@@ -72,24 +74,23 @@
       previously_focused.focus();
     });
   }
-  export let title = 'title';
+  onMount(async () => {
+    // getTheme();
+    window.left = 16;
+    window.top = 16;
+  });
+  // export let title = 'title';
 </script>
 
-<div
-  class="window"
-  style="left:{window.left}px; top:{window.top}px;"
-  bind:this={modal}
->
+<div class="window" style="left:{window.left}px; top:{window.top}px;" >
   <header class="window-header" on:mousedown={start}>
-    <button type="button" class="window-close" on:click={close}
-      >close window</button
-    >
+    <button type="button" class="window-close" on:click={close}>close window</button>
     <div class="window-title">
-      <h2>{title}</h2>
+      <h2>{window.title}</h2>
     </div>
   </header>
   <section class="window-main">
-    <slot />
+    <svelte:component this={components[window.title]}/>
   </section>
 </div>
 

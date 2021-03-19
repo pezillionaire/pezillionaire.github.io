@@ -131,18 +131,6 @@ header[role='banner']::after {
   transform: scaleX(-1);
 }
 
-/* .logo {
-  height: 100%;
-  border: none;
-  display: flex;
-  align-items: flex-end;
-}
-
-.logo svg {
-  height: 32px;
-  width: 32px;
-} */
-
 .menu-svgicon {
   height: 100%;
   border: none;

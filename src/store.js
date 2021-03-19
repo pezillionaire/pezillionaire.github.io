@@ -2,38 +2,28 @@ import { writable } from 'svelte/store';
 
 export const windows = writable([
   {
-    title: 'PezHD',
+    title: 'Pez HD',
     top: 0,
     left: 0,
     visible: true,
+    moving: false,
   },
   {
     title: 'Garbage',
     top: 0,
     left: 0,
     visible: false,
+    moving: false,
   },
 ]);
 
-const pezMenuItems = [
-  // {
-  //   name: 'About this Pez…',
-  //   type: 'action',
-  // },
+export const windowsActive = writable([windows[0]]);
 
-  // {
-  //   name: 'Contact',
-  //   type: 'link',
-  //   url: 'https://github.com/pezillionaire/resume',
-  // },
+const pezMenuItems = [
   {
     name: 'This Does Nothing… Yet!',
     type: 'action',
   },
-  // {
-  //   name: 'Shut\'er Down',
-  //   type: 'action',
-  // },
 ];
 
 const ProjectsMenuItems = [
