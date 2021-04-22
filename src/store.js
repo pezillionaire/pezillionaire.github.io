@@ -53,7 +53,7 @@ const ThemesMenuItems = [
     alt: '#e2e7ed',
   },
   {
-    name: 'alpinglow',
+    name: 'alpenglow',
     type: 'select',
     active: false,
     primary: '#480ca8',
