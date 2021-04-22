@@ -235,6 +235,7 @@ main[role='main'] {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  background-color: var(--alt);
   background-image: linear-gradient(
       45deg,
       var(--primary) 25%,
