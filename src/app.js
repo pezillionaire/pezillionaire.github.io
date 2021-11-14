@@ -1,4 +1,5 @@
 import App from './App.svelte';
+import Nav from './Nav.svelte';
 
 function replaceContents(node) {
   node.innerHTML = '';
@@ -9,4 +10,8 @@ var app = new App({
   target: replaceContents(document.querySelector('#app')),
 });
 
-export default { app };
+var nav = new Nav({
+  target: replaceContents(document.querySelector('#nav')),
+});
+
+export default { app, nav };

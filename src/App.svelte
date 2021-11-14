@@ -1,7 +1,7 @@
 <script>
   import { windows } from './store.js';
-  import Nav from './Nav.svelte';
-  import Clock from './Clock.svelte';
+  // import Nav from './Nav.svelte';
+  // import Clock from './Clock.svelte';
   import Window from './Window.svelte';
   // import PezHD from './windows/pezHD.svelte';
   // import Garbage from './windows/Gabage.svelte'
@@ -29,11 +29,11 @@
 
 </script>
 
-<header role="banner">
+<!-- <header role="banner">
   <Nav on:action={(event) => console.log(event)} />
   <Clock />
-</header>
-<main role="main">
+</header> -->
+<!-- <main role="main"> -->
   <section class="window-layer">
     {#each $windows as window, index}
       {#if window.visible}
@@ -60,4 +60,4 @@
       <span>Garbage</span>
     </button>
   </section>
-</main>
+<!-- </main> -->

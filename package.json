@@ -9,7 +9,7 @@
     "start": "sirv public",
     "deploy": "gh-pages -d public",
     "lint": "eslint src/**/*.{js,svelte} .; exit 0",
-    "lint:fix" : "eslint src/**/*.{js,svelte} --fix .; exit 0"
+    "lint:fix": "eslint src/**/*.{js,svelte} --fix .; exit 0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",

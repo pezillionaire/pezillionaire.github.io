@@ -73,6 +73,13 @@ const ThemesMenuItems = [
     primary: '#006d77',
     alt: '#edf6f9',
   },
+  {
+    name: 'emerald',
+    type: 'select',
+    active: false,
+    alt: '#38b000',
+    primary: '#333533',
+  },
 ];
 
 export const menus = writable([

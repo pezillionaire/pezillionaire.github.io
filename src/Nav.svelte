@@ -1,5 +1,6 @@
 <script>
   import { menus, menusActive } from './store.js';
+  import Clock from './Clock.svelte';
   import Menu from './menu/Menu.svelte';
   import SelectMenu from './menu/SelectMenu.svelte';
 
@@ -22,6 +23,8 @@
     <svelte:component this={comps[menu.component]} menuIndex={index}/>
   {/each}
 </nav>
+<Clock />
+
 {#if $menusActive}
   <div class="click-capture" on:click|once={menusClose} />
 {/if}

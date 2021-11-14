@@ -21,10 +21,10 @@
   </head>
 
   <!-- Ideally, I want this site to be accessable w/out the need for JavaScript. Let's see how far I can take that!  -->
-  <body id="app">
+  <body>
     <!-- the banner is its own little app -->
-    <header role="banner">
-      <nav role="navigation" id="nav">
+    <header role="banner" id="nav">
+      <nav role="navigation">
         <a href="https://github.com/pezillionaire/resume" class="menu-svgicon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" height= "64px" width= "64px" shape-rendering="crispEdges">
             <path d="M4 60v-4h4v-4h4v-4h4v-8h-4v-4H8V24h4v-4H8v-4h4v-4h4V8h4V4h8v4h4V4h12v4h4v4h4v4h4v20h-4v4h-4v8h4v4h4v4h4v8h-4v-8h-4v-4H40v4H24v-4H12v4H8v8H4v-4zm36-10v-2h4v-8h4v-4h4V16h-4v-4h-4V8H32v4h-4V8h-8v4h-4v4h-4v4h4v4h-4v12h4v4h4v8h4v4h16v-2zm-16-6v-4h-4v-4h-4v-4h4v-4h-4v-4h4v-4h-4v-4h4v-4h4v4h-4v4h4v4h4v-4h4v4h8v-4h-4v-4h4v-4h4v4h4v4h-4v4h4v4h-4v4h4v4h-4v4h-4v8h-4V36h4v-4h-4v-4H24v4h-4v4h8v12h-4v-4zm0-18v-2h-4v4h4v-2zm20 0v-2h-4v4h4v-2zm0-8v-2h-4v4h4v-2zM16 62v-2h4v4h-4v-2zm28 0v-2h4v4h-4v-2z"/>
@@ -36,9 +36,8 @@
     </header>
 
     <!-- desktop is another app that should hold site contents -->
-    <main role="main">
+    <main role="main" id="app">
       <section class="window-layer">
-
         <div class="window" >
             <header class="window-header">
               <button type="button" class="window-close"></button>
@@ -56,8 +55,6 @@
               <p>PS. If you see this message JavaScript is no worky — so expect less.</p>
             </section>
           </div>
-
-
       </section>
       <section class="desktop-layer">
         <div class="icon mac">
