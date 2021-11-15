@@ -1,6 +1,6 @@
 <script>
   import { menus, menusActive } from './store.js';
-  import Clock from './Clock.svelte';
+  import Clock from './menu/Clock.svelte';
   import Menu from './menu/Menu.svelte';
   import SelectMenu from './menu/SelectMenu.svelte';
 

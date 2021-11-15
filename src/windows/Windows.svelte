@@ -1,8 +1,8 @@
 <script>
   import { createEventDispatcher, onMount, onDestroy } from 'svelte';
   // import { windows } from './store.js';
-  import PezHD from './windows/pezHD.svelte';
-  import Garbage from './windows/Gabage.svelte'
+  import PezHD from './pezHD.svelte';
+  import Garbage from './Gabage.svelte'
   // - index value of the window from store
   // - passed via prop from App
   export let window = {};
@@ -18,22 +18,23 @@
   const dispatch = createEventDispatcher();
   const close = () => dispatch('close');
 
-  const app = document.getElementById('app');
+  const windows = document.getElementById('windows');
 
   function start() {
     window.moving = true;
+    console.log(window)
     // remove text selection when dragging windows
-    app.style.userSelect = 'none';
+    windows.style.userSelect = 'none';
   }
   function stop() {
     window.moving = false;
     // reset default text select on release
-    app.removeAttribute('style');
+    windows.removeAttribute('style');
     if (window.left <= 0) {
-      window.left = 0;
+      window.left = 4;
     }
     if (window.top <= 0) {
-      window.top = 0;
+      window.top = 4;
     }
   }
 
@@ -41,7 +42,6 @@
     if (window.moving) {
       window.left += e.movementX;
       window.top += e.movementY;
-
     }
   }
 
@@ -75,11 +75,9 @@
     });
   }
   onMount(async () => {
-    // getTheme();
     window.left = 16;
     window.top = 16;
   });
-  // export let title = 'title';
 </script>
 
 <div class="window" style="left:{window.left}px; top:{window.top}px;" >

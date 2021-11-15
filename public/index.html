@@ -23,7 +23,7 @@
   <!-- Ideally, I want this site to be accessable w/out the need for JavaScript. Let's see how far I can take that!  -->
   <body>
     <!-- the banner is its own little app -->
-    <header role="banner" id="nav">
+    <header role="banner" id="menu">
       <nav role="navigation">
         <a href="https://github.com/pezillionaire/resume" class="menu-svgicon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" height= "64px" width= "64px" shape-rendering="crispEdges">
@@ -36,8 +36,8 @@
     </header>
 
     <!-- desktop is another app that should hold site contents -->
-    <main role="main" id="app">
-      <section class="window-layer">
+    <main role="main">
+      <section class="window-layer" id="windows">
         <div class="window" >
             <header class="window-header">
               <button type="button" class="window-close"></button>
@@ -56,7 +56,7 @@
             </section>
           </div>
       </section>
-      <section class="desktop-layer">
+      <section class="desktop-layer" id="desktop">
         <div class="icon mac">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" height= "64px" width= "64px" shape-rendering="crispEdges">
             <path class="svg-prime-fill" fill="#000" d="M6 60v-4H4V4h2V2h52v2h2v52h-2v8H6z" />

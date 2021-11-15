@@ -94,6 +94,12 @@ p { margin: 0 0 1rem; }
 
 p a { text-decoration: underline; }
 
+p a:focus,
+p a:hover {
+  color: var(--alt);
+  background-color: var(--primary);
+}
+
 ::selection {
   color: var(--alt);
   background-color: var(--primary);
@@ -108,7 +114,7 @@ header[role='banner'] {
   width: 100%;
   min-height: 40px;
   border: 4px solid black;
-  border-bottom: 2px solid var(--primary);
+  border-bottom: none;
   background-color: var(--alt);
 }
 header[role='banner']::before {
@@ -287,6 +293,7 @@ main[role='main']::after {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-top: 2px solid var(--primary);
 }
 
 .window {
@@ -404,6 +411,7 @@ main[role='main']::after {
   justify-content: space-around;
   width: 100%;
   padding: 1rem;
+  border-top: 2px solid var(--primary);
 }
 
 .icon {
