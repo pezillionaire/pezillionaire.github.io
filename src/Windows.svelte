@@ -1,10 +1,10 @@
-<script>
-  import { windows } from './store.js';
+<script lang="ts">
+  import { windows } from './store';
   import Window from './windows/Windows.svelte';
 
-  const closeWindow = (index) => {
+  const closeWindow = (index: number) => {
     $windows[index].visible = false;
-  }
+  };
 </script>
 
 

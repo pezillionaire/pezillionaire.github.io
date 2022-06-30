@@ -1,54 +1,67 @@
-<script>
-  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
-  // import { windows } from './store.js';
-  import PezHD from './pezHD.svelte';
+<style>
+</style>
+
+<script lang="ts">
+  import { createEventDispatcher, onMount, onDestroy, SvelteComponent } from 'svelte'
+  // import type { Window } from '../store';
+  import PezHD from './pezHD.svelte'
   import Garbage from './Gabage.svelte'
+
+  type Window = {
+    title: string
+    top: number
+    left: number
+    width: any
+    height: any
+    visible: boolean
+    moving: boolean
+  }
+
   // - index value of the window from store
   // - passed via prop from App
-  export let window = {};
-  export let index = 0;
+  export let window: Window
+  export let index = 0
 
-  $: window;
+  $: window
   $: index
 
-  const components = {};
-  components['Pez HD'] = PezHD;
-  components['Garbage'] = Garbage;
+  const components: { [key: string]: typeof SvelteComponent } = {};
+  components['Pez HD'] = PezHD
+  components['Garbage'] = Garbage
 
-  const dispatch = createEventDispatcher();
-  const close = () => dispatch('close');
+  const dispatch = createEventDispatcher()
+  const close = () => dispatch('close')
 
-  const windows = document.getElementById('windows');
+  const windows = document.getElementById('windows')
 
   function start() {
-    window.moving = true;
-    console.log(window)
+    window.moving = true
     // remove text selection when dragging windows
-    windows.style.userSelect = 'none';
+    if (windows) { windows.style.userSelect = 'none' };
   }
   function stop() {
-    window.moving = false;
+    window.moving = false
     // reset default text select on release
-    windows.removeAttribute('style');
+    if (windows) { windows.removeAttribute('style') };
     if (window.left <= 0) {
-      window.left = 4;
+      window.left = 4
     }
     if (window.top <= 0) {
-      window.top = 4;
+      window.top = 4
     }
   }
 
-  function move(e) {
+  function move(e: { movementX: number; movementY: number; }) {
     if (window.moving) {
-      window.left += e.movementX;
-      window.top += e.movementY;
+      window.left += e.movementX
+      window.top += e.movementY
     }
   }
 
-  const handle_keydown = (e) => {
+  const handle_keydown = (e: { key: string; }) => {
     if (e.key === 'Escape') {
-      close();
-      return;
+      close()
+      return
     }
 
     // if (e.key === 'Tab') {
@@ -65,22 +78,23 @@
     //   tabbable[index].focus();
     //   e.preventDefault();
     // }
-  };
+  }
 
-  const previously_focused = typeof document !== 'undefined' && document.activeElement;
+  const previously_focused = typeof document !== 'undefined' && document.activeElement
 
   if (previously_focused) {
     onDestroy(() => {
-      previously_focused.focus();
-    });
+      (previously_focused as HTMLElement).focus()
+    })
   }
   onMount(async () => {
-    window.left = 16;
-    window.top = 16;
-  });
+    window.left = 16
+    window.top = 16
+
+  })
 </script>
 
-<div class="window" style="left:{window.left}px; top:{window.top}px;" >
+<div class="window" style="left:{window.left}px; top:{window.top}px;">
   <header class="window-header" on:mousedown={start}>
     <button type="button" class="window-close" on:click={close}>close window</button>
     <div class="window-title">
@@ -88,15 +102,8 @@
     </div>
   </header>
   <section class="window-main">
-    <svelte:component this={components[window.title]}/>
+    <svelte:component this={components[window.title]} />
   </section>
 </div>
 
-<svelte:window
-  on:keydown={handle_keydown}
-  on:mouseup={stop}
-  on:mousemove={move}
-/>
-
-<style>
-</style>
+<svelte:window on:keydown={handle_keydown} on:mouseup={stop} on:mousemove={move} />

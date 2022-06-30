@@ -1,10 +1,11 @@
-<script>
-  import { menus, menusActive } from './store.js';
+<script lang="ts">
+  import { menus, menusActive } from './store';
   import Clock from './menu/Clock.svelte';
   import Menu from './menu/Menu.svelte';
   import SelectMenu from './menu/SelectMenu.svelte';
+  import { SvelteComponent } from 'svelte';
 
-  const comps = {
+  const comps: { [key: string]: typeof SvelteComponent } = {
     SelectMenu,
     Menu,
   };
@@ -18,7 +19,7 @@
   };
 </script>
 
-<nav role="navigation">
+<nav>
   {#each $menus as menu, index}
     <svelte:component this={comps[menu.component]} menuIndex={index}/>
   {/each}

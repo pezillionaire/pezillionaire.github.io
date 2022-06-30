@@ -1,10 +1,12 @@
-<script>
-  import { windows } from './store.js';
-  const openWindowByTitle = (value) => {
-    const win = $windows.find(obj => { return obj.title === value })
-    const i = $windows.indexOf(win);
-    $windows[i].visible = true
-  }
+<script lang="ts">
+  import { windows, Window } from './store';
+  const openWindowByTitle = (value :any) => {
+    const win = $windows.find((obj: Window) => { return obj.title === value; });
+    if (win) {
+      const i = $windows.indexOf(win);
+      $windows[i].visible = true;
+    }
+  };
 
 </script>
 
