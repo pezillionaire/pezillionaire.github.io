@@ -18,24 +18,24 @@
 </style>
 
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
+  import { createEventDispatcher } from 'svelte';
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
 
-  function action(value: string): CustomEvent {
-    dispatch('action', value)
-  }
+  const action = (value: string) => {
+    dispatch('action', value);
+  };
 
-  export let active: boolean
-  export let name: string
-  export let type
+  export let active: boolean;
+  export let name: string;
+  export let type: 'action' | 'link' | 'select' | 'folder';
 
-  $: active
-  $: type
-  $: name
+  $: active;
+  $: type;
+  $: name;
 </script>
 
-<button type="button" on:click={action(name)}>
+<button type="button" on:click={() => action(name)}>
   <span>{name}</span>
   <span class="menuitem-icon">{active ? '✓' : ''}</span>
 </button>

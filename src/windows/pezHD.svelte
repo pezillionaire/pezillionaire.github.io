@@ -25,7 +25,8 @@
 <p>
   It will be updated randomly. The source can be found <a
     href="https://github.com/pezillionaire/pezillionaire.github.io"
-    target="_blank">here</a
+    target="_blank"
+    rel="noreferrer">here</a
   >. Sometimes this site will be up to date, sometimes it will not — this is ok.
 </p>
 <p>This is project an ongoing concern… if you have concerns send me a message.</p>
