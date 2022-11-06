@@ -2,66 +2,70 @@
 </style>
 
 <script lang="ts">
-  import { createEventDispatcher, onMount, onDestroy, SvelteComponent } from 'svelte'
+  import { createEventDispatcher, onMount, onDestroy, SvelteComponent } from 'svelte';
   // import type { Window } from '../store';
-  import PezHD from './pezHD.svelte'
-  import Garbage from './Gabage.svelte'
+  import PezHD from './pezHD.svelte';
+  import Garbage from './Gabage.svelte';
 
   type Window = {
-    title: string
-    top: number
-    left: number
-    width: any
-    height: any
-    visible: boolean
-    moving: boolean
-  }
+    title: string;
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+    visible: boolean;
+    moving: boolean;
+  };
 
   // - index value of the window from store
   // - passed via prop from App
-  export let window: Window
-  export let index = 0
+  export let window: Window;
+  export let index = 0;
 
-  $: window
-  $: index
+  $: window;
+  $: index;
 
   const components: { [key: string]: typeof SvelteComponent } = {};
-  components['Pez HD'] = PezHD
-  components['Garbage'] = Garbage
+  components['Pez HD'] = PezHD;
+  components['Garbage'] = Garbage;
 
-  const dispatch = createEventDispatcher()
-  const close = () => dispatch('close')
+  const dispatch = createEventDispatcher();
+  const close = () => dispatch('close');
 
-  const windows = document.getElementById('windows')
+  const windows = document.getElementById('windows');
 
   function start() {
-    window.moving = true
+    window.moving = true;
     // remove text selection when dragging windows
-    if (windows) { windows.style.userSelect = 'none' };
+    if (windows) {
+      windows.style.userSelect = 'none';
+    }
   }
   function stop() {
-    window.moving = false
+    window.moving = false;
     // reset default text select on release
-    if (windows) { windows.removeAttribute('style') };
+    if (windows) {
+      windows.removeAttribute('style');
+    }
     if (window.left <= 0) {
-      window.left = 4
+      window.left = 4;
     }
     if (window.top <= 0) {
-      window.top = 4
+      window.top = 4;
     }
   }
 
-  function move(e: { movementX: number; movementY: number; }) {
+  function move(e: { movementX: number; movementY: number }) {
     if (window.moving) {
-      window.left += e.movementX
-      window.top += e.movementY
+      window.left += e.movementX;
+      window.top += e.movementY;
     }
   }
 
-  const handle_keydown = (e: { key: string; }) => {
+  const handle_keydown = (e: { key: string }) => {
     if (e.key === 'Escape') {
-      close()
-      return
+      close();
+      return;
     }
 
     // if (e.key === 'Tab') {
@@ -78,20 +82,19 @@
     //   tabbable[index].focus();
     //   e.preventDefault();
     // }
-  }
+  };
 
-  const previously_focused = typeof document !== 'undefined' && document.activeElement
+  const previously_focused = typeof document !== 'undefined' && document.activeElement;
 
   if (previously_focused) {
     onDestroy(() => {
-      (previously_focused as HTMLElement).focus()
-    })
+      (previously_focused as HTMLElement).focus();
+    });
   }
   onMount(async () => {
-    window.left = 16
-    window.top = 16
-
-  })
+    window.left = 16;
+    window.top = 16;
+  });
 </script>
 
 <div class="window" style="left:{window.left}px; top:{window.top}px;">

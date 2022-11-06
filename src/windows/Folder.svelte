@@ -42,19 +42,20 @@
 </style>
 
 <script>
-  import File from './File.svelte'
-  import Link from './Link.svelte'
+  import File from './File.svelte';
+  // import Link from './Link.svelte';
 
-  export let expanded = false
-  export let root
+  export let expanded = false;
+  export let root;
 
-  $: root
+  $: root;
 
   function toggle() {
-    expanded = !expanded
+    expanded = !expanded;
   }
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   class={`folder type-${root.type.toLowerCase()}`}
   on:mouseenter={toggle}

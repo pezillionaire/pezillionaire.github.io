@@ -19,11 +19,21 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
+  // import { mount_component } from 'svelte/internal';
 
   const dispatch = createEventDispatcher();
 
   const action = (value: string) => {
+    console.log('action', value);
     dispatch('action', value);
+  };
+  const handler = (value: string) => {
+    console.log('action', value);
+  };
+
+  const close = (e: Event) => {
+    console.log(e);
+    // dispatch('close');
   };
 
   export let active: boolean;
@@ -35,7 +45,7 @@
   $: name;
 </script>
 
-<button type="button" on:click={() => action(name)}>
-  <span>{name}</span>
+<button type="button" on:click={close}>
+  <span>{name} test</span>
   <span class="menuitem-icon">{active ? '✓' : ''}</span>
 </button>

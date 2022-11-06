@@ -1,47 +1,54 @@
 <script lang="ts">
-  import { menus, menusActive } from '../store'
-  import Action from './ItemAction.svelte'
-  import Link from './ItemLink.svelte'
+  import { menus, menusActive } from '../store';
+  import Action from './ItemAction.svelte';
+  import Link from './ItemLink.svelte';
 
   // - index value of the menu from store
   // - passed via prop from Nav generator
-  export let menuIndex:number
-  $: menuIndex
+  export let menuIndex: number;
+  $: menuIndex;
 
-  const menu = $menus[menuIndex]
-  let expanded = false
+  const menu = $menus[menuIndex];
+  let expanded = false;
 
   // - keep an eye on the menu activity
   // - menuIndex seems to break recursion (should rely on index maybe?)
   menus.subscribe(value => {
-    expanded = value[menuIndex].active
-  })
+    expanded = value[menuIndex].active;
+  });
 
   // - toggle menu open/closed
   // - if value is set to boolean use that - otherwise filp the value
   const menuToggle = (value?: boolean) => {
-    console.log($menus[menuIndex])
-    value === false || value === true ? (expanded = value) : (expanded = !expanded)
-    $menus[menuIndex].active = expanded
-    $menusActive = expanded
+    value === false || value === true ? (expanded = value) : (expanded = !expanded);
+    $menus[menuIndex].active = expanded;
+    $menusActive = expanded;
     $menus.forEach((m, i) => {
       if (i !== menuIndex) {
-        m.active = false
+        m.active = false;
       }
-    })
-    $menus = $menus
-  }
+    });
+    let active = document.getElementsByClassName('menu-head active');
+    $menus = $menus;
+  };
 
   // - when mouseing on, check to see if this is active/expanded
   const menuCheckActive = () => {
     if ($menusActive && !expanded) {
-      menuToggle()
+      menuToggle();
     }
-  }
+  };
 </script>
 
 <menu>
-  <button class:active={expanded} on:click={() => menuToggle} on:mouseenter={menuCheckActive}>
+  <button
+    id={$menus[menuIndex].name}
+    class:active={expanded}
+    on:click={() => {
+      menuToggle();
+    }}
+    on:mouseenter={menuCheckActive}
+  >
     {#if menu.svg}
       <span class="menu-svgicon">
         {@html menu.svg}

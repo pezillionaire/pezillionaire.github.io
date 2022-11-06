@@ -3,7 +3,7 @@
   import Clock from './menu/Clock.svelte';
   import Menu from './menu/Menu.svelte';
   import SelectMenu from './menu/SelectMenu.svelte';
-  import { SvelteComponent } from 'svelte';
+  import type { SvelteComponent } from 'svelte';
 
   const comps: { [key: string]: typeof SvelteComponent } = {
     SelectMenu,
@@ -12,7 +12,7 @@
 
   const menusClose = () => {
     $menusActive = false;
-    $menus.forEach((m) => {
+    $menus.forEach(m => {
       m.active = false;
     });
     $menus = $menus;
@@ -21,11 +21,12 @@
 
 <nav>
   {#each $menus as menu, index}
-    <svelte:component this={comps[menu.component]} menuIndex={index}/>
+    <svelte:component this={comps[menu.component]} menuIndex={index} />
   {/each}
 </nav>
 <Clock />
 
 {#if $menusActive}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class="click-capture" on:click|once={menusClose} />
 {/if}

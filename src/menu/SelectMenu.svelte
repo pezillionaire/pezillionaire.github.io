@@ -1,50 +1,56 @@
 <script lang="ts">
-  import { menus, menusActive } from '../store'
-  import { onMount } from 'svelte'
+  import { menus, menusActive } from '../store';
+  import { onMount } from 'svelte';
 
   // - index value of the menu from store
   // - passed via prop from Nav generator
-  export let menuIndex: number
-  $: menuIndex
+  export let menuIndex: number;
+  $: menuIndex;
 
-  const menu = $menus[menuIndex]
-  const items = $menus[menuIndex].items
-  let expanded = false
+  const menu = $menus[menuIndex];
+  const items = $menus[menuIndex].items;
+  let expanded = false;
 
   // - keep an eye on the menu activity
   menus.subscribe(value => {
-    expanded = value[menuIndex].active
-  })
+    expanded = value[menuIndex].active;
+  });
 
   // --------------------------------------------------
   // -- Theme Selection wizardry
   // --------------------------------------------------
 
-  const setTheme = (index:number) => {
+  const setTheme = (index: number) => {
     // clear out active menu item
     items.forEach(i => {
-      i.active = false
-    })
+      i.active = false;
+    });
     // not really theming but I still wanna set the menu selection JIC (onload)
-    items[index].active = true
-    localStorage.clear()
-    localStorage.setItem('theme', JSON.stringify(items[index]))
+    items[index].active = true;
+    localStorage.clear();
+    localStorage.setItem('theme', JSON.stringify(items[index]));
     // const root = document.querySelector(':root');
-    // root.style.setProperty('--primary', items[index].primary);
+
+    document.documentElement.style.setProperty(
+      '--primary',
+      items[index].properties?.primary
+    );
+    document.documentElement.style.setProperty('--alt', items[index].properties?.alt);
+    // root?.style?.setProperty('--primary', items[index].properties?.primary);
     // root.style.setProperty('--alt', items[index].alt);
-  }
+  };
 
   // -- check local for a set theme or set the first one
   const getTheme = () => {
     if (localStorage.getItem('theme') == '') {
       // set to default
-      return 0
+      return 0;
     } else {
-      const theme = JSON.parse(localStorage.getItem('theme') || '')
-      const themeByName = (i: { name: string }) => i.name === theme.name
-      setTheme(items.findIndex(themeByName))
+      const theme = JSON.parse(localStorage.getItem('theme') || '');
+      const themeByName = (i: { name: string }) => i.name === theme.name;
+      setTheme(items.findIndex(themeByName));
     }
-  }
+  };
 
   // --------------------------------------------------
   // -- Menu functionality
@@ -53,39 +59,39 @@
   // - toggle menu open/closed
   // - if value is set to boolean use that - otherwise filp the value
   const menuToggle = (value?: boolean) => {
-    value === false || value === true ? (expanded = value) : (expanded = !expanded)
-    $menus[menuIndex].active = expanded
-    $menusActive = expanded
+    value === false || value === true ? (expanded = value) : (expanded = !expanded);
+    $menus[menuIndex].active = expanded;
+    $menusActive = expanded;
     $menus.forEach((m, i) => {
       if (i !== menuIndex) {
-        m.active = false
+        m.active = false;
       }
-    })
-    $menus = $menus
-  }
+    });
+    $menus = $menus;
+  };
 
   // - when mouseing on, check to see if this is active/expanded
   const menuCheckActive = () => {
     if ($menusActive && !expanded) {
-      menuToggle()
+      menuToggle();
     }
-  }
+  };
 
   // - change active menu selection
-  const itemSelect = (index:number) => {
-    items[index].active = true
+  const itemSelect = (index: number) => {
+    items[index].active = true;
     // ideally the actions would be passed in
-    setTheme(index)
+    setTheme(index);
     // TODO: replace w/ CSS transitions
     setTimeout(() => {
-      menuToggle(false)
-    }, 200)
-  }
+      menuToggle(false);
+    }, 200);
+  };
 
   // - set the theme on load
   onMount(async () => {
-    getTheme()
-  })
+    getTheme();
+  });
 </script>
 
 <!-- ------- HTML template ------- -->
@@ -94,7 +100,9 @@
   <button
     type="button"
     class:active={expanded}
-    on:click={() => {menuToggle()}}
+    on:click={() => {
+      menuToggle();
+    }}
     on:mouseenter={menuCheckActive}
   >
     {menu.name}
