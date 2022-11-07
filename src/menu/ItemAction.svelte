@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import { MenuItem } from '../store';
+  import type { MenuItem } from '../store';
 
   const dispatch = createEventDispatcher();
 

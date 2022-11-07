@@ -9,29 +9,19 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "deploy": "gh-pages -d public",
-    "format": "prettier --write ./src/**/*.{js,svelte,html,ts}",
-    "lint": "eslint './src/**/*.{js,ts,svelte}'",
-    "lint:fix": "eslint --fix './src/**/*.{js,ts,svelte}'",
-    "prelint": "npm run format"
+    "deploy": "gh-pages -d public"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
-    "@tsconfig/svelte": "^2.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "eslint": "^8.14.0",
-    "eslint-plugin-svelte3": "^3.4.1",
-    "prettier": "^2.6.2",
-    "prettier-plugin-svelte": "^2.7.0",
-    "svelte": "^3.44.0",
-    "svelte-check": "^2.2.7",
-    "svelte-preprocess": "^4.9.8",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.5"
+    "@sveltejs/vite-plugin-svelte": "^1",
+    "@tsconfig/svelte": "^3",
+    "svelte": "^3",
+    "svelte-check": "^2",
+    "svelte-preprocess": "^4",
+    "tslib": "^2",
+    "typescript": "^4",
+    "vite": "^3"
   },
   "dependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^4"
   }
 }

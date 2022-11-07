@@ -12,7 +12,7 @@
   let expanded = false;
 
   // - keep an eye on the menu activity
-  menus.subscribe(value => {
+  menus.subscribe((value) => {
     expanded = value[menuIndex].active;
   });
 
@@ -22,22 +22,16 @@
 
   const setTheme = (index: number) => {
     // clear out active menu item
-    items.forEach(i => {
+    items.forEach((i) => {
       i.active = false;
     });
-    // not really theming but I still wanna set the menu selection JIC (onload)
+    // // not really theming but I still wanna set the menu selection JIC (onload)
     items[index].active = true;
     localStorage.clear();
     localStorage.setItem('theme', JSON.stringify(items[index]));
-    // const root = document.querySelector(':root');
 
-    document.documentElement.style.setProperty(
-      '--primary',
-      items[index].properties?.primary
-    );
+    document.documentElement.style.setProperty('--primary', items[index].properties?.primary);
     document.documentElement.style.setProperty('--alt', items[index].properties?.alt);
-    // root?.style?.setProperty('--primary', items[index].properties?.primary);
-    // root.style.setProperty('--alt', items[index].alt);
   };
 
   // -- check local for a set theme or set the first one
@@ -46,7 +40,7 @@
       // set to default
       return 0;
     } else {
-      const theme = JSON.parse(localStorage.getItem('theme') || '');
+      const theme = JSON.parse(localStorage.getItem('theme')) || '';
       const themeByName = (i: { name: string }) => i.name === theme.name;
       setTheme(items.findIndex(themeByName));
     }
@@ -115,15 +109,8 @@
             <span>{name}</span>
             <span class="menuitem icon">
               {#if active}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  shape-rendering="crispEdges"
-                  class="svg-fill"
-                >
-                  <path
-                    d="M4 13v-1H2v-2H0V6h2v2h2v2h2V8h2V6h2V4h2V2h2V0h2v4h-2v2h-2v2h-2v2H8v2H6v2H4z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges" class="svg-fill">
+                  <path d="M4 13v-1H2v-2H0V6h2v2h2v2h2V8h2V6h2V4h2V2h2V0h2v4h-2v2h-2v2h-2v2H8v2H6v2H4z" />
                 </svg>
               {/if}
             </span>

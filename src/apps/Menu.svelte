@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { menus, menusActive } from './store';
-  import Clock from './menu/Clock.svelte';
-  import Menu from './menu/Menu.svelte';
-  import SelectMenu from './menu/SelectMenu.svelte';
+  import { menus, menusActive } from '../store';
+  import Clock from '../menu/Clock.svelte';
+  import Menu from '../menu/Menu.svelte';
+  import SelectMenu from '../menu/SelectMenu.svelte';
   import type { SvelteComponent } from 'svelte';
 
   const comps: { [key: string]: typeof SvelteComponent } = {

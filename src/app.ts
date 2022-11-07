@@ -1,6 +1,6 @@
-import Menu from './Menu.svelte';
-import Desktop from './Desktop.svelte';
-import Windows from './Windows.svelte';
+import Menu from './apps/Menu.svelte';
+import Desktop from './apps/Desktop.svelte';
+import Windows from './apps/Windows.svelte';
 
 function replaceContents(node: HTMLElement | null) {
   if (node) {
