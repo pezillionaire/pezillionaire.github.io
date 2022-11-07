@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let name: string
-  export let type: string
-  export let url: string | null
+  export let name: string;
+  export let type: string;
+  export let url: string | null;
 
-  $: type
-  $: name
-  $: url
+  $: type;
+  $: name;
+  $: url;
 </script>
 
 <a href={url}>

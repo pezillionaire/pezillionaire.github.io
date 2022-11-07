@@ -1,27 +1,27 @@
-import { Writable, writable } from 'svelte/store'
+import { Writable, writable } from 'svelte/store';
 
 export type Theme = {
-  alt: string | null,
-  primary: string | null
-}
+  alt: string | null;
+  primary: string | null;
+};
 
 export type MenuItem = {
-  name: string,
-  type: 'action' | 'link' | 'select' | 'folder',
-  url: string | null,
-  active?: boolean,
-  properties?: Theme,
-}
+  name: string;
+  type: 'action' | 'link' | 'select' | 'folder';
+  url: string | null;
+  active?: boolean;
+  properties?: Theme;
+};
 
 export type Window = {
-  title: string
-  top: number
-  left: number
-  width: number
-  height: number
-  visible: boolean
-  moving: boolean
-}
+  title: string;
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+  visible: boolean;
+  moving: boolean;
+};
 
 export const windows: Writable<Window[]> = writable([
   {
@@ -42,7 +42,7 @@ export const windows: Writable<Window[]> = writable([
     visible: false,
     moving: false,
   },
-])
+]);
 
 // export const windowsActive = writable([windows[0]])
 
@@ -52,7 +52,7 @@ const pezMenuItems: MenuItem[] = [
     type: 'action',
     url: null,
   },
-]
+];
 
 const ProjectsMenuItems: MenuItem[] = [
   {
@@ -70,7 +70,7 @@ const ProjectsMenuItems: MenuItem[] = [
     type: 'link',
     url: 'https://peak.wealth.bar',
   },
-]
+];
 
 const ThemesMenuItems: MenuItem[] = [
   {
@@ -123,7 +123,7 @@ const ThemesMenuItems: MenuItem[] = [
       primary: '#333533',
     },
   },
-]
+];
 
 export const menus = writable([
   {
@@ -145,6 +145,6 @@ export const menus = writable([
     active: false,
     items: ThemesMenuItems,
   },
-])
+]);
 
-export const menusActive = writable(false)
+export const menusActive = writable(false);
