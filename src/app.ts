@@ -1,4 +1,4 @@
-import Menu from './apps/Menu.svelte';
+import MenuBar from './apps/MenuBar.svelte';
 import Desktop from './apps/Desktop.svelte';
 import Windows from './apps/Windows.svelte';
 
@@ -9,7 +9,7 @@ function replaceContents(node: HTMLElement | null) {
   }
 }
 
-const menu = new Menu({
+const menu = new MenuBar({
   target: replaceContents(document.querySelector('#menu')),
 });
 
