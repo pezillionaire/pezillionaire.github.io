@@ -1,26 +1,3 @@
-<script>
-  import { createEventDispatcher } from 'svelte';
-
-  const dispatch = createEventDispatcher();
-
-  function action(value) {
-    dispatch('action', value);
-  }
-
-  export let active;
-  export let name;
-  export let type;
-
-  $: active;
-  $: type;
-  $: name;
-</script>
-
-<button type="button" on:click={action(name)}>
-  <span>{name}</span>
-  <span class="menuitem-icon">{active ? '✓' : ''}</span>
-</button>
-
 <style>
   button {
     display: flex;
@@ -39,3 +16,36 @@
     margin-left: 2rem;
   }
 </style>
+
+<script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+  // import { mount_component } from 'svelte/internal';
+
+  const dispatch = createEventDispatcher();
+
+  const action = (value: string) => {
+    console.log('action', value);
+    dispatch('action', value);
+  };
+  const handler = (value: string) => {
+    console.log('action', value);
+  };
+
+  const close = (e: Event) => {
+    console.log(e);
+    // dispatch('close');
+  };
+
+  export let active: boolean;
+  export let name: string;
+  export let type: 'action' | 'link' | 'select' | 'folder';
+
+  $: active;
+  $: type;
+  $: name;
+</script>
+
+<button type="button" on:click={close}>
+  <span>{name} test</span>
+  <span class="menuitem-icon">{active ? '✓' : ''}</span>
+</button>

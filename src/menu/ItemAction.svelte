@@ -1,12 +1,13 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte';
+  import type { MenuItem } from '../store';
 
   const dispatch = createEventDispatcher();
 
   // export let active;
   // export let name;
-  export let index;
-  export let item;
+  export let index: number;
+  export let item: MenuItem;
 
   // $: active;
   // $: name;
@@ -15,7 +16,8 @@
 
   let isActive = item.active;
 
-  function toggle(item) {
+  function toggle(item: MenuItem) {
+    console.log(item);
     isActive = !isActive;
     item.active = !item.active;
     const value = {
@@ -26,7 +28,7 @@
   }
 </script>
 
-<button type="button" on:click={toggle(item)}>
+<button type="button" on:click={() => toggle(item)}>
   <span>{item.name}</span>
   <span class="menuitem icon">{isActive ? '✓' : ''}</span>
 </button>

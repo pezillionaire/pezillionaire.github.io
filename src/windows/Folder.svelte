@@ -1,50 +1,3 @@
-<script>
-  import File from './File.svelte';
-  import Link from './Link.svelte';
-
-  export let expanded = false;
-  export let root;
-
-  $: root;
-
-  function toggle() {
-    expanded = !expanded;
-  }
-</script>
-
-<div
-  class={`folder type-${root.type.toLowerCase()}`}
-  on:mouseenter={toggle}
-  on:mouseleave={toggle}
-  on:click={toggle}
->
-  <button class:expanded>
-    {#if root.svg}
-      <span class="folder-svgicon">
-        {@html root.svg}
-      </span>
-      <span class="folder-svg-label">{root.type}</span>
-    {/if}
-    {#if root.name}
-      <span class="folder-name">{root.name}</span>
-    {/if}
-  </button>
-
-  {#if expanded}
-    <ul>
-      {#each root.files as file}
-        <li :class={file.type}>
-          {#if file.type === 'folder'}
-            <svelte:self {...file} />
-          {:else}
-            <File {...file} />
-          {/if}
-        </li>
-      {/each}
-    </ul>
-  {/if}
-</div>
-
 <style>
   .folder {
     display: flex;
@@ -87,3 +40,51 @@
     width: 100%;
   }
 </style>
+
+<script>
+  import File from './File.svelte';
+  // import Link from './Link.svelte';
+
+  export let expanded = false;
+  export let root;
+
+  $: root;
+
+  function toggle() {
+    expanded = !expanded;
+  }
+</script>
+
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div
+  class={`folder type-${root.type.toLowerCase()}`}
+  on:mouseenter={toggle}
+  on:mouseleave={toggle}
+  on:click={toggle}
+>
+  <button class:expanded>
+    {#if root.svg}
+      <span class="folder-svgicon">
+        {@html root.svg}
+      </span>
+      <span class="folder-svg-label">{root.type}</span>
+    {/if}
+    {#if root.name}
+      <span class="folder-name">{root.name}</span>
+    {/if}
+  </button>
+
+  {#if expanded}
+    <ul>
+      {#each root.files as file}
+        <li :class={file.type}>
+          {#if file.type === 'folder'}
+            <svelte:self {...file} />
+          {:else}
+            <File {...file} />
+          {/if}
+        </li>
+      {/each}
+    </ul>
+  {/if}
+</div>

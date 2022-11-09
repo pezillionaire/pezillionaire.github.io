@@ -1,10 +1,10 @@
-<script>
-  import { menus, menusActive } from '../store.js';
+<script lang="ts">
+  import { menus, menusActive } from '../store';
   import { onMount } from 'svelte';
 
   // - index value of the menu from store
   // - passed via prop from Nav generator
-  export let menuIndex;
+  export let menuIndex: number;
   $: menuIndex;
 
   const menu = $menus[menuIndex];
@@ -16,23 +16,22 @@
     expanded = value[menuIndex].active;
   });
 
-
   // --------------------------------------------------
   // -- Theme Selection wizardry
   // --------------------------------------------------
 
-  const setTheme = (index) => {
+  const setTheme = (index: number) => {
     // clear out active menu item
     items.forEach((i) => {
       i.active = false;
     });
-    // not really theming but I still wanna set the menu selection JIC (onload)
+    // // not really theming but I still wanna set the menu selection JIC (onload)
     items[index].active = true;
     localStorage.clear();
     localStorage.setItem('theme', JSON.stringify(items[index]));
-    const root = document.querySelector(':root');
-    root.style.setProperty('--primary', items[index].primary);
-    root.style.setProperty('--alt', items[index].alt);
+
+    document.documentElement.style.setProperty('--primary', items[index].properties?.primary);
+    document.documentElement.style.setProperty('--alt', items[index].properties?.alt);
   };
 
   // -- check local for a set theme or set the first one
@@ -41,8 +40,8 @@
       // set to default
       return 0;
     } else {
-      const theme = JSON.parse(localStorage.getItem('theme'));
-      const themeByName = (i) => i.name === theme.name;
+      const theme = JSON.parse(localStorage.getItem('theme')) || '';
+      const themeByName = (i: { name: string }) => i.name === theme.name;
       setTheme(items.findIndex(themeByName));
     }
   };
@@ -53,10 +52,8 @@
 
   // - toggle menu open/closed
   // - if value is set to boolean use that - otherwise filp the value
-  const menuToggle = (value) => {
-    value === false || value === true
-      ? (expanded = value)
-      : (expanded = !expanded);
+  const menuToggle = (value?: boolean) => {
+    value === false || value === true ? (expanded = value) : (expanded = !expanded);
     $menus[menuIndex].active = expanded;
     $menusActive = expanded;
     $menus.forEach((m, i) => {
@@ -69,13 +66,13 @@
 
   // - when mouseing on, check to see if this is active/expanded
   const menuCheckActive = () => {
-    if ($menusActive & !expanded) {
+    if ($menusActive && !expanded) {
       menuToggle();
     }
   };
 
   // - change active menu selection
-  const itemSelect = (index) => {
+  const itemSelect = (index: number) => {
     items[index].active = true;
     // ideally the actions would be passed in
     setTheme(index);
@@ -94,7 +91,14 @@
 <!-- ------- HTML template ------- -->
 
 <menu>
-  <button type="button" class:active={expanded} on:click={menuToggle} on:mouseenter={menuCheckActive}>
+  <button
+    type="button"
+    class:active={expanded}
+    on:click={() => {
+      menuToggle();
+    }}
+    on:mouseenter={menuCheckActive}
+  >
     {menu.name}
   </button>
   {#if expanded}
@@ -105,9 +109,9 @@
             <span>{name}</span>
             <span class="menuitem icon">
               {#if active}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges" class="svg-fill">
-                <path d="M4 13v-1H2v-2H0V6h2v2h2v2h2V8h2V6h2V4h2V2h2V0h2v4h-2v2h-2v2h-2v2H8v2H6v2H4z"/>
-              </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges" class="svg-fill">
+                  <path d="M4 13v-1H2v-2H0V6h2v2h2v2h2V8h2V6h2V4h2V2h2V0h2v4h-2v2h-2v2h-2v2H8v2H6v2H4z" />
+                </svg>
               {/if}
             </span>
           </button>
