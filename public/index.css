@@ -65,7 +65,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  cursor: url(./images/cursor.gif), auto;
+  cursor: url(./images/cursor.svg), auto;
 }
 
 body {

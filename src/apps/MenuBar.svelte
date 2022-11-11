@@ -21,7 +21,7 @@
 
 <nav>
   {#each $menus as menu, index}
-    <svelte:component this={comps[menu.component]} menuIndex={index} />
+    <svelte:component this={comps[menu.component]} menuIndex={index} menuItems={menu.items}/>
   {/each}
 </nav>
 <Clock />

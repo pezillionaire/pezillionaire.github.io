@@ -1,6 +1,6 @@
 <script lang="ts">
   import { windows } from '../store';
-  import type { Window } from '../store';
+  import type { Window } from '../types'
   const openWindowByTitle = (value: any) => {
     const win = $windows.find((obj: Window) => {
       return obj.title === value;

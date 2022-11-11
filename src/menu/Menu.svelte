@@ -1,12 +1,17 @@
 <script lang="ts">
   import { menus, menusActive } from '../store';
+  import type { MenuItem, MenuItemLink } from '../types';
+    import ItemAction from './ItemAction.svelte';
   import Action from './ItemAction.svelte';
+    import ItemLink from './ItemLink.svelte';
   import Link from './ItemLink.svelte';
 
   // - index value of the menu from store
   // - passed via prop from Nav generator
   export let menuIndex: number;
+  export let menuItems: MenuItem[] | MenuItemLink[];
   $: menuIndex;
+  $: menuItems
 
   const menu = $menus[menuIndex];
   let expanded = false;
@@ -28,12 +33,12 @@
         m.active = false;
       }
     });
-    let active = document.getElementsByClassName('menu-head active');
     $menus = $menus;
   };
 
   // - when mouseing on, check to see if this is active/expanded
   const menuCheckActive = () => {
+
     if ($menusActive && !expanded) {
       menuToggle();
     }
@@ -61,13 +66,14 @@
 
   {#if expanded}
     <ul>
-      {#each menu.items as item, index}
+      {#each menuItems as item, index}
         <li class={item.type}>
-          {#if item.type === 'folder'}
-            <svelte:self {...item} />
-          {:else if item.type === 'link'}
+          <!-- {#if item.type === 'folder'}
+            <svelte:self {...item} /> -->
+          <!-- svelte-ignore missing-declaration -->
+          {#if typeof MenuItemLink}
             <Link {...item} />
-          {:else}
+          {:else if item.type === 'action'}
             <Action {item} {index} on:action />
           {/if}
         </li>

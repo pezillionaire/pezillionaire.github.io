@@ -1,14 +1,19 @@
 <script lang="ts">
   import { menus, menusActive } from '../store';
+  import type { MenuItemSelect } from '../types';
   import { onMount } from 'svelte';
 
   // - index value of the menu from store
   // - passed via prop from Nav generator
   export let menuIndex: number;
+  export let menuItems: MenuItemSelect[];
   $: menuIndex;
+  $: menuItems;
+
+  console.log(menuItems);
 
   const menu = $menus[menuIndex];
-  const items = $menus[menuIndex].items;
+  // const items: MenuSelectItem[] = $menus[menuIndex].items;
   let expanded = false;
 
   // - keep an eye on the menu activity
@@ -22,16 +27,16 @@
 
   const setTheme = (index: number) => {
     // clear out active menu item
-    items.forEach((i) => {
+    menuItems.forEach((i) => {
       i.active = false;
     });
     // // not really theming but I still wanna set the menu selection JIC (onload)
-    items[index].active = true;
+    menuItems[index].active = true;
     localStorage.clear();
-    localStorage.setItem('theme', JSON.stringify(items[index]));
+    localStorage.setItem('theme', JSON.stringify(menuItems[index]));
 
-    document.documentElement.style.setProperty('--primary', items[index].properties?.primary);
-    document.documentElement.style.setProperty('--alt', items[index].properties?.alt);
+    document.documentElement.style.setProperty('--primary', menuItems[index].properties?.primary);
+    document.documentElement.style.setProperty('--alt', menuItems[index].properties?.alt);
   };
 
   // -- check local for a set theme or set the first one
@@ -42,7 +47,7 @@
     } else {
       const theme = JSON.parse(localStorage.getItem('theme')) || '';
       const themeByName = (i: { name: string }) => i.name === theme.name;
-      setTheme(items.findIndex(themeByName));
+      setTheme(menuItems.findIndex(themeByName));
     }
   };
 
@@ -73,7 +78,7 @@
 
   // - change active menu selection
   const itemSelect = (index: number) => {
-    items[index].active = true;
+    menuItems[index].active = true;
     // ideally the actions would be passed in
     setTheme(index);
     // TODO: replace w/ CSS transitions
@@ -103,7 +108,7 @@
   </button>
   {#if expanded}
     <ul role="menu">
-      {#each items as { name, active }, index}
+      {#each menuItems as { name, active }, index}
         <li>
           <button type="button" on:click|once={() => itemSelect(index)}>
             <span>{name}</span>

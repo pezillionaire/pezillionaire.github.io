@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { windows } from '../store';
   import Window from '../windows/Windows.svelte';
 
