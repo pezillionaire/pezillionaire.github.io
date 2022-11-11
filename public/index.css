@@ -37,10 +37,11 @@ html {
 }
 
 @font-face {
-  font-family: 'Chicago';
+  font-family: 'sysfont';
   font-style: normal;
   font-weight: normal;
-  src: local('Chicago-woff'), url('./assets/chicago.woff') format('woff');
+  src: url('./assets/sysfont.woff') format('woff'),
+    url('./assets/sysfont.woff2') format('woff2');
 }
 
 @font-face {
@@ -54,6 +55,8 @@ html {
   :root {
     --primary: #0466c8;
     --alt: #e2e7ed;
+    --font-header: 'sysfont', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Geneva', Tahoma, Verdana, sans-serif;
   }
 }
 
@@ -74,21 +77,29 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Geneva', Tahoma, Verdana, sans-serif;
+  font-family: var(--font-body);
   display: flex;
   flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Chicago', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-header);
   font-weight: normal;
   margin: 0 0 1rem;
 }
 
 h1 {
-  font-weight: normal;
   font-size: 1.75rem;
 }
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
 
 p {
   margin: 0 0 1rem;
@@ -112,8 +123,8 @@ p a:hover {
 header[role='banner'] {
   display: flex;
   justify-content: space-between;
-  font-family: 'Chicago', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 1.25rem;
+  font-family: var(--font-header);
+  font-size: 1.5rem;
   line-height: 1;
   width: 100%;
   min-height: 40px;
@@ -399,7 +410,7 @@ main[role='main']::after {
   flex: 0 1 auto;
   background: var(--alt);
   padding: 0 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .window-main {
