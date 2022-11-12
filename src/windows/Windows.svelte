@@ -3,19 +3,9 @@
 
 <script lang="ts">
   import { createEventDispatcher, onMount, onDestroy, SvelteComponent } from 'svelte';
-  // import type { Window } from '../store';
+  import type { Window } from '../types';
   import PezHD from './pezHD.svelte';
   import Garbage from './Gabage.svelte';
-
-  type Window = {
-    title: string;
-    top: number;
-    left: number;
-    width: number;
-    height: number;
-    visible: boolean;
-    moving: boolean;
-  };
 
   // - index value of the window from store
   // - passed via prop from App
