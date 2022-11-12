@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount, onDestroy, SvelteComponent } from 'svelte';
+  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
   import type { Window } from '../types';
-  import * as Components from '../windows/index'
 
   // - index value of the window from store
   // - passed via prop from App
@@ -10,10 +9,6 @@
 
   $: window;
   $: index;
-
-  const components: { [key: string]: typeof SvelteComponent } = {};
-  components['Pez HD'] = Components.PezHD;
-  components['Garbage'] = Components.Garbage;
 
   const dispatch = createEventDispatcher();
   const close = () => dispatch('close');
@@ -87,11 +82,11 @@
   <header class="window-header" on:mousedown={start}>
     <button type="button" class="window-close" on:click={close}>close window</button>
     <div class="window-title">
-      <h2>{window.title}</h2>
+      <h2>{window.component.name}</h2>
     </div>
   </header>
   <section class="window-main">
-    <svelte:component this={components[window.title]} />
+    <svelte:component this={window.component} />
   </section>
 </div>
 

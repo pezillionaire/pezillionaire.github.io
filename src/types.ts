@@ -1,3 +1,4 @@
+import type { SvelteComponent } from 'svelte';
 export type Theme = {
   alt: string | null;
   primary: string | null;
@@ -19,4 +20,5 @@ export type Window = {
   height: number;
   visible: boolean;
   moving: boolean;
+  component: typeof SvelteComponent;
 };

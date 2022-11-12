@@ -1,6 +1,6 @@
 import { writable, type Writable } from 'svelte/store';
-
 import type { MenuItem, Window } from './types'
+import * as components from './windows'
 
 export const windows: Writable<Window[]> = writable([
   {
@@ -11,6 +11,7 @@ export const windows: Writable<Window[]> = writable([
     height: null,
     visible: true,
     moving: false,
+    component: components.PezHD
   },
   {
     title: 'Garbage',
@@ -20,6 +21,7 @@ export const windows: Writable<Window[]> = writable([
     height: null,
     visible: false,
     moving: false,
+    component: components.Garbage
   },
 ]);
 
