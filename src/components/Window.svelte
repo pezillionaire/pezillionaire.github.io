@@ -1,11 +1,7 @@
-<style>
-</style>
-
 <script lang="ts">
   import { createEventDispatcher, onMount, onDestroy, SvelteComponent } from 'svelte';
   import type { Window } from '../types';
-  import PezHD from './pezHD.svelte';
-  import Garbage from './Gabage.svelte';
+  import * as Components from '../windows/index'
 
   // - index value of the window from store
   // - passed via prop from App
@@ -16,8 +12,8 @@
   $: index;
 
   const components: { [key: string]: typeof SvelteComponent } = {};
-  components['Pez HD'] = PezHD;
-  components['Garbage'] = Garbage;
+  components['Pez HD'] = Components.PezHD;
+  components['Garbage'] = Components.Garbage;
 
   const dispatch = createEventDispatcher();
   const close = () => dispatch('close');

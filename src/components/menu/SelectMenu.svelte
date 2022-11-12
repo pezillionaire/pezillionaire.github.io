@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { menus, menusActive } from '../store';
+  import { menus, menusActive } from '../../store';
   import { onMount } from 'svelte';
 
   // - index value of the menu from store

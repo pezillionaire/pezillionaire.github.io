@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
   .folder {
     display: flex;
     stroke: var(--primary);
@@ -55,7 +55,6 @@
   }
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   class={`folder type-${root.type.toLowerCase()}`}
   on:mouseenter={toggle}
@@ -87,4 +86,4 @@
       {/each}
     </ul>
   {/if}
-</div>
+</div> -->
