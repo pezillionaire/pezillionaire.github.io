@@ -82,7 +82,7 @@
   <header class="window-header" on:mousedown={start}>
     <button type="button" class="window-close" on:click={close}>close window</button>
     <div class="window-title">
-      <h2>{window.component.name}</h2>
+      <h2>{window.title}</h2>
     </div>
   </header>
   <section class="window-main">
