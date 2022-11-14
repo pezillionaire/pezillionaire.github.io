@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { windows } from '../store';
-  import Window from '../windows/Windows.svelte';
+  import Window from '../components/Window.svelte';
 
   const closeWindow = (index: number) => {
     $windows[index].visible = false;

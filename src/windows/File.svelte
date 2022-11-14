@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
   button {
     display: flex;
     justify-content: space-between;
@@ -48,4 +48,4 @@
 <button type="button" on:click={close}>
   <span>{name} test</span>
   <span class="menuitem-icon">{active ? '✓' : ''}</span>
-</button>
+</button> -->

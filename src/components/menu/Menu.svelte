@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { menus, menusActive } from '../store';
+  import { menus, menusActive } from '../../store';
   import Action from './ItemAction.svelte';
   import Link from './ItemLink.svelte';
 
@@ -28,7 +28,7 @@
         m.active = false;
       }
     });
-    let active = document.getElementsByClassName('menu-head active');
+    // let active = document.getElementsByClassName('menu-head active');
     $menus = $menus;
   };
 
