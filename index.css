@@ -40,8 +40,8 @@ html {
   font-family: 'sysfont';
   font-style: normal;
   font-weight: normal;
-  src: url('./assets/sysfont.woff') format('woff'),
-    url('./assets/sysfont.woff2') format('woff2');
+  src: url('./assets/sysfont.woff') format('woff'), url('./assets/sysfont.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
@@ -49,6 +49,7 @@ html {
   font-style: normal;
   font-weight: normal;
   src: local('Geneva'), url('./assets/geneva.woff') format('woff');
+  font-display: swap;
 }
 
 @supports (--css: variables) {
